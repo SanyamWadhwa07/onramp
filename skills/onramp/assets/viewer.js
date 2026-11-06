@@ -26,6 +26,28 @@
   var FLOWS = {};
   (G.flows || []).forEach(function (f) { if (f && f.id) FLOWS[f.id] = f; });
 
+  // Hands-on stops built from the guide's own content. They only make it into longer routes:
+  // reading a key file in full, doing an exercise, building a milestone yourself.
+  var EXTRAS = [];
+  (G.exercises || []).forEach(function (x, i) {
+    EXTRAS.push({ id: "do-exercise-" + (i + 1), chapter: "practice", tier: "deep", extra: true,
+      minutes: { easy: 30, medium: 60, hard: 120 }[x.level] || 45, goals: ["ship", "own", "rebuild"],
+      title: "Do it: " + x.title, summary: x.goal || "", show: [{ view: "exercise", index: i }] });
+  });
+  (G.milestones || []).forEach(function (m, i) {
+    if (!m["try"]) return;
+    EXTRAS.push({ id: "build-milestone-" + (i + 1), chapter: "built", tier: "deep", extra: true, minutes: 60,
+      goals: ["rebuild"], title: "Build it: " + m.title, summary: m["try"], show: [{ view: "milestone", index: i }] });
+  });
+  (G.files || []).forEach(function (c) {
+    var f = FBY[c.path];
+    if (!f || !f.n) return;
+    EXTRAS.push({ id: "read-" + c.path.replace(/[^A-Za-z0-9]+/g, "-").toLowerCase(), chapter: "files", tier: "deep", extra: true,
+      minutes: Math.max(10, Math.min(60, Math.round(f.n / 30))), goals: ["gist", "own", "ship", "rebuild"],
+      title: "Read " + c.path, summary: c.role || c.summary || "", show: [{ view: "file", path: c.path }] });
+  });
+  EXTRAS.forEach(function (x, i) { x._i = LESSONS.length + i; BYID[x.id] = x; });
+
   var TIMES = [
     { id: "h1", label: "1 hour", sub: "The essentials", budget: 60, segs: ["The hour"] },
     { id: "d1", label: "1 day", sub: "Working knowledge", budget: 360, segs: ["Morning", "Midday", "Afternoon"] },
@@ -165,10 +187,14 @@
     var order = ORDER[goal];
     function weight(ch) { var i = order.indexOf(ch); return i < 0 ? 0 : Math.max(0, 6 - Math.floor(i / 2)); }
     var tierP = { core: 30, standard: 20, deep: 10 };
-    var cands = LESSONS.filter(function (l) { return !(l["for"] && l["for"].length) || l["for"].indexOf(bg.id) >= 0; })
+    var cands = LESSONS.concat(EXTRAS).filter(function (l) {
+      if (l.extra && l.goals.indexOf(goal) < 0) return false;
+      return !(l["for"] && l["for"].length) || l["for"].indexOf(bg.id) >= 0;
+    })
       .map(function (l) {
         var serves = !(l.goals && l.goals.length) || l.goals.indexOf(goal) >= 0;
-        return { l: l, mins: Math.max(1, Math.round((l.minutes || 5) * bg.scale)), pr: (tierP[l.tier] || 10) + (serves ? 8 : 0) + weight(l.chapter) };
+        var base = l.extra ? 5 : (tierP[l.tier] || 10);
+        return { l: l, mins: Math.max(1, Math.round((l.minutes || 5) * bg.scale)), pr: base + (serves ? 8 : 0) + weight(l.chapter) };
       });
     function byPr(a, b) { return b.pr - a.pr || a.l._i - b.l._i; }
     var used = 0, picked = [];
@@ -191,7 +217,7 @@
     segs.forEach(function (sg) {
       var seen = [];
       sg.stops.forEach(function (s) { var c = CH[s.l.chapter]; if (c && seen.indexOf(c.short) < 0) seen.push(c.short); });
-      sg.title = cap(joinAnd(seen.slice(0, 3))) + (seen.length > 3 ? " and more" : "");
+      sg.title = cap(seen.length > 3 ? seen.slice(0, 3).join(", ") + " and more" : joinAnd(seen));
     });
     var stops = [];
     segs.forEach(function (sg, si) { sg.stops.forEach(function (s) { s.seg = si; stops.push(s); }); });
@@ -334,6 +360,19 @@
       }).join("") + "</div>";
     },
     file: function (v) { return fileCard(v.path, true); },
+    exercise: function (v) {
+      var x = (G.exercises || [])[v.index]; if (!x) return "";
+      return '<div class="mini"><span class="pill ' + (x.level === "hard" ? "high" : x.level === "medium" ? "medium" : "core") + '" style="justify-self:start">' + esc(x.level || "") + "</span>" +
+        '<div class="prose">' + md(x.goal) + "</div>" + (x.files && x.files.length ? chips(x.files) : "") +
+        (x.hints && x.hints.length ? '<details class="deeper"><summary>Hints</summary><div class="prose"><ul>' + x.hints.map(function (hh) { return "<li>" + inline(hh) + "</li>"; }).join("") + "</ul></div></details>" : "") +
+        (x.done_when ? '<p class="try"><b>Done when:</b> ' + inline(x.done_when) + "</p>" : "") + "</div>";
+    },
+    milestone: function (v) {
+      var m = (G.milestones || [])[v.index]; if (!m) return "";
+      return '<ol class="milestones" start="' + (v.index + 1) + '" style="counter-reset: ms ' + v.index + '"><li class="milestone"><div class="body"><h3>' + esc(m.title) + "</h3>" +
+        (m.goal ? '<div class="prose">' + md(m.goal) + "</div>" : "") + (m.files && m.files.length ? chips(m.files) : "") +
+        (m.explain ? '<div class="prose">' + md(m.explain) + "</div>" : "") + "</div></li></ol>";
+    },
     milestones: function () {
       var ms = G.milestones || []; if (!ms.length) return "";
       return '<ol class="milestones">' + ms.map(function (m) {
@@ -484,7 +523,7 @@
     function preview() {
       var R = buildRoute(draft);
       $("#preview").innerHTML = '<div class="preview"><div class="preview-head"><b>' + esc(R.time.label) + " · " + R.stops.length + " stops</b>" +
-        '<span class="pill">' + fmtMin(R.mins) + " of reading and thinking</span><span class=\"pill\">" + esc(R.goal.label) + "</span></div>" +
+        '<span class="pill">' + fmtMin(R.mins) + " of reading and doing</span><span class=\"pill\">" + esc(R.goal.label) + "</span></div>" +
         '<div class="days">' + R.segs.map(function (sg) {
           return '<div class="day-line"><span class="d">' + esc(sg.name) + '</span><span class="t">' + esc(sg.title) + '</span><span class="m">' + sg.stops.length + " stops · " + fmtMin(sg.mins) + "</span></div>";
         }).join("") + '</div><div><button class="sign" type="button" id="start">' + (state.route ? "Update my route" : "Start the route") + ' <span class="arrow">→</span></button></div></div>';

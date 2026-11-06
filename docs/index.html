@@ -369,7 +369,7 @@ footer a { color: var(--muted); }
         <p>Pick your time, your goal (<strong>get the gist</strong>, <strong>ship a change</strong>, <strong>own it</strong> or <strong>rebuild it</strong>) and your background. Onramp plans a day-by-day route and draws it as a road, with exits, rest stops, checkpoints and a <strong>you are here</strong> marker. Your progress is saved.</p>
         <p>One guide serves every route. The planning happens in the page, so changing your mind costs nothing.</p>
       </div>
-      <div class="vis"><span class="eyebrow" id="days-label">Example &middot; 3-day route &middot; get the gist</span><div class="days-mini" id="days-mini"></div></div>
+      <div class="vis"><span class="eyebrow" id="days-label">Example &middot; 3-day route &middot; own it</span><div class="days-mini" id="days-mini"></div></div>
     </div></div>
 
     <div class="row"><div class="label"><b>02</b>Every claim checked</div><div class="content">
@@ -716,12 +716,12 @@ footer a { color: var(--muted); }
   var ROUTE = window.ONRAMP_SAMPLE;
   if (!ROUTE) { document.querySelector(".planner").hidden = true; return; }
   document.getElementById("demo-name").textContent = ROUTE.label || "a real codebase";
-  var dl = document.getElementById("days-label"); if (dl && ROUTE.label) dl.textContent = "Example \u00b7 3-day route through " + ROUTE.label;
+  var dl = document.getElementById("days-label"); if (dl && ROUTE.label) dl.textContent = "Example \u00b7 3-day route, goal: own it \u00b7 " + ROUTE.label;
   document.querySelectorAll("[data-sample-name]").forEach(function (el) { el.textContent = ROUTE.name; });
   function fmt(m) { return m < 60 ? m + " min" : Math.floor(m / 60) + " h" + (m % 60 ? " " + (m % 60) + " m" : ""); }
   function paint(t) {
     var r = ROUTE.routes[t];
-    document.getElementById("route-sum").innerHTML = "<b>" + r.stops + " stops</b><span>" + fmt(r.mins) + " of reading and thinking</span>";
+    document.getElementById("route-sum").innerHTML = "<b>" + r.stops + " stops</b><span>" + fmt(r.mins) + " of reading and doing · goal: own it</span>";
     var items = [], k = 0;
     r.days.forEach(function (d, di) {
       items.push('<li class="day" style="animation-delay:' + (k++ * 40) + 'ms"><span>' + esc(d.name) + " &middot; " + esc(d.title) + "</span><em>" + d.n + " stops</em></li>");

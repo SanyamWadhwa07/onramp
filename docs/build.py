@@ -17,11 +17,38 @@ import render  # noqa: E402
 
 TIMES = {"h1": (60, ["The hour"]), "d1": (360, ["Morning", "Midday", "Afternoon"]),
          "d3": (900, ["Day 1", "Day 2", "Day 3"]), "w1": (1500, ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"])}
-ORDER = {"gist": ["gist", "map", "stack", "concepts", "flows", "data", "why", "built", "files", "care", "run", "practice"]}
+ORDER = {  # same as the viewer
+    "gist": ["gist", "map", "stack", "concepts", "flows", "data", "why", "built", "files", "care", "run", "practice"],
+    "ship": ["gist", "run", "map", "flows", "files", "care", "practice", "stack", "concepts", "data", "why", "built"],
+    "own": ["gist", "run", "stack", "map", "concepts", "flows", "data", "files", "built", "why", "care", "practice"],
+    "rebuild": ["gist", "stack", "built", "map", "concepts", "data", "flows", "files", "why", "care", "run", "practice"],
+}
+SAMPLE_GOAL = "own"
 CHAPTERS = ["gist", "run", "stack", "map", "concepts", "flows", "data", "files", "built", "why", "care", "practice"]
 SHORT = {"gist": "the gist", "run": "running it", "stack": "the stack", "map": "the map", "concepts": "core ideas",
          "flows": "the flows", "data": "the data", "files": "the files", "built": "how it was built",
          "why": "the why", "care": "the risks", "practice": "practice"}
+
+
+def extras(guide, scan):
+    """The viewer's hands-on stops (see EXTRAS in viewer.js): exercises, milestones, file reads."""
+    lines = {f["path"]: f.get("lines", 0) for f in scan.get("files", [])}
+    out = []
+    for i, x in enumerate(guide.get("exercises") or []):
+        out.append({"id": "do-exercise-%d" % (i + 1), "chapter": "practice", "tier": "deep", "extra": True,
+                    "minutes": {"easy": 30, "medium": 60, "hard": 120}.get(x.get("level"), 45),
+                    "goals": ["ship", "own", "rebuild"], "title": "Do it: " + x.get("title", "")})
+    for i, m in enumerate(guide.get("milestones") or []):
+        if m.get("try"):
+            out.append({"id": "build-milestone-%d" % (i + 1), "chapter": "built", "tier": "deep", "extra": True,
+                        "minutes": 60, "goals": ["rebuild"], "title": "Build it: " + m.get("title", "")})
+    for c in guide.get("files") or []:
+        n = lines.get(c.get("path"), 0)
+        if n:
+            out.append({"id": "read-" + c["path"], "chapter": "files", "tier": "deep", "extra": True,
+                        "minutes": max(10, min(60, int(n / 30 + 0.5))), "goals": ["gist", "own", "ship", "rebuild"],
+                        "title": "Read " + c["path"]})
+    return out
 
 
 def route(lessons, time, goal="gist", bg="know"):
@@ -36,9 +63,12 @@ def route(lessons, time, goal="gist", bg="know"):
     for i, l in enumerate(lessons):
         if l.get("for") and bg not in l["for"]:
             continue
+        if l.get("extra") and goal not in l["goals"]:
+            continue
         serves = not l.get("goals") or goal in l["goals"]
+        base = 5 if l.get("extra") else tier_p.get(l.get("tier"), 10)
         cands.append({"l": l, "i": i, "mins": max(1, round(l.get("minutes", 5))),
-                      "pr": tier_p.get(l.get("tier"), 10) + (8 if serves else 0) + weight(l.get("chapter"))})
+                      "pr": base + (8 if serves else 0) + weight(l.get("chapter"))})
     key = lambda c: (-c["pr"], c["i"])  # noqa: E731
     used, picked = 0, []
     for c in sorted((c for c in cands if c["l"].get("tier") == "core"), key=key):
@@ -67,9 +97,11 @@ def route(lessons, time, goal="gist", bg="know"):
             short = SHORT.get(s["l"]["chapter"])
             if short and short not in seen:
                 seen.append(short)
-        parts = seen[:3]
-        title = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1]
-        title = title[:1].upper() + title[1:] + (" and more" if len(seen) > 3 else "")
+        if len(seen) > 3:
+            title = ", ".join(seen[:3]) + " and more"
+        else:
+            title = seen[0] if len(seen) == 1 else ", ".join(seen[:-1]) + " and " + seen[-1]
+        title = title[:1].upper() + title[1:]
         days.append({"name": sg["name"], "title": title, "n": len(sg["stops"]), "mins": sg["mins"]})
     first = [["%02d" % (CHAPTERS.index(s["l"]["chapter"]) + 1), s["l"]["title"], s["mins"]] for s in picked[:3]]
     return {"mins": used, "stops": len(picked), "days": days, "first": first}
@@ -110,7 +142,8 @@ def main(argv):
             with open(os.path.join(repo, ".onramp", "scan.json"), encoding="utf-8") as fh:
                 scan = json.load(fh)
             sample = {"name": guide["project"]["name"], "label": label(scan),
-                      "routes": {t: route(guide["lessons"], t) for t in TIMES},
+                      "goal": SAMPLE_GOAL,
+                      "routes": {t: route(guide["lessons"] + extras(guide, scan), t, SAMPLE_GOAL) for t in TIMES},
                       "verification": guide.get("verification")}
             with open(os.path.join(DOCS, "assets", "sample-route.js"), "w", encoding="utf-8") as fh:
                 fh.write("// Generated by docs/build.py from the %s demo guide.\nwindow.ONRAMP_SAMPLE = %s;\n"
