@@ -1,0 +1,12 @@
+{
+ "explainer": {
+  "supported": 60,
+  "judged": 60,
+  "factscore": 100.0
+ },
+ "onramp": {
+  "supported": 58,
+  "judged": 60,
+  "factscore": 96.7
+ }
+}

@@ -1,0 +1,30 @@
+{"key": "60b82b31c9", "verdict": "supported", "evidence": "src/flask/app.py:411", "quote": "rv.globals.update(", "note": ""}
+{"key": "a52cfdd12c", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:433", "quote": "raise NotImplementedError", "note": ""}
+{"key": "b65f4cdbcd", "verdict": "supported", "evidence": "src/flask/app.py:224", "quote": "session_interface: SessionInterface", "note": ""}
+{"key": "496341a3c5", "verdict": "supported", "evidence": "src/flask/app.py:914", "quote": "_async_wrapper=self.ensure_sync", "note": ""}
+{"key": "036b54f047", "verdict": "supported", "evidence": "src/flask/sansio/app.py:641", "quote": "if \"OPTIONS\" not in methods and self.config[\"PROVIDE_AUTOMATIC_OPTIONS\"]:", "note": ""}
+{"key": "f8b9bdb8fc", "verdict": "supported", "evidence": "docs/lifecycle.rst:110", "quote": "How a Request is Handled", "note": ""}
+{"key": "4e7c152872", "verdict": "supported", "evidence": "src/flask/sansio/app.py:377", "quote": "self.blueprints", "note": ""}
+{"key": "3679aa0bd5", "verdict": "supported", "evidence": "pyproject.toml:105", "quote": "default-groups = [\"dev\", \"pre-commit\", \"tests\", \"typing\"]", "note": ""}
+{"key": "9cae43d6ae", "verdict": "supported", "evidence": "src/flask/app.py:1511", "quote": "response = self.full_dispatch_request()", "note": ""}
+{"key": "301223becb", "verdict": "supported", "evidence": "src/flask/ctx.py:430", "quote": "Popped wrong request context.", "note": ""}
+{"key": "0ba53fb9a2", "verdict": "supported", "evidence": "src/flask/sansio/app.py:964", "quote": "raise error", "note": ""}
+{"key": "a36467c876", "verdict": "supported", "evidence": "src/flask/globals.py:28", "quote": "current_app: Flask = LocalProxy(", "note": ""}
+{"key": "747a75f19e", "verdict": "supported", "evidence": ".devcontainer/on-create-command.sh:5", "quote": "pip install -r requirements/dev.txt", "note": ""}
+{"key": "c64cb2c132", "verdict": "supported", "evidence": "src/flask/cli.py:983", "quote": "run_simple(", "note": ""}
+{"key": "d2f25bcb2d", "verdict": "supported", "evidence": "docs/quickstart.rst:777", "quote": "the user could look at the contents of your cookie but not modify it", "note": ""}
+{"key": "5b74681bbe", "verdict": "supported", "evidence": "CHANGES.rst:600", "quote": "Support async views, error handlers", "note": ""}
+{"key": "f9829a3c84", "verdict": "supported", "evidence": "tests/conftest.py:73", "quote": "monkeypatch.syspath_prepend", "note": ""}
+{"key": "0cb8b8f167", "verdict": "supported", "evidence": "pyproject.toml:36", "quote": "[dependency-groups]", "note": ""}
+{"key": "40b7251441", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:400", "quote": "app.view_functions[endpoint] = func", "note": ""}
+{"key": "b08cf3cad7", "verdict": "supported", "evidence": "src/flask/json/tag.py:90", "quote": "return {self.key: self.to_json(value)}", "note": ""}
+{"key": "6c577a457a", "verdict": "supported", "evidence": "src/flask/sansio/app.py:614", "quote": "endpoint = _endpoint_from_view_func(view_func)", "note": ""}
+{"key": "0c84c626ee", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:19", "quote": "from ..templating import _default_template_ctx_processor", "note": ""}
+{"key": "303f0e3dc7", "verdict": "supported", "evidence": "src/flask/app.py:1231", "quote": "rv = self.json.response(rv)", "note": ""}
+{"key": "66d0dee98c", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:654", "quote": "self.error_handler_spec[None][code][exc_class] = f", "note": ""}
+{"key": "2e3b1f3a49", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:483", "quote": "self.before_request_funcs.setdefault(None, []).append(f)", "note": ""}
+{"key": "2ccf558acb", "verdict": "supported", "evidence": "src/flask/app.py:1092", "quote": "without 'SERVER_NAME' configured", "note": ""}
+{"key": "5134eec7d6", "verdict": "supported", "evidence": "src/flask/app.py:914", "quote": "request_started.send(self", "note": ""}
+{"key": "eeab30f331", "verdict": "supported", "evidence": "src/flask/ctx.py:363", "quote": "self.request.url_rule, self.request.view_args = result", "note": ""}
+{"key": "24673620ab", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:334", "quote": "for deferred in self.deferred_functions:", "note": ""}
+{"key": "53d59dcea4", "verdict": "supported", "evidence": "src/flask/app.py:462", "quote": "subdomain = self.url_map.default_subdomain or \"\"", "note": ""}

@@ -226,6 +226,12 @@ kbd { font-family: var(--font-mono); font-size: 0.78em; border: 1px solid var(--
 .works p { color: var(--muted); font-family: var(--font-head); font-weight: 500; }
 @media (max-width: 960px) { .works { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
 
+/* evaluation */
+.stat { display: grid; gap: 6px; align-content: center; }
+.stat b { font-family: var(--font-head); font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 0.95rem; }
+.evals-link { margin-top: 18px; font-family: var(--font-head); font-weight: 600; }
+
 /* install */
 .install-box { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; }
 .tabs { display: flex; gap: 2px; padding: 6px; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
@@ -297,6 +303,7 @@ footer a { color: var(--muted); }
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
       <a href="#demos">Demos</a>
+      <a href="#evals">Evaluation</a>
       <a href="#install">Install</a>
     </nav>
     <div class="nav-right">
@@ -560,6 +567,27 @@ footer a { color: var(--muted); }
         <span class="go">Open the guide &rarr;</span>
       </a>
     </div>
+  </section>
+
+  <section class="wrap block" id="evals">
+    <div class="block-head">
+      <span class="eyebrow">Evaluation</span>
+      <h2>Measured in the open.</h2>
+      <p>Three established methods, graded blind. Every prompt, answer and grade is in the repository, including the results that are not a win.</p>
+    </div>
+    <div class="row"><div class="label">The checker</div><div class="content">
+      <div class="stat"><b>725 / 725</b><span>planted faults handled correctly</span></div>
+      <div class="text"><p>Fault injection on two real guides: fabricated anchors and missing files rejected, drifted lines moved back to the right place, and no false alarms on real citations.</p></div>
+    </div></div>
+    <div class="row"><div class="label">Accuracy</div><div class="content">
+      <div class="stat"><b>96.7%</b><span>of sampled claims supported by the code</span></div>
+      <div class="text"><p><strong>FActScore</strong> (EMNLP 2023) on Flask, judged blind with every verdict quoting the code it relied on. A plain explainer written by the same model scored 100%; the difference is two claims out of 60, and both are now covered in the writing rules.</p></div>
+    </div></div>
+    <div class="row"><div class="label">Comprehension</div><div class="content">
+      <div class="stat"><b>67.1 / 100</b><span>on SWE-QA's 48 Flask questions</span></div>
+      <div class="text"><p><strong>SWE-QA</strong> (ACL Findings 2026), graded with its official rubric. Level with the model's own memory of Flask (67.2) and ahead of the README (63.6). Flask is in every model's training data, so this is a conservative test.</p></div>
+    </div></div>
+    <p class="evals-link"><a href="https://github.com/SanyamWadhwa07/onramp/tree/main/evals">Read the method and every grade &rarr;</a></p>
   </section>
 
   <section class="wrap block" id="install">

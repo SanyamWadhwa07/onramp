@@ -1,0 +1,30 @@
+{"key": "a4a4311656", "verdict": "supported", "evidence": "src/flask/app.py:1472", "quote": "builder = EnvironBuilder(self, *args, **kwargs)", "note": "EnvironBuilder then request_context(builder.get_environ())"}
+{"key": "90442e670f", "verdict": "supported", "evidence": "src/flask/sansio/app.py:363", "quote": "self.teardown_appcontext_funcs: list", "note": "plain app-level lists, not per-blueprint dicts"}
+{"key": "1af71fda4c", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:304", "quote": "name = f\"{name_prefix}.{self_name}\".lstrip(\".\")", "note": "prefix from name_prefix option"}
+{"key": "2d6d26a4b2", "verdict": "supported", "evidence": "src/flask/helpers.py:139", "quote": "def make_response(*args: t.Any) -> Response:", "note": "module-level wrapper"}
+{"key": "4f0c89c0b5", "verdict": "supported", "evidence": "src/flask/app.py:195", "quote": "\"SESSION_COOKIE_PARTITIONED\": False", "note": "default False"}
+{"key": "c6e1072f4d", "verdict": "unsupported", "evidence": "src/flask/cli.py:556", "quote": "@with_appcontext", "note": "routes/shell built-ins also use with_appcontext and run loads the app; not only app commands"}
+{"key": "c276969806", "verdict": "supported", "evidence": "src/flask/ctx.py:378", "quote": "_cv_request.set(self)", "note": "push sets request ctx var"}
+{"key": "109eb3e6c9", "verdict": "supported", "evidence": "src/flask/sansio/README.md:4", "quote": "for example Quart", "note": "sansio README"}
+{"key": "f7c5cc9294", "verdict": "supported", "evidence": "src/flask/app.py:264", "quote": "Note we do this without checking if static_folder exists", "note": "no existence check"}
+{"key": "d06d3a5e3c", "verdict": "supported", "evidence": "src/flask/helpers.py:337", "quote": "message_flashed.send(", "note": "kwargs message and category"}
+{"key": "0d321278e2", "verdict": "supported", "evidence": "src/flask/cli.py:1110", "quote": "cli = FlaskGroup(", "note": "cli instance"}
+{"key": "1d09834259", "verdict": "supported", "evidence": "src/flask/app.py:1066", "quote": "If the endpoint starts with \".\" and the request matches a", "note": "relative to blueprint"}
+{"key": "cee1cbb580", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:654", "quote": "self.error_handler_spec[None][code][exc_class] = f", "note": "nested dict"}
+{"key": "9eb09422d5", "verdict": "supported", "evidence": "src/flask/sansio/app.py:547", "quote": "filename.endswith((\".html\", \".htm\", \".xml\", \".xhtml\", \".svg\"))", "note": "None filename returns True"}
+{"key": "49c0ac5c85", "verdict": "supported", "evidence": "src/flask/app.py:1313", "quote": "for func in ctx._after_request_functions:", "note": "then reversed after_request_funcs over blueprints chain"}
+{"key": "7e904b1267", "verdict": "supported", "evidence": "src/flask/app.py:455", "quote": "Don't pass SERVER_NAME, otherwise it's used and the actual", "note": "server_name=None"}
+{"key": "738a8cb102", "verdict": "supported", "evidence": "src/flask/app.py:1322", "quote": "self.session_interface.save_session(self, ctx.session, response)", "note": "guarded by is_null_session"}
+{"key": "1e3cafb0c0", "verdict": "supported", "evidence": "docs/design.rst:211", "quote": "to Jinja2 to handle templating", "note": "docs"}
+{"key": "c02715adc8", "verdict": "supported", "evidence": "CHANGES.rst:15", "quote": "Fix signing key selection order when key rotation is enabled via", "note": "GHSA security fix; commit message key list ordering"}
+{"key": "15ea95a2b0", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:333", "quote": "return self._method_route(\"PATCH\", rule, options)", "note": "all five use _method_route"}
+{"key": "0669596277", "verdict": "supported", "evidence": "docs/lifecycle.rst:36", "quote": "All application setup must be completed before you start serving your application and", "note": "docs"}
+{"key": "b8952e44f5", "verdict": "supported", "evidence": "tests/test_appctx.py:4", "quote": "from flask.globals import app_ctx", "note": "both files exist and test contexts"}
+{"key": "328411e6e6", "verdict": "supported", "evidence": "src/flask/helpers.py:400", "quote": "def send_file(", "note": "all six defined"}
+{"key": "aa6f4a600e", "verdict": "supported", "evidence": "docs/design.rst:209", "quote": "Flask will never have a database layer.", "note": "exact"}
+{"key": "1d014834c2", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:108", "quote": "self.view_functions: dict[str, ft.RouteCallable] = {}", "note": "registries in __init__"}
+{"key": "74ef624f03", "verdict": "supported", "evidence": "src/flask/cli.py:1086", "quote": "headers = [\"Endpoint\", \"Methods\"]", "note": "plus Host/Subdomain and Rule"}
+{"key": "0877a67613", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:119", "quote": "class Blueprint(Scaffold):", "note": "exact"}
+{"key": "5011cfcec0", "verdict": "supported", "evidence": "docs/config.rst:775", "quote": "version control and be deployment specific", "note": "instance folder outside package per docs"}
+{"key": "3e508875ef", "verdict": "supported", "evidence": "src/flask/globals.py:46", "quote": "request: Request = LocalProxy(", "note": "module-level proxies"}
+{"key": "e6c8964030", "verdict": "supported", "evidence": "src/flask/app.py:1514", "quote": "response = self.handle_exception(e)", "note": "except Exception in wsgi_app"}

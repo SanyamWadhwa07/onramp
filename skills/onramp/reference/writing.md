@@ -38,6 +38,11 @@ topics they follow. Unlike a chat, messages here are gone once read."
 ## Citations as evidence
 
 - A technical claim without a citation is a guess. Cite the lines that prove it.
+- The citation proves the code exists, not that your sentence is right. Words like *only*,
+  *always*, *never* and *every* need proof for every case; if you checked one path, say so.
+  When you say where something happens, cite where it actually happens (the caller, not the
+  definition two files away). In the evaluation, the guide's two inaccurate claims out of 60 were
+  exactly these: an "only" that had exceptions and a call placed in the wrong file.
 - Prefer citing the definition (the function, class, route, config key) over a usage.
 - Quote code sparingly in prose (an identifier in backticks); the viewer shows the real code
   when the reader clicks the citation.

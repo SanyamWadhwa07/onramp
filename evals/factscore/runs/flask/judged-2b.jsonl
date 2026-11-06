@@ -1,0 +1,30 @@
+{"key": "f6301ea990", "verdict": "supported", "evidence": "src/flask/app.py:1214", "quote": "return a valid response.", "note": ""}
+{"key": "07feb35c35", "verdict": "supported", "evidence": "src/flask/app.py:1313", "quote": "ctx._after_request_functions", "note": ""}
+{"key": "a7da0afb63", "verdict": "supported", "evidence": "src/flask/ctx.py:249", "quote": "self._cv_tokens", "note": ""}
+{"key": "4aed73d7b2", "verdict": "supported", "evidence": "src/flask/config.py:227", "quote": "object will not work with :meth:`from_object`", "note": ""}
+{"key": "ec8067c810", "verdict": "supported", "evidence": ".github/pull_request_template.md:23", "quote": "Add an entry in CHANGES.rst", "note": ""}
+{"key": "8835337e14", "verdict": "supported", "evidence": "src/flask/sansio/app.py:636", "quote": "provide_automatic_options = getattr(", "note": ""}
+{"key": "c7551ea2b3", "verdict": "supported", "evidence": "src/flask/ctx.py:249", "quote": "self._cv_tokens", "note": ""}
+{"key": "00ba6ba20d", "verdict": "supported", "evidence": "src/flask/app.py:1316", "quote": "chain(request.blueprints, (None,))", "note": ""}
+{"key": "758380530c", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:376", "quote": "bp_options[\"name_prefix\"] = name", "note": ""}
+{"key": "9b6d4403b0", "verdict": "supported", "evidence": "src/flask/app.py:224", "quote": "SecureCookieSessionInterface()", "note": ""}
+{"key": "d06ceaeb79", "verdict": "supported", "evidence": "src/flask/cli.py:1052", "quote": "click.Choice((\"endpoint\", \"methods\", \"domain\", \"rule\", \"match\"))", "note": ""}
+{"key": "9dc171f211", "verdict": "supported", "evidence": "src/flask/json/tag.py:6", "quote": "SecureCookieSessionInterface", "note": ""}
+{"key": "daba86deb7", "verdict": "supported", "evidence": "src/flask/app.py:918", "quote": "except Exception as e:", "note": ""}
+{"key": "129c37a438", "verdict": "supported", "evidence": "src/flask/json/tag.py:135", "quote": "key = \" t\"", "note": ""}
+{"key": "1e8271f2cc", "verdict": "supported", "evidence": "src/flask/views.py:106", "quote": "def view(**kwargs", "note": ""}
+{"key": "768ba792c9", "verdict": "unsupported", "evidence": "src/flask/ctx.py:362", "quote": "self.url_adapter.match(return_rule=True)", "note": ""}
+{"key": "5f13970a31", "verdict": "supported", "evidence": "src/flask/app.py:412", "quote": "url_for=self.url_for", "note": ""}
+{"key": "66fccf712c", "verdict": "supported", "evidence": "examples/tutorial/flaskr/auth.py:36", "quote": "session.get(\"user_id\")", "note": ""}
+{"key": "0d1ada2c51", "verdict": "supported", "evidence": "src/flask/typing.py:21", "quote": "cabc.AsyncIterable[str],  # for Quart, until App is generic.", "note": ""}
+{"key": "b4a2ba3296", "verdict": "supported", "evidence": "src/flask/testing.py:252", "quote": "self.preserve_context = True", "note": ""}
+{"key": "8e6095bcc5", "verdict": "supported", "evidence": "src/flask/cli.py:351", "quote": "for path in (\"wsgi.py\", \"app.py\"):", "note": ""}
+{"key": "759a6c1532", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:112", "quote": "f\"{self.name_prefix}.{self.name}.{endpoint}\".lstrip(\".\")", "note": ""}
+{"key": "b1477fad96", "verdict": "supported", "evidence": "src/flask/cli.py:67", "quote": "for attr_name in (\"create_app\", \"make_app\"):", "note": ""}
+{"key": "12df23d671", "verdict": "supported", "evidence": "tests/test_async.py:25", "quote": "async def dispatch_request", "note": ""}
+{"key": "7e366f89a6", "verdict": "supported", "evidence": "src/flask/sansio/app.py:329", "quote": "self.json_provider_class(self)", "note": ""}
+{"key": "45e4e5a410", "verdict": "supported", "evidence": "src/flask/helpers.py:542", "quote": "files or uploads. Uses :func:`~werkzeug.security.safe_join`", "note": ""}
+{"key": "fab71d660e", "verdict": "supported", "evidence": "docs/design.rst:84", "quote": "automatically order routes by complexity.", "note": ""}
+{"key": "7ef006ba78", "verdict": "supported", "evidence": "docs/debugging.rst:26", "quote": "The built-in Werkzeug development server provides a debugger", "note": ""}
+{"key": "72d7ae27f9", "verdict": "supported", "evidence": "src/flask/ctx.py:389", "quote": "session_interface.make_null_session(self.app)", "note": ""}
+{"key": "e1d8f610b2", "verdict": "supported", "evidence": "README.md:7", "quote": "complex applications. It began as a simple wrapper around [Werkzeug]", "note": ""}

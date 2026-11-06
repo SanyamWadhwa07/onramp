@@ -54,7 +54,9 @@ def evidence_ok(repo, evidence, quote):
     m = re.match(r"^(.+?):(\d+)$", (evidence or "").strip())
     if not m or not quote or not quote.strip():
         return False
-    path = os.path.join(repo, m.group(1).replace("\\", "/").lstrip("./"))
+    rel = m.group(1).replace("\\", "/")
+    rel = rel[2:] if rel.startswith("./") else rel  # keep leading dots of .github/, .devcontainer/
+    path = os.path.join(repo, rel)
     try:
         with open(path, encoding="utf-8", errors="replace") as fh:
             lines = fh.read().splitlines()

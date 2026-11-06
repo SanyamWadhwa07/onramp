@@ -152,9 +152,12 @@ Onramp is measured with three established methods. Every prompt, answer and grad
 <!-- EVAL-RESULTS:START -->
 | Question | Method | Result |
 |---|---|---|
-| Does the checker catch broken citations? | Fault injection on 2 real guides | **725 / 725** planted faults handled correctly |
-| Are the guide's statements about the code true? | FActScore (Min et al., EMNLP 2023) | *running* |
-| Does the guide help someone answer real questions? | SWE-QA, Flask set (ACL Findings 2026) | *running* |
+| Does the checker catch broken citations? | Fault injection on 2 real guides | **725 / 725** planted faults handled correctly, no false alarms |
+| Are the guide's statements about the code true? | FActScore (Min et al., EMNLP 2023), blind, evidence-checked | **96.7%** of sampled claims supported (baseline document: 100%) |
+| Does the guide help answer real questions? | SWE-QA, 48 Flask questions (ACL Findings 2026), blind | **67.1 / 100**, level with the model's own knowledge of Flask (67.2), ahead of the README (63.6) |
+
+Flask is a codebase the models already know well, so the comparison is conservative. The full
+write-up, including what the numbers do not show, is in [`evals/README.md`](evals/README.md).
 <!-- EVAL-RESULTS:END -->
 
 ## How it works

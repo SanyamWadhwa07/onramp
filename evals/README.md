@@ -13,7 +13,71 @@ Every prompt, every model answer and every grade is committed here, so each numb
 checked line by line.
 
 <!-- RESULTS:START -->
-Results are added when the runs complete.
+## Results
+
+### 1. Fault injection: the checker catches every planted fault
+
+Run on the PaperMind and nanoGPT guides (seed 7, 100 citations sampled from each):
+
+| Fault | Handled correctly |
+|---|---|
+| Fabricated anchor rejected | **200 / 200** |
+| Missing file rejected | **200 / 200** |
+| Drifted lines re-anchored to the right place | **125 / 125** |
+| Real citation accepted (no false alarm) | **200 / 200** |
+
+Raw cases: [`results/fault_injection.json`](results/fault_injection.json).
+
+### 2. FActScore: the guide's statements hold up against the code
+
+Flask at `85c5d93`, 60 claims sampled from each document, judged blind against the source,
+every verdict backed by a quote the scorer verified:
+
+| Document | Claims extracted | Claims judged | Supported by the code | FActScore |
+|---|---|---|---|---|
+| Baseline (plain "explain this codebase") | 811 | 60 | 60 | **100.0%** |
+| Onramp guide | 717 | 60 | 58 | **96.7%** |
+
+Both documents are highly accurate; the difference is two claims and within sampling noise.
+Onramp's two unsupported claims were real, small errors: an "only" that had exceptions (the
+built-in `routes` and `shell` commands also load the app) and a call attributed to `app.py`
+that happens in `ctx.py`. Both sentences cited genuine code; the prose around the citation
+overstated it. `reference/writing.md` now tells the agent to watch for exactly these.
+
+Verdicts and evidence: [`factscore/runs/flask/`](factscore/runs/flask/).
+
+### 3. SWE-QA: on Flask, the guide matches what the model already knows
+
+48 questions, 192 answers graded blind with the official SWE-QA rubric (100 points):
+
+| Condition | Score | 95% CI | Correctness | Completeness |
+|---|---|---|---|---|
+| `closed` (no context) | **67.2** | 63.7 to 70.5 | 12.8 | 10.8 |
+| `onramp` (the guide) | **67.1** | 64.0 to 70.0 | 13.0 | 10.9 |
+| `explainer` (baseline document) | **64.5** | 61.0 to 67.9 | 12.3 | 10.4 |
+| `readme` (Flask's README) | **63.6** | 59.4 to 67.5 | 11.7 | 10.0 |
+
+Head to head, the Onramp-guided answers won 28 of 48 questions against the baseline document
+(2 ties, 18 losses) and 23 against the README (7 ties, 18 losses).
+
+**How to read this.** Flask is in the answering model's training data, so the closed-book
+baseline already knows most answers; reading the README or the baseline document *lowered* the
+score slightly, and reading the Onramp guide kept it level. The confidence intervals overlap, so
+on Flask the guide does not measurably beat the model's own knowledge. This benchmark cannot
+show the case Onramp is built for, code the model has never seen, because the model would have
+nothing to fall back on there. We report the result as it came out.
+
+Answers, blinding key and grades: [`swe_qa/runs/flask/`](swe_qa/runs/flask/).
+
+### What the results say
+
+- The verifier does its job: no planted fault got through, and it raised no false alarms.
+- The guides are accurate (96.7% of sampled claims supported), on par with a strong baseline
+  written by the same model.
+- On a famous codebase, the guide carries as much answerable knowledge as the model's memory and
+  more than the README or a plain explainer. Onramp's other strengths, the route, the order, the
+  checkpoints, the code beside every claim, are about how a person learns and are not measured
+  by these benchmarks.
 <!-- RESULTS:END -->
 
 ## 1. Fault injection: does the checker work?
