@@ -44,7 +44,7 @@
     if (!f || !f.n) return;
     EXTRAS.push({ id: "read-" + c.path.replace(/[^A-Za-z0-9]+/g, "-").toLowerCase(), chapter: "files", tier: "deep", extra: true,
       minutes: Math.max(10, Math.min(60, Math.round(f.n / 30))), goals: ["gist", "own", "ship", "rebuild"],
-      title: "Read " + c.path, summary: c.role || c.summary || "", show: [{ view: "file", path: c.path }] });
+      title: "Read " + base(c.path) + " in full", summary: c.path + (c.role ? ": " + c.role : ""), show: [{ view: "file", path: c.path }] });
   });
   EXTRAS.forEach(function (x, i) { x._i = LESSONS.length + i; BYID[x.id] = x; });
 
@@ -346,7 +346,7 @@
       return '<div class="view-flow" data-flow="' + esc(f.id) + '"><h3>' + esc(f.title) + "</h3>" +
         (f.trigger ? '<p class="muted">Starts when: ' + inline(f.trigger) + "</p>" : "") +
         (f.summary ? '<div class="prose">' + md(f.summary) + "</div>" : "") +
-        '<div class="flow-controls"><button class="btn" type="button" data-flow-step="0">Step through it</button><span class="subtle mono" style="font-size:.76rem">' + (f.steps || []).length + " steps</span></div>" +
+        '<div class="flow-controls"><button class="btn" type="button" data-flow-step="0">Step through it</button><span class="subtle" style="font-size:.84rem">' + (f.steps || []).length + " steps</span></div>" +
         '<div class="flow">' + (f.steps || []).map(function (s, i) {
           return '<div class="step" data-i="' + i + '"><div class="step-body"><h4>' + esc(s.title) + "</h4>" + (s.at ? "<div>" + inline(s.at) + "</div>" : "") + (s.explain ? "<p>" + inline(s.explain) + "</p>" : "") + "</div></div>";
         }).join("") + "</div></div>";
@@ -400,13 +400,13 @@
         h += '<div class="schematic" style="padding:18px 16px 10px"><svg class="spark" viewBox="0 0 ' + W + " " + (H + 16) + '" preserveAspectRatio="none" role="img" aria-label="Commits per week">' +
           tl.map(function (w, i) { var x = 10 + i * ((W - 20) / tl.length), hh = Math.max(2, (w.commits / max) * H); return '<rect x="' + x.toFixed(1) + '" y="' + (H - hh).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + hh.toFixed(1) + '" rx="1"><title>' + esc(w.week) + ": " + w.commits + " commits</title></rect>"; }).join("") +
           '<text class="axis" x="10" y="' + (H + 13) + '">' + esc(tl[0].week) + '</text><text class="axis" x="' + (W - 10) + '" y="' + (H + 13) + '" text-anchor="end">' + esc(tl[tl.length - 1].week) + "</text></svg>" +
-          '<p class="subtle mono" style="font-size:.74rem">' + fmtNum(S.git.commits) + " commits by " + fmtNum(S.git.authors) + " author(s), " + esc(S.git.first_commit) + " → " + esc(S.git.last_commit) + "</p></div>";
+          '<p class="subtle" style="font-size:.84rem">' + fmtNum(S.git.commits) + " commits by " + fmtNum(S.git.authors) + " author(s), " + esc(S.git.first_commit) + " → " + esc(S.git.last_commit) + "</p></div>";
       }
       var hist = G.history;
       if (hist) {
         if (hist.summary) h += '<div class="prose">' + md(hist.summary) + "</div>";
         if (hist.eras && hist.eras.length) h += '<div class="list-rows">' + hist.eras.map(function (e) {
-          return '<div class="list-row"><b>' + esc(e.title) + '<br><span class="subtle mono" style="font-size:.74rem;font-weight:400">' + esc(e.when || "") + "</span></b><div class=\"prose\">" + md(e.what) + "</div></div>";
+          return '<div class="list-row"><b>' + esc(e.title) + '<br><span class="subtle" style="font-size:.84rem;font-weight:400">' + esc(e.when || "") + "</span></b><div class=\"prose\">" + md(e.what) + "</div></div>";
         }).join("") + "</div>";
       }
       return h;
@@ -493,7 +493,7 @@
     var sh = SESS && SESS.files && SESS.files[path];
     if (sh) rows.push(["Built with Claude", '<div style="display:grid;gap:10px"><p class="muted">' + sh.edits + " edit" + (sh.edits === 1 ? "" : "s") + " in Claude Code sessions, " + esc(sh.first.slice(0, 10)) + " to " + esc(sh.last.slice(0, 10)) + ".</p>" +
       sh.events.slice(0, 4).map(function (e) {
-        return '<div class="history-item"><span class="subtle mono" style="font-size:.72rem">' + esc(e.at) + " · " + esc(e.tool) + "</span>" + (e.prompt ? "<q>" + esc(e.prompt) + "</q>" : "") + (e.why ? '<span class="muted">' + esc(e.why) + "</span>" : "") + "</div>";
+        return '<div class="history-item"><span class="subtle" style="font-size:.8rem">' + esc(e.at) + " · " + esc(e.tool) + "</span>" + (e.prompt ? "<q>" + esc(e.prompt) + "</q>" : "") + (e.why ? '<span class="muted">' + esc(e.why) + "</span>" : "") + "</div>";
       }).join("") + "</div>"]);
     if (SRC[path]) rows.push(["Source", '<button class="btn" type="button" data-source="' + esc(path) + '">Read the whole file</button>']);
     if (!rows.length) rows.push(["", '<p class="empty">The guide has no notes on this file yet. ' + (SRC[path] ? "" : "") + "</p>"]);
@@ -564,11 +564,11 @@
     var pct = all.length ? Math.round(100 * done / all.length) : 0;
     var k = 0, items = "";
     R.segs.forEach(function (sg) {
-      items += '<li class="rest"><div class="sign"><small>' + esc(sg.name.toUpperCase()) + "</small><span>" + esc(sg.title) + "</span><em>" + sg.stops.length + " stops · " + fmtMin(sg.mins) + "</em></div></li>";
+      items += '<li class="rest"><div class="sign"><small>' + esc(sg.name) + "</small><span>" + esc(sg.title) + "</span><em>" + sg.stops.length + " stops · " + fmtMin(sg.mins) + "</em></div></li>";
       sg.stops.forEach(function (s) {
         var l = s.l, isHere = here && here.l.id === l.id, dx = Math.round(Math.sin(k * 0.95) * 38);
         items += '<li class="stop' + (k % 2 ? " left" : "") + (isDone(l.id) ? " done" : "") + (isHere ? " here" : "") + '" style="--dx:' + dx + 'px">' +
-          '<span class="marker">' + (isHere ? '<span class="here-tag">YOU ARE HERE</span>' : "") + "</span>" +
+          '<span class="marker">' + (isHere ? '<span class="here-tag">You are here</span>' : "") + "</span>" +
           '<button type="button" class="card" data-go="#stop-' + esc(l.id) + '">' + exitTab(l.chapter) + "<h3>" + esc(l.title) + "</h3><p>" + esc(stripCites(l.summary)) + '</p><div class="card-foot">' + (isHere ? '<span class="pill here-pill">you are here</span>' : "") + '<span class="pill">' + fmtMin(s.mins) + "</span>" +
           (l.tier === "core" ? '<span class="pill core">core</span>' : "") + (l.checkpoint ? '<span class="pill">checkpoint</span>' : "") + (isDone(l.id) ? '<span class="pill core">done</span>' : "") + "</div></button></li>";
         k++;
@@ -577,7 +577,7 @@
     var score = quizScore(all);
     var finish = done === all.length && all.length
       ? '<div class="finish"><span class="eyebrow">Route complete</span><h2>You know your way around ' + esc(P.name || "") + '.</h2><p class="muted">' + esc(R.time.label) + " route · " + all.length + " stops · " + fmtMin(R.mins) +
-        (score[1] ? " · " + score[0] + "/" + score[1] + " checkpoints right" : "") + '</p><p class="subtle mono" style="font-size:.74rem">Generated with Onramp · github.com/SanyamWadhwa07/onramp</p></div>'
+        (score[1] ? " · " + score[0] + "/" + score[1] + " checkpoints right" : "") + '</p><p class="subtle" style="font-size:.84rem">Generated with Onramp · github.com/SanyamWadhwa07/onramp</p></div>'
       : '<span class="sign" style="cursor:default">Destination · ' + esc(P.name || "") + "</span>";
     main.innerHTML = '<div class="wrap"><div class="route-head"><div><span class="eyebrow">Your route</span><h2>' + esc(R.time.label) + " through " + esc(P.name || "the project") + "</h2>" +
       '<div class="meta"><span class="pill">' + esc(R.goal.label) + '</span><span class="pill">' + esc(R.bg.label) + '</span><span class="pill">' + all.length + " stops · " + fmtMin(R.mins) + "</span></div></div>" +
@@ -788,7 +788,7 @@
     peek.classList.add("open"); peek.setAttribute("aria-hidden", "false"); scrim.hidden = false;
     var hl = $(".ln.hl", peek);
     if (hl) hl.scrollIntoView({ block: "center" }); else $("#peek-body").scrollTop = 0;
-    $("#peek-close").focus({ preventScroll: true });
+    $("#peek-close").focus({ preventScroll: true, focusVisible: false });
     if (!window.hljs && !st.html && langOf(path)) {
       hljsP = hljsP || loadScript(HLJS_URL).catch(function () { return null; });
       hljsP.then(function () { if (window.hljs && peekState === st) showPeek(st); });

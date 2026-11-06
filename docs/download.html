@@ -25,7 +25,7 @@
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Onest", system-ui, sans-serif; display: grid; place-items: center; padding: 24px max(16px, env(safe-area-inset-left, 0px)); }
   main { display: grid; gap: 20px; justify-items: start; max-width: 600px; width: 100%; }
   .sign { background: var(--sign); color: var(--sign-ink); border-radius: 10px; padding: 14px 20px 16px; box-shadow: inset 0 0 0 2px var(--sign), inset 0 0 0 4px rgba(255, 255, 255, 0.88); display: grid; gap: 4px; }
-  .sign small { font-family: "Geist Mono", monospace; font-size: 0.74rem; letter-spacing: 0.12em; opacity: 0.85; }
+  .sign small { font-family: "Hanken Grotesk", sans-serif; font-weight: 700; font-size: 0.82rem; opacity: 0.85; }
   .sign b { font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.05; }
   h1 { margin: 0; font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: clamp(1.8rem, 5vw, 2.5rem); letter-spacing: -0.03em; line-height: 1.05; }
   p { margin: 0; color: var(--muted); font-size: 1.04rem; line-height: 1.55; }
@@ -38,7 +38,7 @@
 </head>
 <body>
 <main>
-  <div class="sign"><small>DOWNLOAD</small><b>onramp-skill.zip</b></div>
+  <div class="sign"><small>Download</small><b>onramp-skill.zip</b></div>
   <h1>Your download is starting.</h1>
   <p>Unzip it into your agent's skills folder. For Claude Code that is <span style="font-family:'Geist Mono',monospace">~/.claude/skills/</span>, so that <span style="font-family:'Geist Mono',monospace">~/.claude/skills/onramp/SKILL.md</span> exists. Then run <span style="font-family:'Geist Mono',monospace">/onramp</span>, or ask your agent to use onramp.</p>
   <code>unzip onramp-skill.zip -d ~/.claude/skills</code>

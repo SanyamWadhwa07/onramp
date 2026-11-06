@@ -166,7 +166,10 @@ def claude_project_dirs(root):
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as fh:
-        return json.load(fh)
+        try:
+            return json.load(fh)
+        except json.JSONDecodeError as e:
+            raise SystemExit("onramp: %s is not valid JSON: %s at line %d, column %d" % (path, e.msg, e.lineno, e.colno))
 
 
 def save_json(path, data, indent=None):

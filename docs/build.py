@@ -47,7 +47,7 @@ def extras(guide, scan):
         if n:
             out.append({"id": "read-" + c["path"], "chapter": "files", "tier": "deep", "extra": True,
                         "minutes": max(10, min(60, int(n / 30 + 0.5))), "goals": ["gist", "own", "ship", "rebuild"],
-                        "title": "Read " + c["path"]})
+                        "title": "Read " + c["path"].split("/")[-1] + " in full"})
     return out
 
 

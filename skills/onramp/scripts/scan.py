@@ -631,7 +631,7 @@ def scan(root):
 
     by_lang = defaultdict(lambda: [0, 0])
     for rec in records:
-        if rec["kind"] in ("source", "test") or (rec["kind"] == "config" and rec["lang"] in CODE_LANGS):
+        if rec["lang"] in CODE_LANGS and rec["kind"] in ("source", "test", "config"):
             by_lang[rec["lang"]][0] += 1
             by_lang[rec["lang"]][1] += rec["lines"]
     total_lines = sum(v[1] for v in by_lang.values()) or 1
