@@ -138,6 +138,7 @@ Handle with care · Your first changes.
 |---|---|---|
 | **PaperMind** | A 31,575-line FastAPI + React research-paper app, built with an AI agent | [open](https://onramp-skill.vercel.app/demo/papermind) · 895/895 citations verified |
 | **nanoGPT** | Andrej Karpathy's minimal GPT training repository | [open](https://onramp-skill.vercel.app/demo/nanogpt) · 496/496 citations verified |
+| **Flask** | The Python web framework, at the commit the evaluation uses | [open](https://onramp-skill.vercel.app/demo/flask) · 701/701 citations verified |
 
 The PaperMind guide also shows what an honest guide looks like: its "Handle with care" chapter
 cites real bugs in the code, such as upload retries that can never succeed and grounding results

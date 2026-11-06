@@ -241,7 +241,7 @@ kbd { font-family: var(--font-mono); font-size: 0.78em; border: 1px solid var(--
 .line .dollar { color: var(--code-muted); user-select: none; }
 
 /* demos */
-.demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.demos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .demo { display: grid; gap: 12px; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 22px; transition: border-color 0.15s, transform 0.15s; }
 .demo:hover { border-color: var(--border-strong); transform: translateY(-2px); }
 .demo h3 { font-size: 1.5rem; font-weight: 750; }
@@ -535,21 +535,28 @@ footer a { color: var(--muted); }
     <div class="block-head">
       <span class="eyebrow">Live demos</span>
       <h2>Open a real guide.</h2>
-      <p>Both were generated with <span class="mono">/onramp</span> and published as-is.</p>
+      <p>All three were generated with <span class="mono">/onramp</span> and published as they came out.</p>
     </div>
     <div class="demos">
       <a class="demo" href="/demo/papermind">
         <span class="eyebrow">Demo 1 &middot; a full-stack app built with an AI agent</span>
         <h3>PaperMind</h3>
         <p>Upload a research paper and get a structured summary, a knowledge graph and answers. FastAPI, React and a multi-agent pipeline.</p>
-        <div class="stats" id="stats-papermind"><span>Python + JavaScript</span><span>31k lines</span></div>
+        <div class="stats" id="stats-papermind"><span>Python + JavaScript</span><span>31k lines</span><span>895/895 verified</span></div>
         <span class="go">Open the guide &rarr;</span>
       </a>
       <a class="demo" href="/demo/nanogpt">
         <span class="eyebrow">Demo 2 &middot; small and famous</span>
         <h3>nanoGPT</h3>
         <p>Andrej Karpathy's minimal GPT training repository. A good test of how Onramp teaches a dense codebase, starting from the basics.</p>
-        <div class="stats" id="stats-nanogpt"><span>Python</span><span>PyTorch</span></div>
+        <div class="stats" id="stats-nanogpt"><span>Python</span><span>PyTorch</span><span>496/496 verified</span></div>
+        <span class="go">Open the guide &rarr;</span>
+      </a>
+      <a class="demo" href="/demo/flask">
+        <span class="eyebrow">Demo 3 &middot; the guide we evaluated</span>
+        <h3>Flask</h3>
+        <p>The Python web framework, pinned to the commit the SWE-QA benchmark uses. This is the exact guide behind the evaluation numbers.</p>
+        <div class="stats"><span>Python</span><span>3,753 commits</span><span>701/701 verified</span></div>
         <span class="go">Open the guide &rarr;</span>
       </a>
     </div>
