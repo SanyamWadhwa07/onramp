@@ -1,6 +1,6 @@
 {
-  "name": "onramp",
-  "version": "1.0.1",
+  "name": "onramp-skill",
+  "version": "1.0.2",
   "description": "Turns any codebase into a personal learning route where every claim is checked against the code.",
   "author": {
     "name": "Sanyam Wadhwa",

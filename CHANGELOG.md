@@ -4,6 +4,22 @@ All notable changes to Onramp are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.2] - 2026-11-06
+
+### Changed
+
+- The Claude Code plugin is now named `onramp-skill`, because `onramp` is already taken in
+  Anthropic's plugin directory. Install it with `/plugin install onramp-skill@onramp` and run it as
+  `/onramp-skill:onramp`. If you installed `onramp@onramp`, uninstall it and install the new name.
+  The skill itself is still `onramp`, so `npx skills add SanyamWadhwa07/onramp` and "use onramp"
+  are unchanged.
+
+### Security
+
+- `allowed-tools` now pre-approves only the four Onramp scripts (`scan.py`, `sessions.py`,
+  `verify.py`, `render.py`). Git commands are no longer pre-approved, so your agent asks before
+  running them.
+
 ## [1.0.1] - 2026-11-06
 
 ### Fixed
@@ -36,3 +52,4 @@ First public release.
 
 [1.0.0]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.0
 [1.0.1]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.1
+[1.0.2]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.2

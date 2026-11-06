@@ -4,7 +4,7 @@ import os
 import re
 import subprocess
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 IGNORE_DIRS = {
     ".git", ".hg", ".svn", "node_modules", ".venv", "venv", "env", "__pycache__",

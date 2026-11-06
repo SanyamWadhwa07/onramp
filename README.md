@@ -56,7 +56,7 @@ Antigravity, Windsurf, OpenCode, Cline and 60+ more. Name them directly with
 
 ```
 /plugin marketplace add SanyamWadhwa07/onramp
-/plugin install onramp@onramp
+/plugin install onramp-skill@onramp
 ```
 
 **Git**

@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "onramp",
+      "name": "onramp-skill",
       "source": "./",
       "description": "Turns any codebase into a personal learning route where every claim is checked against the code."
     }
