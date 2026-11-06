@@ -178,7 +178,7 @@ main { outline: none; }
 .stop.here .marker { background: var(--lane-strong); border-color: #fff; box-shadow: 0 0 0 0 rgba(240, 180, 60, 0.55); animation: pulse 2.2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(240, 180, 60, 0.55); } 70% { box-shadow: 0 0 0 16px rgba(240, 180, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(240, 180, 60, 0); } }
 .here-pill { display: none; color: #1a1406; background: var(--lane-strong); border-color: var(--lane-strong); font-weight: 600; }
-.here-tag { position: absolute; top: -26px; left: 50%; transform: translateX(-50%); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; background: var(--lane-strong); color: #1a1406; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.here-tag { position: absolute; top: 50%; right: calc(100% + 10px); transform: translateY(-50%); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; background: var(--lane-strong); color: #1a1406; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
 .card { width: min(420px, 100%); align-content: start; text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px 13px; cursor: pointer; display: grid; gap: 6px; box-shadow: var(--shadow); transition: transform 0.15s, border-color 0.15s; }
 .card:hover { transform: translateY(-2px); border-color: var(--border-strong); }
 .card h3 { font-size: 1.04rem; }
@@ -415,3 +415,4 @@ details.deeper > .prose { padding: 0 16px 16px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+.stop.left .here-tag { right: auto; left: calc(100% + 10px); }

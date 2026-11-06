@@ -378,13 +378,16 @@ footer a { color: var(--muted); }
         <p>Each claim carries a citation: a file, a line range and a piece of text from those lines, like <span class="chip">store.py:29&ndash;38</span>. <span class="mono">verify.py</span> opens every file and checks that the text is really there.</p>
         <p>Drifted line numbers are re-anchored automatically. A claim whose text isn't in the file fails, and gets rewritten from the actual code. When you click a citation, the code you see is copied from your file, never written by the model.</p>
       </div>
-      <div class="term" role="img" aria-label="verify.py output">
-        <div><span class="c">$</span> python verify.py . --fix</div>
-        <div><span class="fix">FIXED</span>  flows[2].steps[3]: api.js:88-97 &rarr; api.js:91-100</div>
-        <div><span class="err">ERROR</span>  lesson 'care-auth': anchor 'refresh_token(' is not in backend/auth/utils.py</div>
-        <div><span class="c">&hellip; Claude re-reads the file and rewrites the claim &hellip;</span></div>
-        <div><span class="c">$</span> python verify.py . --fix</div>
-        <div><span class="ok">OK</span>  every citation verified against the code at commit fcb26da</div>
+      <div class="term" role="img" aria-label="verify.py and fault injection output from the demos">
+        <div><span class="c">$</span> python verify.py . --merge --fix</div>
+        <div>merged 150 item(s) from work/ fragments</div>
+        <div><span class="ok">OK</span>  895/895 citations verified across 91 files</div>
+        <div>&nbsp;</div>
+        <div><span class="c">$</span> python evals/fault_injection.py papermind nanogpt</div>
+        <div>fabricated anchors rejected   <span class="ok">200 / 200</span></div>
+        <div>missing files rejected        <span class="ok">200 / 200</span></div>
+        <div>drifted lines re-anchored     <span class="ok">125 / 125</span></div>
+        <div>real citations accepted       <span class="ok">200 / 200</span></div>
       </div>
     </div></div>
 
@@ -395,9 +398,10 @@ footer a { color: var(--muted); }
         <p>Every decision in the guide is labelled <strong>documented</strong> (there is a commit, doc or quote) or <strong>inferred</strong> (reasoned from the code).</p>
       </div>
       <div class="vis">
-        <span class="eyebrow">File card &middot; src/components/shell/Navbar.tsx</span>
-        <div class="quote"><small>Built with Claude &middot; 7 edits &middot; Oct 16&ndash;20</small><q>Clicking a nav item scrolls past the section heading. Fix the offset.</q><small>Claude: The sticky header is 64px tall, so anchor jumps land under it.</small></div>
-        <div class="quote"><small>Decision &middot; documented</small><q>The header stays sticky; sections get a scroll margin instead.</q></div>
+        <span class="eyebrow">From the demo guide &middot; decision &middot; documented</span>
+        <div class="quote"><small>Process papers as background jobs in a Postgres table</small><q>Processing used to run inside the HTTP request for minutes, behind a fake progress panel.</q></div>
+        <div class="quote"><small>Trade-off</small><span>No extra service to run, but extraction shares the process with the API, so concurrency stays at 1 job per process.</span></div>
+        <div class="quote"><small>Evidence</small><span>Commit <span class="mono">d58caf1</span>; an earlier Celery + Redis queue (<span class="mono">3165199</span>) was dropped.</span></div>
       </div>
     </div></div>
 
@@ -407,10 +411,10 @@ footer a { color: var(--muted); }
         <p>The import graph gives a build order: the files nothing depends on come last. Pick <strong>Rebuild it</strong> and the route walks you through the milestones, foundations first, with a hands-on task at each one.</p>
       </div>
       <div class="vis">
-        <div class="ms"><b>M1</b><span>Typed records for papers and summaries<small>Try it: add a field and watch the API validation change.</small></span></div>
-        <div class="ms"><b>M2</b><span>An LLM interface with retries<small>Try it: point it at a local model.</small></span></div>
-        <div class="ms"><b>M3</b><span>The extraction pipeline<small>Try it: run it on one PDF from the command line.</small></span></div>
-        <div class="ms"><b>M4</b><span>The API, then the React app on top<small>Try it: add one route and call it from the page.</small></span></div>
+        <div class="ms"><b>M1</b><span>A FastAPI app that validates its config<small>Try it: set APP_ENV=production with the placeholder secret and watch it refuse to boot.</small></span></div>
+        <div class="ms"><b>M2</b><span>Database access through repositories<small>Try it: add a count route and read the error envelope for an unknown user.</small></span></div>
+        <div class="ms"><b>M3</b><span>Accounts: signup, login, JWT<small>Try it: sign up with curl, call /api/auth/me, find the exp field in the token.</small></span></div>
+        <div class="ms"><b>M4</b><span>PDF in, sections out<small>Try it: run the extractor on one PDF from the command line.</small></span></div>
       </div>
     </div></div>
 
@@ -419,14 +423,14 @@ footer a { color: var(--muted); }
         <h3>Or let your agent teach it to you.</h3>
         <p><span class="mono">/onramp tutor</span> (or &ldquo;use onramp as a tutor&rdquo; in any agent) walks the same route in chat. One stop at a time, it explains with real excerpts and asks a checkpoint question. It waits for your answer, gives feedback, and picks up where you left off next session.</p>
       </div>
-      <div class="term" role="img" aria-label="Tutor session">
+      <div class="term" role="img" aria-label="A tutor turn built from the demo guide">
         <div><span class="c">&gt;</span> /onramp tutor</div>
-        <div class="c">Stop 4 of 14 &middot; Exit 06 &middot; How it flows</div>
-        <div>When you upload a PDF, the browser only sends the file.</div>
-        <div>Extraction starts server-side in <span class="ok">pdf_extractor.py:118</span>.</div>
+        <div class="c">Stop 14 of 51 &middot; Exit 06 &middot; What happens when you upload a paper</div>
+        <div>Follow one PDF from the drop zone to a saved summary:</div>
+        <div>enqueue, claim, extract, agents, summary graph, save, poll.</div>
         <div>&nbsp;</div>
-        <div><span class="fix">Checkpoint:</span> an upload saves but the summary never</div>
-        <div>appears. Which module do you open first?</div>
+        <div><span class="fix">Checkpoint:</span> an upload sat in "Saving", then showed Done.</div>
+        <div>Which code ran between Saving and Done?</div>
       </div>
     </div></div>
   </section>
