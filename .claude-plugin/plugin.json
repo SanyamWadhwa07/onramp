@@ -1,6 +1,6 @@
 {
   "name": "onramp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turns any codebase into a personal learning route where every claim is checked against the code.",
   "author": {
     "name": "Sanyam Wadhwa",
