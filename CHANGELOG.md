@@ -1,0 +1,66 @@
+# Changelog
+
+All notable changes to Onramp are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
+[Semantic Versioning](https://semver.org/).
+
+## [1.0.3] - 2026-11-06
+
+### Added
+
+- A `plugin` branch, published on every release, that holds only the plugin: the manifest, the
+  skill, and the README, license, changelog and security policy. Anthropic's plugin directory
+  installs from it, so an install is about 230 KB instead of the whole repository (website, demos
+  and evals, about 8 MB). `main` is unchanged.
+- Documentation, support, privacy and license links in `plugin.json` for the directory listing.
+
+## [1.0.2] - 2026-11-06
+
+### Changed
+
+- The Claude Code plugin is now named `onramp-skill`, because `onramp` is already taken in
+  Anthropic's plugin directory. Install it with `/plugin install onramp-skill@onramp` and run it as
+  `/onramp-skill:onramp`. If you installed `onramp@onramp`, uninstall it and install the new name.
+  The skill itself is still `onramp`, so `npx skills add SanyamWadhwa07/onramp` and "use onramp"
+  are unchanged.
+
+### Security
+
+- `allowed-tools` now pre-approves only the four Onramp scripts (`scan.py`, `sessions.py`,
+  `verify.py`, `render.py`). Git commands are no longer pre-approved, so your agent asks before
+  running them.
+
+## [1.0.1] - 2026-11-06
+
+### Fixed
+
+- `scan.py` skips installed agent skills (`.claude/skills/`, `.agents/skills/` and similar), so a
+  project-level install of Onramp or any other skill is not counted as the project's own code.
+
+## [1.0.0] - 2026-11-06
+
+First public release.
+
+### Added
+
+- **The skill** (`skills/onramp/SKILL.md`): full guide, `quick`, `explain`, `trace`, `update` and
+  `tutor` modes, written for any agent that reads `SKILL.md` and runs Python.
+- **`scan.py`**: inventory, manifests, entry points, import graph for JS/TS, Python, Go, Rust,
+  Java/Kotlin, C/C++, Ruby and PHP, importance ranking, git history, env vars, TODOs, deleted
+  files and Claude Code session detection.
+- **`sessions.py`**: opt-in digest of local Claude Code transcripts with secret redaction.
+- **`verify.py`**: checks every `[[path:lines|anchor]]` citation against the code, re-anchors
+  drifted lines, rejects unsupported claims, merges and repairs work fragments, checks single
+  fragments for subagents.
+- **`render.py`**: one self-contained HTML guide with the real code embedded, plus `GUIDE.md`.
+- **Viewer**: route planner for 1 hour to 1 week and four goals, the road map with progress,
+  lessons with checkpoints, hands-on stops on longer routes, code panel, file explorer, computed
+  dependency map, search, light and dark themes.
+- **Evals**: fault injection for the verifier, FActScore-style grounding and SWE-QA
+  comprehension, with every prompt, answer and grade in `evals/`.
+- **Website** with live PaperMind and nanoGPT demos, deployed on Vercel.
+
+[1.0.0]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.0
+[1.0.1]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.1
+[1.0.2]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.2
+[1.0.3]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.3
