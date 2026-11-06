@@ -299,9 +299,7 @@ def verify(root, guide_path, fix=False, merge=False):
     g = load_json(guide_path)
     rep = Report()
     files = Files(root)
-    if merge:
-        n = merge_fragments(g, os.path.join(os.path.dirname(guide_path), "work"))
-        print("merged %d item(s) from work/ fragments" % n)
+    merged = merge_fragments(g, os.path.join(os.path.dirname(guide_path), "work")) if merge else 0
     lessons = check_structure(g, files, rep)
     stats = {"citations": 0, "verified": 0, "files": set()}
 
@@ -336,6 +334,7 @@ def verify(root, guide_path, fix=False, merge=False):
         "warnings": len(rep.warnings),
         "lessons": len(lessons),
     }
+    rep.merged = merged
     if not rep.errors:
         g["verification"] = result
     save_json(guide_path, g, indent=1)
@@ -354,6 +353,8 @@ def main(argv=None):
     if not os.path.exists(guide):
         sys.exit("onramp: no guide at %s" % guide)
     rep, res = verify(root, guide, fix=args.fix, merge=args.merge)
+    if args.merge:
+        print("merged %d item(s) from work/ fragments" % rep.merged)
     for f in rep.fixed[:60]:
         print("FIXED  " + f)
     for w in rep.warnings[:60]:
