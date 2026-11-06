@@ -1,0 +1,811 @@
+{"claim": "Flask is a small WSGI web framework.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Werkzeug does the HTTP and WSGI work for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Werkzeug provides request and response objects for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Werkzeug provides URL routing for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Werkzeug provides the test client for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Werkzeug provides the dev server and the debugger for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Jinja2 renders templates for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "ItsDangerous signs Flask session cookies.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Click runs the Flask command line.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Blinker provides signals for Flask.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Flask's own code under src/flask/ is about 9,200 lines.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Flask provides a central application object that holds the registry of routes, hooks and configuration.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Flask adds blueprints, which bundle routes and hooks so they can be registered later.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Flask defines context-local globals request, session, g and current_app.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Flask runs a request pipeline that turns the WSGI environ into a call to the view function and then turns the returned value into an HTTP response.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "The command `flask --app hello run` starts the dev server.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "Any WSGI server can call app(environ, start_response) on a Flask application directly.", "section": "1. What Flask is, in one paragraph"}
+{"claim": "The directory src/flask/ is the library and the only shipped code.", "section": "2. Repository layout"}
+{"claim": "src/flask/__init__.py is the public API and re-exports everything users import from flask.", "section": "2. Repository layout"}
+{"claim": "src/flask/__main__.py makes `python -m flask` call flask.cli.main().", "section": "2. Repository layout"}
+{"claim": "src/flask/app.py contains class Flask, the WSGI app, request dispatch and error handling.", "section": "2. Repository layout"}
+{"claim": "src/flask/blueprints.py contains class Blueprint with the I/O parts: static files, open_resource and cli.", "section": "2. Repository layout"}
+{"claim": "src/flask/sansio/ contains I/O-free base classes shared with Quart.", "section": "2. Repository layout"}
+{"claim": "src/flask/sansio/scaffold.py contains class Scaffold, the shared registry and decorators such as route and before_request.", "section": "2. Repository layout"}
+{"claim": "src/flask/sansio/app.py contains class App(Scaffold), with config, url_map, blueprints and error-handler lookup.", "section": "2. Repository layout"}
+{"claim": "src/flask/sansio/blueprints.py contains class Blueprint(Scaffold), BlueprintSetupState and the registration logic.", "section": "2. Repository layout"}
+{"claim": "src/flask/ctx.py contains AppContext, RequestContext, _AppCtxGlobals (g) and context helpers.", "section": "2. Repository layout"}
+{"claim": "src/flask/globals.py contains the ContextVars and LocalProxy objects current_app, g, request and session.", "section": "2. Repository layout"}
+{"claim": "src/flask/wrappers.py contains Request and Response subclasses of Werkzeug's.", "section": "2. Repository layout"}
+{"claim": "src/flask/helpers.py contains url_for, redirect, abort, flash, send_file and stream_with_context.", "section": "2. Repository layout"}
+{"claim": "src/flask/config.py contains Config, a dict subclass with loaders, and the ConfigAttribute descriptor.", "section": "2. Repository layout"}
+{"claim": "src/flask/sessions.py contains SessionInterface, SecureCookieSessionInterface and the session classes.", "section": "2. Repository layout"}
+{"claim": "src/flask/templating.py contains the Jinja Environment subclass, DispatchingJinjaLoader and render_template.", "section": "2. Repository layout"}
+{"claim": "src/flask/json/__init__.py contains flask.json.dumps, loads and jsonify, which delegate to app.json.", "section": "2. Repository layout"}
+{"claim": "src/flask/json/provider.py contains JSONProvider and DefaultJSONProvider.", "section": "2. Repository layout"}
+{"claim": "src/flask/json/tag.py contains TaggedJSONSerializer, which is used for the session cookie.", "section": "2. Repository layout"}
+{"claim": "src/flask/cli.py contains the flask command: FlaskGroup, AppGroup, ScriptInfo and the run, shell and routes commands.", "section": "2. Repository layout"}
+{"claim": "src/flask/signals.py contains the 10 blinker signals Flask emits.", "section": "2. Repository layout"}
+{"claim": "src/flask/views.py contains the class-based views View and MethodView.", "section": "2. Repository layout"}
+{"claim": "src/flask/testing.py contains FlaskClient, EnvironBuilder and FlaskCliRunner.", "section": "2. Repository layout"}
+{"claim": "src/flask/logging.py contains the app.logger setup, default_handler and wsgi_errors_stream.", "section": "2. Repository layout"}
+{"claim": "src/flask/debughelpers.py contains debug-only error messages for form-data redirects, enctype and template search.", "section": "2. Repository layout"}
+{"claim": "src/flask/typing.py contains type aliases such as ResponseReturnValue and callable signatures.", "section": "2. Repository layout"}
+{"claim": "src/flask/py.typed is a PEP 561 marker.", "section": "2. Repository layout"}
+{"claim": "The tests/ directory is a pytest suite of about 7,500 lines with conftest.py, test_apps/ and type_check/.", "section": "2. Repository layout"}
+{"claim": "The docs/ directory contains Sphinx docs.", "section": "2. Repository layout"}
+{"claim": "The examples/ directory contains the tutorial (flaskr), javascript and celery example apps.", "section": "2. Repository layout"}
+{"claim": "pyproject.toml holds metadata, deps, dependency groups, and pytest, mypy, pyright, ruff and tox config.", "section": "2. Repository layout"}
+{"claim": "uv.lock holds the locked dev dependencies.", "section": "2. Repository layout"}
+{"claim": "The project uses uv and tox.", "section": "2. Repository layout"}
+{"claim": "CHANGES.rst is the changelog.", "section": "2. Repository layout"}
+{"claim": ".github/workflows/ contains the CI workflows tests.yaml (tox matrix), pre-commit.yaml, publish.yaml and lock.yaml.", "section": "2. Repository layout"}
+{"claim": "pyproject.toml requires werkzeug with a minimum version of 3.1.0.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses werkzeug for Request/Response base classes, Map/Rule routing, HTTP exceptions, LocalProxy, test Client/EnvironBuilder, the run_simple dev server and reloader, send_file and redirect.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "pyproject.toml requires jinja2 with a minimum version of 3.1.2.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses jinja2 for the template Environment and loaders.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "pyproject.toml requires markupsafe with a minimum version of 2.1.1.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses markupsafe for Markup, which is also tagged in session JSON.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "pyproject.toml requires itsdangerous with a minimum version of 2.2.0.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses itsdangerous URLSafeTimedSerializer for signed session cookies.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "pyproject.toml requires click with a minimum version of 8.1.3.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses click for the flask CLI and app.cli command groups.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "pyproject.toml requires blinker with a minimum version of 1.9.0.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "Flask uses blinker for signals (Namespace and signal.send with _async_wrapper).", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "The optional extra async installs asgiref, which is used to run async def views.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "The optional extra dotenv installs python-dotenv, which is used to load .env and .flaskenv.", "section": "2. Repository layout / Runtime dependencies"}
+{"claim": "The document was read from the checkout at commit 85c5d93.", "section": "Header"}
+{"claim": "pyproject.toml gives the version as 3.2.0.dev.", "section": "Header"}
+{"claim": "The project requires Python >= 3.10.", "section": "Header"}
+{"claim": "Scaffold in sansio/scaffold.py is the shared base class of the application and the blueprint.", "section": "3.1 The class hierarchy"}
+{"claim": "Scaffold holds the registry dicts and decorators route, get/post/etc., add_url_rule (abstract), endpoint, before_request, after_request, teardown_request, context_processor, url_value_preprocessor, url_defaults, errorhandler and register_error_handler.", "section": "3.1 The class hierarchy"}
+{"claim": "Scaffold handles static_folder, static_url_path, jinja_loader and root_path.", "section": "3.1 The class hierarchy"}
+{"claim": "App in sansio/app.py subclasses Scaffold.", "section": "3.1 The class hierarchy"}
+{"claim": "Blueprint in sansio/blueprints.py subclasses Scaffold.", "section": "3.1 The class hierarchy"}
+{"claim": "App holds config, url_map, blueprints, extensions, the json provider, aborter and jinja_env.", "section": "3.1 The class hierarchy"}
+{"claim": "App provides the real add_url_rule, template filters, _find_error_handler, trap_http_exception, inject_url_defaults and handle_url_build_error.", "section": "3.1 The class hierarchy"}
+{"claim": "The sansio Blueprint has deferred_functions, record/record_once, register(), _merge_blueprint_funcs(), app_* variants of every hook and nested register_blueprint.", "section": "3.1 The class hierarchy"}
+{"claim": "Flask in app.py subclasses App and provides the WSGI entry (__call__/wsgi_app), contexts, request pipeline, error handling, make_response, url_for, create_url_adapter, jinja env creation, run() and test_client().", "section": "3.1 The class hierarchy"}
+{"claim": "Blueprint in blueprints.py subclasses the sansio Blueprint and adds the cli AppGroup, send_static_file, get_send_file_max_age and open_resource.", "section": "3.1 The class hierarchy"}
+{"claim": "CHANGES.rst for Flask 3.0 says the code was restructured so that the Flask (app) and Blueprint classes have Sans-IO bases.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "The restructuring that created the Sans-IO bases was PR 5127.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "src/flask/sansio/ holds everything that does not depend on how requests come in.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "src/flask/sansio/ holds the registries, configuration, routing setup, blueprint registration, error-handler lookup and template-environment hooks.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "The code in sansio/ does not touch WSGI.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "src/flask/app.py and src/flask/blueprints.py add the WSGI callable, the context-driven request pipeline, sending static files, opening resources and the Click CLI group.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "The sansio split exists so that Quart can reuse the sans-IO base.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "In typing.py, ResponseValue includes cabc.AsyncIterable[str] with the comment \"for Quart\".", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "Registration and lookup logic is in sansio/, and anything that runs per request is in app.py.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "App.create_jinja_environment() in sansio/app.py raises NotImplementedError.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "The real body of create_jinja_environment() is in app.py.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "Scaffold.add_url_rule() is abstract and is implemented separately by the app and blueprint subclasses.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "Scaffold._check_setup_finished() is implemented separately by the app and blueprint subclasses.", "section": "3.2 Why there is a sansio/ package"}
+{"claim": "The public top-level flask namespace consists of what __init__.py imports.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "sansio/scaffold.py contains Scaffold, setupmethod, find_package, _find_package_path and _endpoint_from_view_func.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "sansio/app.py App handles config creation, url_map, add_url_rule, the blueprint registration entry point, template filter/test/global registration, error-handler lookup, URL defaults, build-error handling and the instance path.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "sansio/blueprints.py handles recording deferred setup, merging hooks into the app and nested blueprints.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "app.py Flask contains default_config, the WSGI entry, request dispatch, exception handling, make_response, url_for, URL adapter creation, Jinja env creation, dev server run() and test client factories.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "ctx.py contains AppContext, RequestContext, _AppCtxGlobals, after_this_request, copy_current_request_context, has_request_context and has_app_context.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "globals.py contains _cv_app, _cv_request, current_app, g, request, session, app_ctx and request_ctx.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "wrappers.py adds endpoint/blueprint info, config-driven limits and the JSON module to Werkzeug's wrappers.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "helpers.py contains url_for, redirect, abort, make_response, flash, get_flashed_messages, send_file, send_from_directory, stream_with_context, get_template_attribute, get_root_path, get_debug_flag and get_load_dotenv.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "Most helpers in helpers.py delegate to current_app.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "config.py contains Config and ConfigAttribute.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "sessions.py contains SessionMixin, SecureCookieSession, NullSession, SessionInterface and SecureCookieSessionInterface.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "templating.py contains Environment, DispatchingJinjaLoader, render_template, render_template_string, stream_template, stream_template_string and _default_template_ctx_processor.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "The json package contains JSONProvider, DefaultJSONProvider, jsonify and TaggedJSONSerializer.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "cli.py contains FlaskGroup, AppGroup, ScriptInfo, with_appcontext, locate_app, find_best_app, load_dotenv, run_command, shell_command and routes_command.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "logging.py contains create_logger, default_handler, wsgi_errors_stream and has_level_handler.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "debughelpers.py contains FormDataRoutingRedirect, DebugFilesKeyError, attach_enctype_error_multidict and explain_template_loading_attempts.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "typing.py contains ResponseReturnValue, RouteCallable and ErrorHandlerCallable.", "section": "3.3 Module responsibilities at a glance"}
+{"claim": "Flask.__init__ in app.py calls App.__init__ in sansio/app.py.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ calls Scaffold.__init__ in sansio/scaffold.py.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Scaffold.__init__ stores import_name, static_folder, static_url_path and template_folder.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Scaffold.__init__ computes root_path with helpers.get_root_path(import_name).", "section": "4.1 What Flask(__name__) does"}
+{"claim": "get_root_path returns the directory of the module or package, falling back to os.getcwd().", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Scaffold.__init__ creates the empty registries.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ finds the instance path with auto_find_instance_path().", "section": "4.1 What Flask(__name__) does"}
+{"claim": "If find_package() says the package is installed under a prefix, the instance path is <prefix>/var/<name>-instance.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "If the package is not installed under a prefix, the instance path is <package dir>/instance.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "A custom instance_path must be absolute.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ builds self.config = self.make_config(instance_relative_config).", "section": "4.1 What Flask(__name__) does"}
+{"claim": "make_config copies default_config.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "make_config sets DEBUG from the FLASK_DEBUG environment variable via get_debug_flag().", "section": "4.1 What Flask(__name__) does"}
+{"claim": "make_config wraps the result in config_class, which defaults to Config.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "The config's root_path is the instance path if instance_relative_config=True, otherwise the app root.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ sets self.aborter = self.make_aborter(), a Werkzeug Aborter used by flask.abort.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ sets self.json = self.json_provider_class(self), a DefaultJSONProvider.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ creates url_build_error_handlers, teardown_appcontext_funcs, shell_context_processors, the blueprints dict and the extensions dict.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "The extensions dict is where extensions keep their state.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ creates self.url_map = self.url_map_class(host_matching=...), which is a Werkzeug Map.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "App.__init__ sets _got_first_request = False.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Flask.__init__ sets self.cli = cli.AppGroup(), named after the app.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "If a static folder is configured, Flask.__init__ registers the static route \"{static_url_path}/<path:filename>\" with endpoint \"static\".", "section": "4.1 What Flask(__name__) does"}
+{"claim": "The default static folder is \"static\".", "section": "4.1 What Flask(__name__) does"}
+{"claim": "The static view is a lambda that holds only a weakref to the app, so the app and view function do not form a reference cycle.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Flask.__init__ does not check that the static folder exists.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "With host_matching=True, static_host must also be passed, which an assert enforces.", "section": "4.1 What Flask(__name__) does"}
+{"claim": "Every hook registry on Scaffold is a dict keyed by scope.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "A scope of None means the app, or this object when the dict is on a blueprint.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "A string scope is a dotted blueprint name such as \"admin\" or \"admin.users\".", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "The type alias AppOrBlueprintKey = str | None is in typing.py.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "view_functions has the shape {endpoint: func} and is filled by add_url_rule and endpoint().", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "error_handler_spec has the shape {scope: {code_or_None: {exc_class: handler}}} and is filled by errorhandler and register_error_handler.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "before_request_funcs has the shape {scope: [func]} and is filled by before_request.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "after_request_funcs has the shape {scope: [func]} and is filled by after_request.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "teardown_request_funcs has the shape {scope: [func]} and is filled by teardown_request.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "template_context_processors has the shape {scope: [func]}, starts as {None: [_default_template_ctx_processor]}, and is filled by context_processor.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "url_value_preprocessors has the shape {scope: [func]} and is filled by url_value_preprocessor.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "url_default_functions has the shape {scope: [func]} and is filled by url_defaults.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "teardown_appcontext_funcs, shell_context_processors and url_build_error_handlers are app registries that are not scoped.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "Template filters, tests and globals go straight into app.jinja_env.filters, tests and globals.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "When a blueprint is registered, its None-scoped lists are copied into the app's dicts under the blueprint's dotted name by Blueprint._merge_blueprint_funcs.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "At request time the app picks the scopes that apply from request.blueprints.", "section": "4.2 The registries (scoped dictionaries)"}
+{"claim": "Every registration method is decorated with @setupmethod in sansio/scaffold.py.", "section": "4.3 The setupmethod guard"}
+{"claim": "The setupmethod wrapper first calls self._check_setup_finished(name).", "section": "4.3 The setupmethod guard"}
+{"claim": "App._check_setup_finished raises an AssertionError saying the setup method can no longer be called on the application once _got_first_request is true.", "section": "4.3 The setupmethod guard"}
+{"claim": "The _got_first_request flag is set at the start of Flask.full_dispatch_request.", "section": "4.3 The setupmethod guard"}
+{"claim": "Blueprint._check_setup_finished raises once the blueprint has been registered at least once (_got_registered_once).", "section": "4.3 The setupmethod guard"}
+{"claim": "Flask.run() resets _got_first_request to False when the dev server exits.", "section": "4.3 The setupmethod guard"}
+{"claim": "The @app.route(rule, **options) decorator (Scaffold.route) pops endpoint from the options and calls add_url_rule(rule, endpoint, f, **options).", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "get, post, put, delete and patch are shortcuts built on _method_route.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "The get, post, put, delete and patch shortcuts refuse a methods= argument.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "The real add_url_rule implementation is App.add_url_rule in sansio/app.py, around line 605.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "In add_url_rule, the endpoint defaults to view_func.__name__ via _endpoint_from_view_func.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "In add_url_rule, methods defaults to view_func.methods or (\"GET\",).", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Class-based views set view_func.methods.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Passing a plain string as methods to add_url_rule raises TypeError.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "add_url_rule upper-cases methods into a set.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "add_url_rule gets required_methods from view_func.required_methods, if present.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "If provide_automatic_options is not passed, add_url_rule reads it from view_func.provide_automatic_options.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "If provide_automatic_options is also None, it becomes True when \"OPTIONS\" is not already in methods and config[\"PROVIDE_AUTOMATIC_OPTIONS\"] is true, and OPTIONS is added.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "add_url_rule creates a Werkzeug Rule using url_rule_class, tags it with rule.provide_automatic_options, and adds it to url_map.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Werkzeug adds HEAD whenever GET is present.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "If a view function is given, add_url_rule stores it in view_functions[endpoint].", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Mapping a different function to an existing endpoint raises AssertionError(\"View function mapping is overwriting an existing endpoint function: ...\").", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Routing converters such as <int:id> are Werkzeug's.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Custom converters must be registered in app.url_map.converters before adding rules.", "section": "4.4 Registering routes: App.add_url_rule"}
+{"claim": "Flask.__call__(environ, start_response) is in app.py and forwards to Flask.wsgi_app.", "section": "5. How a request flows through the code"}
+{"claim": "Flask.wsgi_app is around line 1479 of app.py.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app creates ctx = self.request_context(environ), which constructs a RequestContext.", "section": "5. How a request flows through the code"}
+{"claim": "RequestContext.__init__ creates request = app.request_class(environ) and sets request.json_module = app.json.", "section": "5. How a request flows through the code"}
+{"claim": "RequestContext.__init__ creates url_adapter = app.create_url_adapter(request).", "section": "5. How a request flows through the code"}
+{"claim": "create_url_adapter handles trusted hosts, SERVER_NAME and subdomain/host matching.", "section": "5. How a request flows through the code"}
+{"claim": "An HTTPException raised while creating the URL adapter is stored as request.routing_exception.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app calls ctx.push(), around line 367 of ctx.py.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.push() pushes an AppContext if none is active for this app, which sends the appcontext_pushed signal.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.push() calls _cv_request.set(ctx), after which the request and session proxies work.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.push() opens the session with session_interface.open_session(app, request), using make_null_session if that returns None.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.push() then calls match_request(), which uses url_adapter.match(return_rule=True) to set request.url_rule and request.view_args, or request.routing_exception.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app calls response = self.full_dispatch_request(), around line 904 of app.py.", "section": "5. How a request flows through the code"}
+{"claim": "full_dispatch_request sets _got_first_request = True.", "section": "5. How a request flows through the code"}
+{"claim": "full_dispatch_request sends the request_started signal.", "section": "5. How a request flows through the code"}
+{"claim": "full_dispatch_request calls preprocess_request(), which runs url_value_preprocessors and then before_request functions.", "section": "5. How a request flows through the code"}
+{"claim": "If preprocess_request returns None, full_dispatch_request calls dispatch_request().", "section": "5. How a request flows through the code"}
+{"claim": "dispatch_request raises the routing exception, if any, via raise_routing_exception.", "section": "5. How a request flows through the code"}
+{"claim": "dispatch_request handles automatic OPTIONS with make_default_options_response().", "section": "5. How a request flows through the code"}
+{"claim": "dispatch_request calls ensure_sync(view_functions[rule.endpoint])(**view_args).", "section": "5. How a request flows through the code"}
+{"claim": "full_dispatch_request catches Exception and calls rv = handle_user_exception(e).", "section": "5. How a request flows through the code"}
+{"claim": "full_dispatch_request returns finalize_request(rv).", "section": "5. How a request flows through the code"}
+{"claim": "finalize_request calls response = make_response(rv).", "section": "5. How a request flows through the code"}
+{"claim": "finalize_request calls response = process_response(response).", "section": "5. How a request flows through the code"}
+{"claim": "process_response runs the after_this_request functions.", "section": "5. How a request flows through the code"}
+{"claim": "process_response runs the after_request functions, from the innermost blueprint to the app, with each list reversed.", "section": "5. How a request flows through the code"}
+{"claim": "process_response calls session_interface.save_session(...) unless the session is a null session.", "section": "5. How a request flows through the code"}
+{"claim": "finalize_request sends the request_finished signal.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app catches Exception as e and calls response = handle_exception(e), which produces a 500 and sends got_request_exception.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app returns response(environ, start_response), because a Werkzeug Response is a WSGI app.", "section": "5. How a request flows through the code"}
+{"claim": "wsgi_app calls ctx.pop(error) in a finally block, around line 396 of ctx.py.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.pop calls do_teardown_request(exc), which runs teardown_request funcs and sends the request_tearing_down signal.", "section": "5. How a request flows through the code"}
+{"claim": "ctx.pop calls request.close().", "section": "5. How a request flows through the code"}
+{"claim": "ctx.pop calls _cv_request.reset(...).", "section": "5. How a request flows through the code"}
+{"claim": "ctx.pop calls app_ctx.pop(exc), which calls do_teardown_appcontext(exc), running teardown_appcontext funcs and sending the appcontext_tearing_down signal.", "section": "5. How a request flows through the code"}
+{"claim": "app_ctx.pop resets _cv_app and sends the appcontext_popped signal.", "section": "5. How a request flows through the code"}
+{"claim": "Flask.__call__ only forwards to wsgi_app, so middleware can wrap app.wsgi_app = Middleware(app.wsgi_app) while keeping a reference to the real app object.", "section": "5. How a request flows through the code"}
+{"claim": "docs/lifecycle.rst covers the same request sequence in prose.", "section": "5. How a request flows through the code"}
+{"claim": "Flask.create_url_adapter(request) is in app.py around line 425 and binds the url_map to the request.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "If TRUSTED_HOSTS is set, it is copied to request.trusted_hosts.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "With TRUSTED_HOSTS set, request.host is recomputed with werkzeug.wsgi.get_host(environ, trusted_hosts).", "section": "5.1 URL adapter creation and matching"}
+{"claim": "get_host raises a SecurityError, a 400, for an untrusted host.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "This host check happens inside RequestContext.__init__, so any HTTPException there is stored as request.routing_exception and raised later in dispatch_request.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "With host_matching, SERVER_NAME is not passed to Werkzeug, so the real Host header is used for matching.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "Without subdomain_matching, create_url_adapter forces the subdomain to url_map.default_subdomain or \"\".", "section": "5.1 URL adapter creation and matching"}
+{"claim": "create_url_adapter returns url_map.bind_to_environ(environ, server_name=..., subdomain=...).", "section": "5.1 URL adapter creation and matching"}
+{"claim": "With no request, create_url_adapter can only build an adapter if SERVER_NAME is set.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "With no request, create_url_adapter uses APPLICATION_ROOT as the script name and PREFERRED_URL_SCHEME.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "With no request and no SERVER_NAME, create_url_adapter returns None.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "RequestContext.match_request() calls url_adapter.match(return_rule=True).", "section": "5.1 URL adapter creation and matching"}
+{"claim": "When matching fails, Werkzeug raises NotFound, MethodNotAllowed or RequestRedirect (for a missing trailing slash).", "section": "5.1 URL adapter creation and matching"}
+{"claim": "Flask stores the matching exception on request.routing_exception instead of raising it.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "Matching runs after the session is opened, so custom URL converters can use the session.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "The routing exception is raised in dispatch_request() by raise_routing_exception().", "section": "5.1 URL adapter creation and matching"}
+{"claim": "before_request functions and URL value preprocessors still run for unmatched URLs.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "For an unmatched URL, request.endpoint is None and request.blueprints is [].", "section": "5.1 URL adapter creation and matching"}
+{"claim": "In debug mode, a RequestRedirect that is not 307/308 on a non-GET/HEAD/OPTIONS request is replaced by debughelpers.FormDataRoutingRedirect.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "FormDataRoutingRedirect is an AssertionError that explains the browser would drop the form body.", "section": "5.1 URL adapter creation and matching"}
+{"claim": "The app reads request.blueprints, which is wrappers.Request.blueprints.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "For an endpoint parent.child.view, request.blueprints is [\"parent.child\", \"parent\"], innermost first.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "request.blueprints is computed by the cached helpers._split_blueprint_path.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "URL value preprocessors run in preprocess_request in the order app, outermost blueprint, innermost blueprint, in registration order within a scope.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "before_request functions run in preprocess_request in the order app, outermost blueprint, innermost blueprint, in registration order within a scope.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "The first non-None return from a before_request function short-circuits.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "after_this_request functions run in process_response from a per-request list on the RequestContext, in registration order.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "after_request functions run in process_response in the order innermost blueprint, outermost blueprint, app, in reverse registration order within a scope.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "teardown_request functions run in do_teardown_request in the order innermost blueprint, outermost blueprint, app, in reverse registration order.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "teardown_appcontext functions run in do_teardown_appcontext, app only, in reverse registration order.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "Template context processors run in update_template_context in the order app, outermost blueprint, innermost blueprint, in registration order.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "Error handlers are looked up by _find_error_handler from the innermost blueprint to the app, then by MRO.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "A traced run with a nested parent/child blueprint at this commit gave: app.url_value_preprocessor, child.url_value_preprocessor, app.before, parent.before, child.before, view, child.after, parent.after, app.after, child.teardown_request, app.teardown_request, app.teardown_appcontext.", "section": "5.2 Order of hooks with blueprints"}
+{"claim": "Flask.make_response(rv) is in app.py around line 1129.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "make_response accepts a tuple of the form (body, status, headers), (body, status) or (body, headers).", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "For a 2-tuple, the second item is treated as headers if it is a Headers, dict, tuple or list, and as a status otherwise.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "A tuple of any other length raises TypeError.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "A None return value raises TypeError(\"The view function for ... did not return a valid response...\").", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "A str, bytes, bytearray or iterator/generator becomes response_class(rv, status=..., headers=...).", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "A generator return value gives a streaming response.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "A dict or list becomes self.json.response(rv), a JSON response.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "An instance of response_class is used as is.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "Any other Werkzeug BaseResponse, or any callable treated as a WSGI app, is converted with response_class.force_type(rv, request.environ).", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "Any other return type raises TypeError.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "After conversion, a status given in a tuple overrides the response's status: a string sets .status and an int sets .status_code.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "Tuple headers are merged into the response with headers.update.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "flask.make_response(*args) in helpers.py is the user-facing wrapper.", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "flask.make_response with no arguments returns an empty response_class().", "section": "5.3 Turning a return value into a response: Flask.make_response"}
+{"claim": "Error handling lives in app.py, with the lookup in sansio/app.py.", "section": "5.4 Error handling"}
+{"claim": "handle_user_exception(e) is called from full_dispatch_request for any Exception raised by preprocess_request or dispatch_request.", "section": "5.4 Error handling"}
+{"claim": "If e is a BadRequestKeyError and debug or TRAP_BAD_REQUEST_ERRORS is on, handle_user_exception sets e.show_exception = True.", "section": "5.4 Error handling"}
+{"claim": "If e is an HTTPException and trap_http_exception(e) is false, handle_user_exception passes it to handle_http_exception(e).", "section": "5.4 Error handling"}
+{"claim": "Otherwise handle_user_exception looks up a handler with _find_error_handler(e, request.blueprints) and re-raises if there is none.", "section": "5.4 Error handling"}
+{"claim": "handle_http_exception(e) returns e unchanged when e.code is None (proxy exceptions).", "section": "5.4 Error handling"}
+{"claim": "handle_http_exception(e) returns e unchanged when e is a RoutingException such as RequestRedirect.", "section": "5.4 Error handling"}
+{"claim": "Otherwise handle_http_exception calls the registered handler, if there is one, and returns the exception itself if there is not.", "section": "5.4 Error handling"}
+{"claim": "Werkzeug's HTTPException is a WSGI app, so make_response turns it into an error page.", "section": "5.4 Error handling"}
+{"claim": "trap_http_exception(e) returns true if TRAP_HTTP_EXCEPTIONS is set.", "section": "5.4 Error handling"}
+{"claim": "If TRAP_BAD_REQUEST_ERRORS is None and the app is in debug mode, trap_http_exception also traps BadRequestKeyError.", "section": "5.4 Error handling"}
+{"claim": "If TRAP_BAD_REQUEST_ERRORS is true, trap_http_exception traps every BadRequest.", "section": "5.4 Error handling"}
+{"claim": "A trapped HTTP exception is handled like an ordinary exception, so it reaches the debugger when it is not handled.", "section": "5.4 Error handling"}
+{"claim": "handle_exception(e) is called from wsgi_app for anything that escaped full_dispatch_request.", "section": "5.4 Error handling"}
+{"claim": "handle_exception sends the got_request_exception signal.", "section": "5.4 Error handling"}
+{"claim": "handle_exception computes propagate = PROPAGATE_EXCEPTIONS, which defaults to testing or debug.", "section": "5.4 Error handling"}
+{"claim": "If propagate is true, handle_exception re-raises.", "section": "5.4 Error handling"}
+{"claim": "Otherwise handle_exception calls log_exception(exc_info), which calls app.logger.error(\"Exception on /path [GET]\").", "section": "5.4 Error handling"}
+{"claim": "Otherwise handle_exception wraps the error as InternalServerError(original_exception=e).", "section": "5.4 Error handling"}
+{"claim": "handle_exception runs a 500 / InternalServerError handler if one exists.", "section": "5.4 Error handling"}
+{"claim": "handle_exception calls finalize_request(server_error, from_error_handler=True).", "section": "5.4 Error handling"}
+{"claim": "With from_error_handler=True, failures during response processing are logged and ignored instead of raised.", "section": "5.4 Error handling"}
+{"claim": "App._find_error_handler(e, blueprints) is in sansio/app.py around line 823.", "section": "5.4 Error handling"}
+{"claim": "Handlers are stored as error_handler_spec[scope][code][exc_class].", "section": "5.4 Error handling"}
+{"claim": "The code key is the HTTP status for HTTPException subclasses and None otherwise.", "section": "5.4 Error handling"}
+{"claim": "register_error_handler(404, f) maps 404 to werkzeug.exceptions.NotFound using default_exceptions.", "section": "5.4 Error handling"}
+{"claim": "Registering a handler for the base HTTPException stores it under code None, because HTTPException.code is None.", "section": "5.4 Error handling"}
+{"claim": "_find_error_handler iterates codes (e.code, None), then scopes (innermost blueprint to app), then the exception's MRO from most specific class.", "section": "5.4 Error handling"}
+{"claim": "Error handler precedence is: blueprint handler for the code, then app handler for the code, then blueprint handler for the class, then app handler for the class.", "section": "5.4 Error handling"}
+{"claim": "A request to an unmatched URL has no blueprints, so a blueprint's 404 handler never fires for URLs that did not match one of its routes.", "section": "5.4 Error handling"}
+{"claim": "Blueprint.app_errorhandler or an app handler should be used for unmatched URLs.", "section": "5.4 Error handling"}
+{"claim": "errorhandler refuses exception instances, non-Exception classes and unknown integer codes.", "section": "5.4 Error handling"}
+{"claim": "Every user callback is called as self.ensure_sync(func)(...).", "section": "5.5 ensure_sync and async views"}
+{"claim": "Signal receivers are called through _async_wrapper.", "section": "5.5 ensure_sync and async views"}
+{"claim": "Flask.ensure_sync returns plain functions unchanged and wraps coroutine functions with async_to_sync.", "section": "5.5 ensure_sync and async views"}
+{"claim": "The async_to_sync method imports asgiref.sync.async_to_sync.", "section": "5.5 ensure_sync and async views"}
+{"claim": "If asgiref is missing, it raises RuntimeError(\"Install Flask with the 'async' extra...\").", "section": "5.5 ensure_sync and async views"}
+{"claim": "Each async view runs in its own event loop inside a normal WSGI worker.", "section": "5.5 ensure_sync and async views"}
+{"claim": "docs/async-await.rst explains when to use Quart instead.", "section": "5.5 ensure_sync and async views"}
+{"claim": "Subclasses can override ensure_sync or async_to_sync to change the async behavior.", "section": "5.5 ensure_sync and async views"}
+{"claim": "globals.py defines two contextvars.ContextVar objects and werkzeug.local.LocalProxy objects that read through them.", "section": "6.1 The mechanism"}
+{"claim": "_cv_app is a ContextVar named \"flask.app_ctx\".", "section": "6.1 The mechanism"}
+{"claim": "app_ctx = LocalProxy(_cv_app) is the AppContext itself.", "section": "6.1 The mechanism"}
+{"claim": "current_app = LocalProxy(_cv_app, \"app\") is AppContext.app.", "section": "6.1 The mechanism"}
+{"claim": "g = LocalProxy(_cv_app, \"g\") is AppContext.g.", "section": "6.1 The mechanism"}
+{"claim": "_cv_request is a ContextVar named \"flask.request_ctx\".", "section": "6.1 The mechanism"}
+{"claim": "request_ctx = LocalProxy(_cv_request) is the RequestContext itself.", "section": "6.1 The mechanism"}
+{"claim": "request = LocalProxy(_cv_request, \"request\") is RequestContext.request.", "section": "6.1 The mechanism"}
+{"claim": "session = LocalProxy(_cv_request, \"session\") is RequestContext.session.", "section": "6.1 The mechanism"}
+{"claim": "Each proxy forwards attribute access to the object that is current in the active contextvars context.", "section": "6.1 The mechanism"}
+{"claim": "With no context active, proxy access raises RuntimeError with the \"Working outside of application context\" or \"Working outside of request context\" message.", "section": "6.1 The mechanism"}
+{"claim": "A proxy is falsy when unbound.", "section": "6.1 The mechanism"}
+{"claim": "Flask's own code writes `if current_app:` or `if request:` to check whether a context is active, for example in helpers.redirect, helpers.abort, json.dumps and wrappers.Request.max_content_length.", "section": "6.1 The mechanism"}
+{"claim": "current_app._get_current_object() returns the real object behind a proxy.", "section": "6.1 The mechanism"}
+{"claim": "Flask uses request_ctx.flashes, request_ctx.url_adapter and request_ctx._get_current_object() in process_response.", "section": "6.1 The mechanism"}
+{"claim": "AppContext.__init__(app) stores app.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.__init__ builds url_adapter = app.create_url_adapter(None), which is None unless SERVER_NAME is set.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.__init__ creates g = app.app_ctx_globals_class().", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.__init__ starts an empty token list.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.push() calls _cv_app.set(self), keeping the token, then sends appcontext_pushed.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.pop(exc) calls app.do_teardown_appcontext(exc) if this is the last outstanding push of this object.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.pop always resets the ContextVar.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.pop raises AssertionError(\"Popped wrong app context\") when contexts were popped out of order.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext.pop then sends appcontext_popped.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "AppContext is a context manager usable as `with app.app_context():`.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "An app context is pushed during every request by RequestContext.push.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "An app context is pushed during every app.cli command by FlaskGroup.get_command or with_appcontext.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "An app context is active in flask shell.", "section": "6.2 AppContext (ctx.py)"}
+{"claim": "g is a plain namespace object with get, pop, setdefault, in and iteration.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "g belongs to the app context, not the request context.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "In a normal request a fresh app context is pushed, so g lasts one request.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "In examples/tutorial/flaskr/db.py, get_db() caches the connection on g.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "In examples/tutorial/flaskr/db.py, close_db is registered with app.teardown_appcontext.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "The class of g can be swapped with Flask.app_ctx_globals_class.", "section": "6.3 g (_AppCtxGlobals)"}
+{"claim": "RequestContext.__init__(app, environ, request=None, session=None) builds the Request with app.request_class(environ).", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.__init__ sets request.json_module = app.json.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.__init__ creates the URL adapter and stores any HTTPException as routing_exception.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.__init__ sets flashes = None.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.__init__ sets session, usually None at this point.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.__init__ sets _after_request_functions = [].", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.push() creates and pushes app.app_context() if no app context is active or the active one belongs to a different app, and remembers it so it can pop it later.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "Otherwise RequestContext.push() reuses the active app context.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.push() then calls _cv_request.set(self).", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.push() opens the session via session_interface.open_session, falling back to make_null_session, only if self.session is None.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "The self.session is None check means pushing again, as stream_with_context does, does not reload the session.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.push() then calls match_request().", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.pop(exc) runs app.do_teardown_request(exc) and request.close() on the last outstanding push.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.pop resets the ContextVar.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.pop clears environ[\"werkzeug.request\"] to break a reference cycle.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.pop pops the app context it pushed, which runs the app-context teardowns, and checks the order.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.copy() returns a new RequestContext that shares the same request and the current session.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "RequestContext.copy() is used by copy_current_request_context.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "Both context classes keep a list of tokens, so the same context object can be pushed more than once.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "Teardown runs only when the final pop happens.", "section": "6.4 RequestContext (ctx.py)"}
+{"claim": "has_request_context() and has_app_context() in ctx.py check the ContextVars.", "section": "6.5 Context helpers"}
+{"claim": "after_this_request(f) adds f to the current RequestContext._after_request_functions.", "section": "6.5 Context helpers"}
+{"claim": "after_this_request functions run before the regular after_request functions.", "section": "6.5 Context helpers"}
+{"claim": "copy_current_request_context(f) copies the request context at decoration time and pushes the copy around each call.", "section": "6.5 Context helpers"}
+{"claim": "copy_current_request_context is meant for greenlets.", "section": "6.5 Context helpers"}
+{"claim": "copy_current_request_context is not safe across threads unless access to the request object is synchronized.", "section": "6.5 Context helpers"}
+{"claim": "stream_with_context(gen) in helpers.py wraps a generator so the request context is pushed while it runs.", "section": "6.5 Context helpers"}
+{"claim": "stream_with_context primes the generator with next() while the view is still running, which pushes the context a second time.", "section": "6.5 Context helpers"}
+{"claim": "Because of the second push, when wsgi_app pops it is not the final pop, so teardown is deferred until the stream is exhausted.", "section": "6.5 Context helpers"}
+{"claim": "stream_template() applies stream_with_context automatically when a request is active.", "section": "6.5 Context helpers"}
+{"claim": "app.test_request_context(...) builds an environ with testing.EnvironBuilder and returns a RequestContext that can be pushed.", "section": "6.5 Context helpers"}
+{"claim": "A blueprint has the same decorator API as the app, inherited from Scaffold.", "section": "7.1 Recording"}
+{"claim": "A blueprint records most operations as deferred callables and replays them against an app when it is registered.", "section": "7.1 Recording"}
+{"claim": "Blueprint.add_url_rule(...) checks that the endpoint and view function name contain no \".\".", "section": "7.1 Recording"}
+{"claim": "Blueprint.add_url_rule calls self.record(lambda s: s.add_url_rule(...)).", "section": "7.1 Recording"}
+{"claim": "Routes are not added to bp.view_functions.", "section": "7.1 Recording"}
+{"claim": "Hooks such as bp.before_request go into the blueprint's own None-scoped dicts inherited from Scaffold and are merged at registration.", "section": "7.1 Recording"}
+{"claim": "The app_* variants before_app_request, after_app_request, teardown_app_request, app_context_processor, app_errorhandler, app_url_value_preprocessor, app_url_defaults and app_template_filter/test/global register app-wide hooks using record_once.", "section": "7.1 Recording"}
+{"claim": "record(func) appends to deferred_functions.", "section": "7.1 Recording"}
+{"claim": "record_once(func) wraps the function so it runs only when state.first_registration is true.", "section": "7.1 Recording"}
+{"claim": "bp.endpoint(name), from Scaffold, writes into bp.view_functions directly.", "section": "7.1 Recording"}
+{"claim": "bp.endpoint entries are merged into app.view_functions without a blueprint prefix, as tests/test_blueprints.py::test_endpoint_decorator shows.", "section": "7.1 Recording"}
+{"claim": "Blueprint.register is in sansio/blueprints.py around line 273.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "app.register_blueprint(bp, **options) calls bp.register(app, options).", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register works out the registered name as f\"{name_prefix}.{options.get('name', bp.name)}\".lstrip(\".\").", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "Nested blueprints get dotted names such as parent.child.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register raises ValueError if the name is already in app.blueprints.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "To register the same blueprint twice, name= must be passed.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register records app.blueprints[name] = self.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register sets _got_registered_once = True, which locks further setup on the blueprint.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register builds a BlueprintSetupState with make_setup_state.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "BlueprintSetupState works out the effective url_prefix, subdomain and url_defaults, with option values overriding blueprint attributes.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "BlueprintSetupState.add_url_rule joins the prefix onto the rule, sets the subdomain, merges the defaults and registers the endpoint as \"{name_prefix}.{name}.{endpoint}\".lstrip(\".\") on the app.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register adds the blueprint's static route if it has a static_folder, with endpoint <name>.static.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register calls _merge_blueprint_funcs(app, name) on the first registration of this blueprint object or of this name.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "_merge_blueprint_funcs copies the blueprint's error handlers, view_functions, before/after/teardown functions, URL defaults, URL value preprocessors and template context processors into the app's dicts, re-keyed from None to name.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register runs every deferred function with the state, which is where routes are actually added.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "If cli_group is the sentinel default, bp.cli becomes a subgroup named after the blueprint (flask <bpname> <cmd>).", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "If cli_group is None, the blueprint's commands are merged directly into app.cli.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "If cli_group is a string, it names the group.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "bp.register_blueprint(child) only queues the child in bp._blueprints.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "register recursively registers nested blueprints, joining url_prefix and subdomain with the parent's and passing name_prefix=name.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "After registration the app holds everything, and at request time the blueprint objects are only consulted for templates (jinja_loader) and static files.", "section": "7.2 Registration: Blueprint.register(app, options)"}
+{"claim": "request.blueprint and request.blueprints are derived from the matched endpoint's dotted prefix in wrappers.py.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "url_for(\".view\") inside a blueprint request resolves to \"<current blueprint>.view\" in Flask.url_for.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "Blueprint templates have lower priority than app templates.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "Blueprints are searched for templates in registration order.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "A blueprint's static files are only reachable if it has a url_prefix or a distinct static_url_path.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "Otherwise the app's /static route takes precedence over the blueprint's static route.", "section": "7.3 Blueprint-relative behavior"}
+{"claim": "flask.url_for(endpoint, **values) in helpers.py calls current_app.url_for(...).", "section": "8. URL building: url_for"}
+{"claim": "Flask.url_for is in app.py around line 1003.", "section": "8. URL building: url_for"}
+{"claim": "In a request, url_for uses the request context's url_adapter.", "section": "8. URL building: url_for"}
+{"claim": "In a request, a leading \".\" in the endpoint is resolved against the current blueprint, or stripped if there is none.", "section": "8. URL building: url_for"}
+{"claim": "In a request, _external defaults to False unless _scheme is given.", "section": "8. URL building: url_for"}
+{"claim": "Outside a request, url_for uses the app context's url_adapter, or builds one if called directly on the app with no context.", "section": "8. URL building: url_for"}
+{"claim": "Outside a request, url_for needs SERVER_NAME, otherwise it raises RuntimeError(\"Unable to build URLs outside an active request without 'SERVER_NAME' configured...\").", "section": "8. URL building: url_for"}
+{"claim": "Outside a request, _external defaults to True.", "section": "8. URL building: url_for"}
+{"claim": "Passing _scheme with _external=False raises ValueError.", "section": "8. URL building: url_for"}
+{"claim": "inject_url_defaults(endpoint, values) runs the url_defaults functions for the app, then for each blueprint in the endpoint's dotted path.", "section": "8. URL building: url_for"}
+{"claim": "inject_url_defaults parses the endpoint string instead of using request.blueprints, so it also works outside a request.", "section": "8. URL building: url_for"}
+{"claim": "url_for calls url_adapter.build(endpoint, values, method=_method, url_scheme=_scheme, force_external=_external).", "section": "8. URL building: url_for"}
+{"claim": "Values that are not part of the rule become query string arguments.", "section": "8. URL building: url_for"}
+{"claim": "A BuildError goes to handle_url_build_error, which tries each function in app.url_build_error_handlers and re-raises if none returns a value.", "section": "8. URL building: url_for"}
+{"claim": "_anchor is quoted and appended as #anchor.", "section": "8. URL building: url_for"}
+{"claim": "url_for is also a Jinja global, the bound app.url_for.", "section": "8. URL building: url_for"}
+{"claim": "Config is a dict subclass with a root_path that relative filenames are resolved against.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_object(obj_or_import_string) copies uppercase attributes from a module or class using dir(obj).", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_object does not work with a dict.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_pyfile(filename, silent=False) execs a Python file into a fresh module object and then calls from_object.", "section": "9.1 Config (config.py)"}
+{"claim": "With silent=True, from_pyfile ignores ENOENT, EISDIR and ENOTDIR.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_envvar(name, silent=False) calls from_pyfile(os.environ[name]), with a helpful error if the variable is unset.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_file(filename, load, silent=False, text=True) opens a file, passes it to load, then calls from_mapping.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_mapping(mapping=None, **kwargs) is like update but only for uppercase keys.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.from_prefixed_env(prefix=\"FLASK\", loads=json.loads) reads FLASK_* env vars in sorted order, strips the prefix and tries json.loads on each value, keeping the string if that fails.", "section": "9.1 Config (config.py)"}
+{"claim": "In from_prefixed_env, \"__\" in a key sets a nested dict entry, for example FLASK_SQLALCHEMY__ECHO.", "section": "9.1 Config (config.py)"}
+{"claim": "Config.get_namespace(prefix, lowercase=True, trim_namespace=True) returns the subset of keys starting with prefix.", "section": "9.1 Config (config.py)"}
+{"claim": "ConfigAttribute is a descriptor that forwards an attribute to a config key, with an optional converter on read.", "section": "9.1 Config (config.py)"}
+{"claim": "App uses ConfigAttribute for testing (TESTING), secret_key (SECRET_KEY) and permanent_session_lifetime (PERMANENT_SESSION_LIFETIME).", "section": "9.1 Config (config.py)"}
+{"claim": "For permanent_session_lifetime, an int becomes a timedelta.", "section": "9.1 Config (config.py)"}
+{"claim": "debug is a real property that reads and writes config[\"DEBUG\"].", "section": "9.1 Config (config.py)"}
+{"claim": "The debug setter also updates jinja_env.auto_reload when TEMPLATES_AUTO_RELOAD is None.", "section": "9.1 Config (config.py)"}
+{"claim": "Flask.default_config is in app.py around line 178.", "section": "9.2 Built-in keys"}
+{"claim": "DEBUG defaults to None and is set from FLASK_DEBUG in make_config.", "section": "9.2 Built-in keys"}
+{"claim": "TESTING defaults to False.", "section": "9.2 Built-in keys"}
+{"claim": "PROPAGATE_EXCEPTIONS defaults to None, meaning testing or debug, and is read by Flask.handle_exception.", "section": "9.2 Built-in keys"}
+{"claim": "SECRET_KEY defaults to None.", "section": "9.2 Built-in keys"}
+{"claim": "SECRET_KEY_FALLBACKS defaults to None and is read by SecureCookieSessionInterface.get_signing_serializer for key rotation.", "section": "9.2 Built-in keys"}
+{"claim": "PERMANENT_SESSION_LIFETIME defaults to 31 days.", "section": "9.2 Built-in keys"}
+{"claim": "USE_X_SENDFILE defaults to False and is read by helpers._prepare_send_file_kwargs.", "section": "9.2 Built-in keys"}
+{"claim": "TRUSTED_HOSTS defaults to None and is read by Flask.create_url_adapter.", "section": "9.2 Built-in keys"}
+{"claim": "SERVER_NAME defaults to None and is read by create_url_adapter, Flask.run (default host/port) and EnvironBuilder.", "section": "9.2 Built-in keys"}
+{"claim": "APPLICATION_ROOT defaults to \"/\".", "section": "9.2 Built-in keys"}
+{"claim": "APPLICATION_ROOT is used for URL building outside requests, session cookie path fallback and EnvironBuilder.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_NAME defaults to \"session\".", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_DOMAIN defaults to None.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_PATH defaults to None.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_HTTPONLY defaults to True.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_SECURE defaults to False.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_PARTITIONED defaults to False.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_COOKIE_SAMESITE defaults to None.", "section": "9.2 Built-in keys"}
+{"claim": "The SESSION_COOKIE_* keys are read by SessionInterface.get_cookie_*.", "section": "9.2 Built-in keys"}
+{"claim": "SESSION_REFRESH_EACH_REQUEST defaults to True and is read by SessionInterface.should_set_cookie.", "section": "9.2 Built-in keys"}
+{"claim": "MAX_CONTENT_LENGTH defaults to None and is read by Request.max_content_length.", "section": "9.2 Built-in keys"}
+{"claim": "MAX_FORM_MEMORY_SIZE defaults to 500_000 and is read by Request.max_form_memory_size.", "section": "9.2 Built-in keys"}
+{"claim": "MAX_FORM_PARTS defaults to 1_000 and is read by Request.max_form_parts.", "section": "9.2 Built-in keys"}
+{"claim": "SEND_FILE_MAX_AGE_DEFAULT defaults to None and is read by get_send_file_max_age on both app and blueprint.", "section": "9.2 Built-in keys"}
+{"claim": "TRAP_BAD_REQUEST_ERRORS defaults to None and is read by trap_http_exception and handle_user_exception.", "section": "9.2 Built-in keys"}
+{"claim": "TRAP_HTTP_EXCEPTIONS defaults to False and is read by trap_http_exception.", "section": "9.2 Built-in keys"}
+{"claim": "EXPLAIN_TEMPLATE_LOADING defaults to False and is read by DispatchingJinjaLoader.get_source.", "section": "9.2 Built-in keys"}
+{"claim": "PREFERRED_URL_SCHEME defaults to \"http\".", "section": "9.2 Built-in keys"}
+{"claim": "PREFERRED_URL_SCHEME is used for URL building outside requests and by EnvironBuilder.", "section": "9.2 Built-in keys"}
+{"claim": "TEMPLATES_AUTO_RELOAD defaults to None, meaning follow debug, and is read by create_jinja_environment and the debug setter.", "section": "9.2 Built-in keys"}
+{"claim": "MAX_COOKIE_SIZE defaults to 4093 and is read by Response.max_cookie_size.", "section": "9.2 Built-in keys"}
+{"claim": "PROVIDE_AUTOMATIC_OPTIONS defaults to True and is read by App.add_url_rule.", "section": "9.2 Built-in keys"}
+{"claim": "DEBUG affects error propagation, trapping, debug redirects, JSON indentation, Jinja auto-reload, logger level and debug helpers.", "section": "9.2 Built-in keys"}
+{"claim": "Debug mode is read from the environment variable FLASK_DEBUG when the config is created.", "section": "9.2 Built-in keys"}
+{"claim": "The CLI's --debug flag works by setting os.environ[\"FLASK_DEBUG\"] in cli._set_debug before the app is imported, so factories see it.", "section": "9.2 Built-in keys"}
+{"claim": "ScriptInfo.load_app then sets app.debug = get_debug_flag() again through the property.", "section": "9.2 Built-in keys"}
+{"claim": "flask.Request extends werkzeug.wrappers.Request.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Request has url_rule, view_args and routing_exception, set during matching.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Request has endpoint, blueprint and blueprints properties derived from url_rule.endpoint.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Request has max_content_length, max_form_memory_size and max_form_parts properties.", "section": "10. Request and Response wrappers"}
+{"claim": "Each of these properties returns a per-request override if one was set, then the app config if an app context is active, then Werkzeug's default.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Request has json_module, which is flask.json by default and replaced with app.json per request.", "section": "10. Request and Response wrappers"}
+{"claim": "request.get_json() uses the app's JSON provider.", "section": "10. Request and Response wrappers"}
+{"claim": "In debug mode, Request._load_form_data patches request.files, if the request is not multipart/form-data and has no files, so that a KeyError raises DebugFilesKeyError explaining the missing enctype.", "section": "10. Request and Response wrappers"}
+{"claim": "Request.on_json_loading_failed re-raises a bare BadRequest outside debug mode.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Response extends Werkzeug's Response.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Response has default_mimetype = \"text/html\".", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Response has json_module = flask.json.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Response has autocorrect_location_header = False.", "section": "10. Request and Response wrappers"}
+{"claim": "flask.Response has a max_cookie_size read from config.", "section": "10. Request and Response wrappers"}
+{"claim": "Setting Flask.request_class and Flask.response_class makes Flask use custom classes.", "section": "10. Request and Response wrappers"}
+{"claim": "JSONProvider in json/provider.py is the per-app interface with dumps, loads, dump, load and response.", "section": "11. JSON"}
+{"claim": "JSONProvider holds a weakref.proxy to the app.", "section": "11. JSON"}
+{"claim": "Subclasses of JSONProvider must implement at least dumps and loads.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider uses the stdlib json module with default=_default, ensure_ascii=True and sort_keys=True.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider._default serializes date and datetime as HTTP dates (RFC 822).", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider._default serializes Decimal and UUID as str.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider._default serializes dataclasses with dataclasses.asdict.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider._default serializes objects with __html__.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider.response() pretty-prints with indent=2 when compact is False, or None in debug mode.", "section": "11. JSON"}
+{"claim": "Otherwise DefaultJSONProvider.response() uses compact separators.", "section": "11. JSON"}
+{"claim": "DefaultJSONProvider.response() always adds a trailing newline and sets mimetype to application/json.", "section": "11. JSON"}
+{"claim": "app.json is created from Flask.json_provider_class in App.__init__.", "section": "11. JSON"}
+{"claim": "flask.json.dumps, loads, dump and load in json/__init__.py delegate to current_app.json when an app context is active and fall back to the stdlib otherwise.", "section": "11. JSON"}
+{"claim": "jsonify(*args, **kwargs) always requires an app context and calls current_app.json.response.", "section": "11. JSON"}
+{"claim": "A view that returns a dict or list goes through app.json.response via make_response.", "section": "11. JSON"}
+{"claim": "The Jinja |tojson filter is wired to app.json.dumps through jinja_env.policies[\"json.dumps_function\"] in create_jinja_environment.", "section": "11. JSON"}
+{"claim": "TaggedJSONSerializer in json/tag.py is a separate, lossless format for session data.", "section": "11. JSON"}
+{"claim": "TaggedJSONSerializer wraps values JSON cannot represent as single-key dicts with a tag key.", "section": "11. JSON"}
+{"claim": "The tag key \" t\" is for tuple.", "section": "11. JSON"}
+{"claim": "The tag key \" b\" is for bytes (base64).", "section": "11. JSON"}
+{"claim": "The tag key \" m\" is for Markup.", "section": "11. JSON"}
+{"claim": "The tag key \" u\" is for UUID.", "section": "11. JSON"}
+{"claim": "The tag key \" d\" is for datetime.", "section": "11. JSON"}
+{"claim": "The tag key \" di\" is for dicts that happen to collide with a tag key.", "section": "11. JSON"}
+{"claim": "TaggedJSONSerializer.register(TagClass, index=...) adds custom tags.", "section": "11. JSON"}
+{"claim": "Session cookies use TaggedJSONSerializer, not app.json.", "section": "11. JSON"}
+{"claim": "Flask.session_interface is a class attribute, SecureCookieSessionInterface() by default.", "section": "12.1 The interface"}
+{"claim": "A SessionInterface must implement open_session(app, request) and save_session(app, session, response).", "section": "12.1 The interface"}
+{"claim": "open_session is called in RequestContext.push after the context is set and before URL matching.", "section": "12.1 The interface"}
+{"claim": "open_session returns a session object, or None, in which case make_null_session is used.", "section": "12.1 The interface"}
+{"claim": "save_session is called at the end of Flask.process_response, after all after_request functions.", "section": "12.1 The interface"}
+{"claim": "save_session is skipped when is_null_session(session) is true.", "section": "12.1 The interface"}
+{"claim": "SessionInterface provides cookie-parameter getters that read the SESSION_COOKIE_* config.", "section": "12.1 The interface"}
+{"claim": "SessionInterface.get_expiration_time returns now plus the lifetime if session.permanent, else None, meaning a browser-session cookie.", "section": "12.1 The interface"}
+{"claim": "SessionInterface.should_set_cookie returns modified or (permanent and SESSION_REFRESH_EACH_REQUEST).", "section": "12.1 The interface"}
+{"claim": "SessionMixin adds the permanent property, backed by the \"_permanent\" key.", "section": "12.1 The interface"}
+{"claim": "SessionMixin adds the new, modified and accessed flags.", "section": "12.1 The interface"}
+{"claim": "SecureCookieSessionInterface.get_signing_serializer(app) returns None if there is no secret_key.", "section": "12.2 The default: signed cookies"}
+{"claim": "Otherwise get_signing_serializer returns an ItsDangerous URLSafeTimedSerializer with keys=[*SECRET_KEY_FALLBACKS, SECRET_KEY], salt=\"cookie-session\", serializer=TaggedJSONSerializer() and signer_kwargs with key_derivation hmac and digest_method sha1.", "section": "12.2 The default: signed cookies"}
+{"claim": "The current key goes last because ItsDangerous signs with the last key and accepts all of them for verification.", "section": "12.2 The default: signed cookies"}
+{"claim": "SHA-1 is looked up lazily (_lazy_sha1) so FIPS builds can import Flask.", "section": "12.2 The default: signed cookies"}
+{"claim": "SecureCookieSessionInterface.open_session returns None with no secret key, which produces a NullSession.", "section": "12.2 The default: signed cookies"}
+{"claim": "With a missing cookie, open_session returns an empty SecureCookieSession.", "section": "12.2 The default: signed cookies"}
+{"claim": "Otherwise open_session calls s.loads(cookie, max_age=PERMANENT_SESSION_LIFETIME).", "section": "12.2 The default: signed cookies"}
+{"claim": "On BadSignature, which includes expiry, open_session returns an empty session instead of raising.", "section": "12.2 The default: signed cookies"}
+{"claim": "save_session adds a Vary: Cookie header if the session was accessed.", "section": "12.2 The default: signed cookies"}
+{"claim": "If the session is empty and was modified, save_session deletes the cookie.", "section": "12.2 The default: signed cookies"}
+{"claim": "If the session is empty, save_session writes nothing.", "section": "12.2 The default: signed cookies"}
+{"claim": "If should_set_cookie is false, save_session writes nothing.", "section": "12.2 The default: signed cookies"}
+{"claim": "Otherwise save_session sets the signed cookie with the configured attributes.", "section": "12.2 The default: signed cookies"}
+{"claim": "SecureCookieSession is a Werkzeug CallbackDict.", "section": "12.2 The default: signed cookies"}
+{"claim": "Any top-level mutation of SecureCookieSession sets modified and accessed, and reads set accessed.", "section": "12.2 The default: signed cookies"}
+{"claim": "Changing a nested mutable value such as session[\"cart\"].append(x) is not detected.", "section": "12.2 The default: signed cookies"}
+{"claim": "NullSession allows reads but raises RuntimeError(\"The session is unavailable because no secret key was set...\") on any write.", "section": "12.2 The default: signed cookies"}
+{"claim": "flash(message, category) in helpers.py appends (category, message) to session[\"_flashes\"].", "section": "12.3 Message flashing"}
+{"claim": "flash reassigns the list so external-storage sessions see the change.", "section": "12.3 Message flashing"}
+{"claim": "flash sends message_flashed.", "section": "12.3 Message flashing"}
+{"claim": "get_flashed_messages(with_categories, category_filter) pops _flashes from the session the first time it is called in a request.", "section": "12.3 Message flashing"}
+{"claim": "get_flashed_messages caches the result on request_ctx.flashes, so later calls in the same request return the same messages.", "section": "12.3 Message flashing"}
+{"claim": "app.jinja_env is a cached_property on App that calls Flask.create_jinja_environment() the first time it is accessed.", "section": "13. Templating"}
+{"claim": "create_jinja_environment starts from app.jinja_options.", "section": "13. Templating"}
+{"claim": "create_jinja_environment sets autoescape=select_jinja_autoescape.", "section": "13. Templating"}
+{"claim": "select_jinja_autoescape is true for .html, .htm, .xml, .xhtml and .svg, and for string templates.", "section": "13. Templating"}
+{"claim": "create_jinja_environment sets auto_reload from TEMPLATES_AUTO_RELOAD, falling back to debug.", "section": "13. Templating"}
+{"claim": "create_jinja_environment creates app.jinja_environment(app, **options), which is Flask's Environment subclass.", "section": "13. Templating"}
+{"claim": "Flask's Environment loader defaults to app.create_global_jinja_loader().", "section": "13. Templating"}
+{"claim": "create_jinja_environment adds globals url_for, get_flashed_messages, config, and the request, session and g proxies.", "section": "13. Templating"}
+{"claim": "The request, session and g proxies are added as globals so imported templates and macros can see them too.", "section": "13. Templating"}
+{"claim": "create_jinja_environment sets the json.dumps_function policy to app.json.dumps.", "section": "13. Templating"}
+{"claim": "DispatchingJinjaLoader looks up a template name with the app's own jinja_loader first.", "section": "13. Templating"}
+{"claim": "The app's jinja_loader is a FileSystemLoader on root_path/template_folder, and template_folder defaults to templates.", "section": "13. Templating"}
+{"claim": "DispatchingJinjaLoader then tries each blueprint's loader in registration order, and the first match wins.", "section": "13. Templating"}
+{"claim": "Blueprint templates therefore never override app templates, and two blueprints using the same template name conflict.", "section": "13. Templating"}
+{"claim": "With EXPLAIN_TEMPLATE_LOADING=True, _get_source_explained tries every loader and logs a report through debughelpers.explain_template_loading_attempts.", "section": "13. Templating"}
+{"claim": "render_template(name_or_list, **context) gets the template with jinja_env.get_or_select_template.", "section": "13. Templating"}
+{"claim": "A list passed to render_template means the first template that exists.", "section": "13. Templating"}
+{"claim": "render_template calls _render.", "section": "13. Templating"}
+{"claim": "_render calls app.update_template_context(context).", "section": "13. Templating"}
+{"claim": "update_template_context runs the context processors for the app, then for the blueprints from outermost to innermost.", "section": "13. Templating"}
+{"claim": "Explicitly passed values win over processor values.", "section": "13. Templating"}
+{"claim": "_render sends before_render_template, renders, and sends template_rendered.", "section": "13. Templating"}
+{"claim": "render_template_string does the same with jinja_env.from_string.", "section": "13. Templating"}
+{"claim": "stream_template(_string) uses template.generate().", "section": "13. Templating"}
+{"claim": "stream_template(_string) wraps the generator with stream_with_context if a request is active.", "section": "13. Templating"}
+{"claim": "For streamed templates, template_rendered is sent once generation finishes.", "section": "13. Templating"}
+{"claim": "_default_template_ctx_processor is pre-registered in every Scaffold under scope None.", "section": "13. Templating"}
+{"claim": "_default_template_ctx_processor injects g, request and session as the real objects, not proxies.", "section": "13. Templating"}
+{"claim": "app.template_filter, template_test and template_global (and the add_* versions) write directly into jinja_env.", "section": "13. Templating"}
+{"claim": "Using app.template_filter and similar creates the Jinja environment, so jinja_options must be set before.", "section": "13. Templating"}
+{"claim": "The blueprint app_template_* versions write into jinja_env at registration time.", "section": "13. Templating"}
+{"claim": "get_template_attribute(template, name) in helpers.py gives Python code access to a macro or variable exported by a template.", "section": "13. Templating"}
+{"claim": "The app's static route and each blueprint's static route call send_static_file(filename).", "section": "14. Static files and sending files"}
+{"claim": "send_static_file calls send_from_directory(static_folder, filename, max_age=self.get_send_file_max_age(filename)).", "section": "14. Static files and sending files"}
+{"claim": "Flask and Blueprint each have their own copy of get_send_file_max_age and send_static_file, and the docstrings note they are duplicates.", "section": "14. Static files and sending files"}
+{"claim": "helpers.send_file and send_from_directory are thin wrappers around werkzeug.utils.send_file and send_from_directory.", "section": "14. Static files and sending files"}
+{"claim": "_prepare_send_file_kwargs adds environ=request.environ, use_x_sendfile=USE_X_SENDFILE, response_class=app.response_class and _root_path=app.root_path.", "section": "14. Static files and sending files"}
+{"claim": "_prepare_send_file_kwargs defaults max_age to current_app.get_send_file_max_age.", "section": "14. Static files and sending files"}
+{"claim": "send_from_directory uses safe_join, so it is safe for paths that come from users.", "section": "14. Static files and sending files"}
+{"claim": "send_file is not safe for paths that come from users.", "section": "14. Static files and sending files"}
+{"claim": "app.open_resource(path, mode=\"rb\", encoding=None) opens files under root_path, read-only.", "section": "14. Static files and sending files"}
+{"claim": "app.open_instance_resource(...) opens files under instance_path and allows writes.", "section": "14. Static files and sending files"}
+{"claim": "Blueprint.open_resource opens relative to the blueprint's root.", "section": "14. Static files and sending files"}
+{"claim": "The default encoding is None for Flask.open_resource.", "section": "14. Static files and sending files"}
+{"claim": "The default encoding is \"utf-8\" for Blueprint.open_resource and open_instance_resource.", "section": "14. Static files and sending files"}
+{"claim": "The [project.scripts] entry flask = \"flask.cli:main\" calls cli.main().", "section": "15.1 Entry points"}
+{"claim": "python -m flask (__main__.py) calls cli.main().", "section": "15.1 Entry points"}
+{"claim": "cli is a module-level FlaskGroup(name=\"flask\").", "section": "15.1 Entry points"}
+{"claim": "AppGroup subclasses click.Group.", "section": "15.2 Classes"}
+{"claim": "AppGroup.command() wraps callbacks in with_appcontext, and with_appcontext=False opts out.", "section": "15.2 Classes"}
+{"claim": "AppGroup.group() defaults to AppGroup.", "section": "15.2 Classes"}
+{"claim": "app.cli and bp.cli are AppGroups.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup subclasses AppGroup and is the flask command itself.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup adds the eager options -e/--env-file, -A/--app and --debug/--no-debug, plus --version.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup sets auto_envvar_prefix=\"FLASK\".", "section": "15.2 Classes"}
+{"claim": "The auto_envvar_prefix makes FLASK_APP, FLASK_DEBUG, FLASK_ENV_FILE and FLASK_RUN_PORT work as environment variables.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup adds the built-in run, shell and routes commands.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup loads plugin commands from the flask.commands entry point group via _load_plugin_commands.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.get_command(ctx, name) first looks up built-in and plugin commands, which work even if the app fails to load.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.get_command then loads the app with ScriptInfo.load_app(), pushes an app context with ctx.with_resource(app.app_context()) and looks the name up in app.cli.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.list_commands merges the built-in and app commands and prints load errors without crashing.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.make_context sets os.environ[\"FLASK_RUN_FROM_CLI\"] = \"true\".", "section": "15.2 Classes"}
+{"claim": "FLASK_RUN_FROM_CLI=true turns a stray app.run() into a no-op.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.make_context creates the ScriptInfo object.", "section": "15.2 Classes"}
+{"claim": "FlaskGroup.parse_args processes --env-file and --app early when only --help or no arguments are given, so that the app's commands show up in the help text.", "section": "15.2 Classes"}
+{"claim": "ScriptInfo holds app_import_path, an optional create_app callable, set_debug_flag and load_dotenv_defaults.", "section": "15.2 Classes"}
+{"claim": "ScriptInfo.load_app() caches the app.", "section": "15.2 Classes"}
+{"claim": "ScriptInfo.load_app search order is create_app() if given, then --app/FLASK_APP parsed as module_or_path[:name], then wsgi.py, then app.py in the current directory.", "section": "15.2 Classes"}
+{"claim": "The --app value is split on a colon that is not followed by a path separator, so Windows drive letters work.", "section": "15.2 Classes"}
+{"claim": "prepare_import(path) turns a file path into a module name by walking up through __init__.py packages.", "section": "15.3 App discovery"}
+{"claim": "prepare_import puts the package's parent directory at the front of sys.path.", "section": "15.3 App discovery"}
+{"claim": "locate_app(module, name) imports the module.", "section": "15.3 App discovery"}
+{"claim": "locate_app tells apart \"module not found\" and \"ImportError raised inside the module\" by checking the traceback depth.", "section": "15.3 App discovery"}
+{"claim": "find_best_app(module) tries app or application first.", "section": "15.3 App discovery"}
+{"claim": "find_best_app then tries a single Flask instance among the module's globals, raising an error if there are several.", "section": "15.3 App discovery"}
+{"claim": "find_best_app then tries a create_app or make_app factory called with no arguments.", "section": "15.3 App discovery"}
+{"claim": "find_app_by_string(module, \"create_app('dev', debug=True)\") parses the string with ast.", "section": "15.3 App discovery"}
+{"claim": "find_app_by_string allows only a plain name or a call whose arguments are literals, using ast.literal_eval.", "section": "15.3 App discovery"}
+{"claim": "_called_with_wrong_args tells apart a TypeError caused by calling the factory with the wrong arguments from a TypeError raised inside the factory.", "section": "15.3 App discovery"}
+{"claim": "The run command has options --host, --port, --cert, --reload/--debugger, --with-threads, --extra-files and --exclude-patterns.", "section": "15.4 Built-in commands"}
+{"claim": "--cert accepts a file, adhoc, or an import path to an SSLContext, validated by CertParamType and _validate_key.", "section": "15.4 Built-in commands"}
+{"claim": "--reload and --debugger both default to debug.", "section": "15.4 Built-in commands"}
+{"claim": "--extra-files and --exclude-patterns use SeparatedPathType, split on os.pathsep.", "section": "15.4 Built-in commands"}
+{"claim": "The run command calls werkzeug.run_simple.", "section": "15.4 Built-in commands"}
+{"claim": "If the app fails to import while running under the reloader, run prints the error and serves a WSGI app that re-raises it, so the reloader keeps watching files.", "section": "15.4 Built-in commands"}
+{"claim": "The shell command uses code.interact with app.make_shell_context().", "section": "15.4 Built-in commands"}
+{"claim": "make_shell_context provides app, g and any @app.shell_context_processor results.", "section": "15.4 Built-in commands"}
+{"claim": "The shell command honors PYTHONSTARTUP and sets up readline completion.", "section": "15.4 Built-in commands"}
+{"claim": "The routes command prints endpoint, methods, domain and rule.", "section": "15.4 Built-in commands"}
+{"claim": "The routes command hides HEAD and OPTIONS unless --all-methods is given.", "section": "15.4 Built-in commands"}
+{"claim": "The routes command prints the domain column only if any rule has a host or subdomain.", "section": "15.4 Built-in commands"}
+{"claim": "The routes command sorts by --sort endpoint|methods|domain|rule|match.", "section": "15.4 Built-in commands"}
+{"claim": "The routes sort option match keeps the url_map iteration order.", "section": "15.4 Built-in commands"}
+{"claim": "load_dotenv(path=None, load_defaults=True) is a no-op without python-dotenv, apart from printing a tip if .env files exist.", "section": "15.5 dotenv"}
+{"claim": "Dotenv precedence from highest to lowest is: variables already in the environment, the -e file, .env, then .flaskenv.", "section": "15.5 dotenv"}
+{"claim": "The dotenv files are found by searching upward from the current directory.", "section": "15.5 dotenv"}
+{"claim": "Flask.run() also calls load_dotenv() unless FLASK_SKIP_DOTENV disables it, via helpers.get_load_dotenv.", "section": "15.5 dotenv"}
+{"claim": "Flask.run() returns immediately if FLASK_RUN_FROM_CLI is set.", "section": "15.6 Flask.run()"}
+{"claim": "Otherwise Flask.run() loads dotenv.", "section": "15.6 Flask.run()"}
+{"claim": "Flask.run() applies FLASK_DEBUG and then the debug argument.", "section": "15.6 Flask.run()"}
+{"claim": "Flask.run() takes default host and port from SERVER_NAME, falling back to 127.0.0.1:5000.", "section": "15.6 Flask.run()"}
+{"claim": "Flask.run() defaults use_reloader and use_debugger to debug.", "section": "15.6 Flask.run()"}
+{"claim": "Flask.run() defaults threaded to True.", "section": "15.6 Flask.run()"}
+{"claim": "Flask.run() calls werkzeug.serving.run_simple.", "section": "15.6 Flask.run()"}
+{"claim": "Flask defines ten Blinker signals in a private Namespace.", "section": "16. Signals"}
+{"claim": "Each Flask signal is sent with the app object as sender and _async_wrapper=app.ensure_sync.", "section": "16. Signals"}
+{"claim": "request_started is sent from Flask.full_dispatch_request before preprocess_request, with no extra kwargs.", "section": "16. Signals"}
+{"claim": "request_finished is sent from Flask.finalize_request after process_response, with the kwarg response.", "section": "16. Signals"}
+{"claim": "got_request_exception is sent from Flask.handle_exception, only for exceptions that reach it, with the kwarg exception.", "section": "16. Signals"}
+{"claim": "request_tearing_down is sent from Flask.do_teardown_request with the kwarg exc.", "section": "16. Signals"}
+{"claim": "appcontext_tearing_down is sent from Flask.do_teardown_appcontext with the kwarg exc.", "section": "16. Signals"}
+{"claim": "appcontext_pushed is sent from AppContext.push with no extra kwargs.", "section": "16. Signals"}
+{"claim": "appcontext_popped is sent from AppContext.pop with no extra kwargs.", "section": "16. Signals"}
+{"claim": "before_render_template is sent from templating._render and _stream with the kwargs template and context.", "section": "16. Signals"}
+{"claim": "template_rendered is sent from templating._render and _stream, after generation, with the kwargs template and context.", "section": "16. Signals"}
+{"claim": "message_flashed is sent from helpers.flash with the kwargs message and category.", "section": "16. Signals"}
+{"claim": "tests/test_signals.py uses template_rendered.connect(receiver, app) to capture the context a template was rendered with.", "section": "16. Signals"}
+{"claim": "View requires overriding dispatch_request(**view_args).", "section": "17. Class-based views"}
+{"claim": "View.as_view(name, *args, **kwargs) returns a plain view function.", "section": "17. Class-based views"}
+{"claim": "By default View.as_view creates a new instance for each request.", "section": "17. Class-based views"}
+{"claim": "With init_every_request = False, one instance is reused.", "section": "17. Class-based views"}
+{"claim": "The function returned by as_view gets view_class, __name__, __doc__, __module__, methods and provide_automatic_options attributes, which add_url_rule reads.", "section": "17. Class-based views"}
+{"claim": "The class attribute decorators is applied to the generated function.", "section": "17. Class-based views"}
+{"claim": "Decorating the View class itself does nothing for routing.", "section": "17. Class-based views"}
+{"claim": "MethodView.__init_subclass__ collects the HTTP method names the class defines (get, post, ...) and those of its bases into methods.", "section": "17. Class-based views"}
+{"claim": "MethodView.dispatch_request calls the method matching request.method, falling back from HEAD to get.", "section": "17. Class-based views"}
+{"claim": "View and MethodView use current_app.ensure_sync, so async def get() works.", "section": "17. Class-based views"}
+{"claim": "app.test_client() returns a FlaskClient, or app.test_client_class, a subclass of Werkzeug's Client.", "section": "18. Testing support"}
+{"claim": "FlaskClient's default environ_base has REMOTE_ADDR=127.0.0.1 and a Werkzeug user agent.", "section": "18. Testing support"}
+{"claim": "FlaskClient requests are built with Flask's EnvironBuilder.", "section": "18. Testing support"}
+{"claim": "EnvironBuilder takes base_url defaults from SERVER_NAME (or localhost), APPLICATION_ROOT and PREFERRED_URL_SCHEME.", "section": "18. Testing support"}
+{"claim": "EnvironBuilder accepts subdomain and url_scheme.", "section": "18. Testing support"}
+{"claim": "EnvironBuilder serializes json= with app.json.", "section": "18. Testing support"}
+{"claim": "Using the client as `with client:` sets preserve_context = True.", "section": "18. Testing support"}
+{"claim": "With preserve_context, the client injects environ[\"werkzeug.debug.preserve_context\"], which Flask.wsgi_app calls in its finally block to hand over the app and request contexts.", "section": "18. Testing support"}
+{"claim": "The client pushes the preserved contexts again after the response, so request and session can be inspected until the with block ends.", "section": "18. Testing support"}
+{"claim": "Contexts preserved from an earlier request are popped at the start of the next request.", "section": "18. Testing support"}
+{"claim": "session_transaction() opens the session through a temporary test request context, yields it for editing, then saves it into the client's cookie jar.", "section": "18. Testing support"}
+{"claim": "response.json_module is set to app.json, so response.get_json() and response.json use the app's provider.", "section": "18. Testing support"}
+{"claim": "app.test_cli_runner() returns a FlaskCliRunner(CliRunner).", "section": "18. Testing support"}
+{"claim": "FlaskCliRunner.invoke() defaults to app.cli and passes a ScriptInfo(create_app=lambda: self.app).", "section": "18. Testing support"}
+{"claim": "The built-in commands run, shell and routes live on FlaskGroup, not on app.cli.", "section": "18. Testing support"}
+{"claim": "app.test_request_context(...) uses EnvironBuilder to produce a RequestContext without dispatching.", "section": "18. Testing support"}
+{"claim": "tests/conftest.py has an app fixture, Flask(\"flask_test\", root_path=tests/), with TESTING=True and a SECRET_KEY.", "section": "18. Testing support"}
+{"claim": "tests/conftest.py has fixtures app_ctx, req_ctx, client and test_apps.", "section": "18. Testing support"}
+{"claim": "The test_apps fixture adds tests/test_apps to sys.path and cleans up imported modules afterwards.", "section": "18. Testing support"}
+{"claim": "tests/conftest.py has an autouse fixture that resets FLASK_APP, FLASK_DEBUG, FLASK_RUN_FROM_CLI and so on.", "section": "18. Testing support"}
+{"claim": "tests/conftest.py has an autouse leak_detector fixture that fails any test leaving a request context pushed.", "section": "18. Testing support"}
+{"claim": "app.logger is a cached_property that calls logging.create_logger(app).", "section": "19. Logging and debug helpers"}
+{"claim": "The logger is logging.getLogger(app.name).", "section": "19. Logging and debug helpers"}
+{"claim": "The logger is set to DEBUG level in debug mode if no level is set yet.", "section": "19. Logging and debug helpers"}
+{"claim": "If no handler in the logger hierarchy handles its effective level (has_level_handler), the logger gets flask.logging.default_handler.", "section": "19. Logging and debug helpers"}
+{"claim": "default_handler is a StreamHandler writing to wsgi_errors_stream.", "section": "19. Logging and debug helpers"}
+{"claim": "wsgi_errors_stream is environ[\"wsgi.errors\"] during a request and sys.stderr otherwise.", "section": "19. Logging and debug helpers"}
+{"claim": "app.name is the import name.", "section": "19. Logging and debug helpers"}
+{"claim": "For __main__, app.name is the running script's file stem.", "section": "19. Logging and debug helpers"}
+{"claim": "debughelpers.py holds FormDataRoutingRedirect, DebugFilesKeyError / attach_enctype_error_multidict, and explain_template_loading_attempts.", "section": "19. Logging and debug helpers"}
+{"claim": "request_class and response_class default to flask.Request and flask.Response.", "section": "20.1 Customization points"}
+{"claim": "session_interface defaults to SecureCookieSessionInterface().", "section": "20.1 Customization points"}
+{"claim": "json_provider_class defaults to DefaultJSONProvider.", "section": "20.1 Customization points"}
+{"claim": "jinja_environment defaults to templating.Environment and jinja_options defaults to {}.", "section": "20.1 Customization points"}
+{"claim": "app_ctx_globals_class defaults to _AppCtxGlobals and controls the type of g.", "section": "20.1 Customization points"}
+{"claim": "config_class defaults to Config.", "section": "20.1 Customization points"}
+{"claim": "url_rule_class and url_map_class default to Werkzeug Rule and Map.", "section": "20.1 Customization points"}
+{"claim": "aborter_class defaults to Werkzeug Aborter and controls flask.abort.", "section": "20.1 Customization points"}
+{"claim": "test_client_class and test_cli_runner_class default to None, which resolves to FlaskClient and FlaskCliRunner.", "section": "20.1 Customization points"}
+{"claim": "Overridable methods include make_response, ensure_sync, async_to_sync, create_url_adapter, handle_*_exception, log_exception, should_ignore_error, select_jinja_autoescape, create_global_jinja_loader, make_default_options_response, get_send_file_max_age, and RequestContext.match_request.", "section": "20.1 Customization points"}
+{"claim": "tests/test_subclassing.py and docs/patterns/subclassing.rst have subclassing examples.", "section": "20.1 Customization points"}
+{"claim": "Flask has no special extension API.", "section": "20.2 Extensions"}
+{"claim": "The extension convention is an init_app(app) function or method that stores state in app.extensions[\"name\"].", "section": "20.2 Extensions"}
+{"claim": "The extension convention registers hooks such as app.teardown_appcontext(...), CLI commands via app.cli.add_command and config defaults via app.config.setdefault.", "section": "20.2 Extensions"}
+{"claim": "Extensions read current_app at runtime instead of keeping an app reference, so one extension instance can serve several apps.", "section": "20.2 Extensions"}
+{"claim": "docs/extensiondev.rst describes the extension convention.", "section": "20.2 Extensions"}
+{"claim": "flask.url_for delegates to current_app.url_for.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.redirect delegates to current_app.redirect and uses Werkzeug redirect outside an app context.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.abort delegates to current_app.aborter and uses Werkzeug abort outside an app context.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.make_response delegates to current_app.make_response.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.jsonify and flask.json.* delegate to current_app.json.*.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.render_template uses current_app.jinja_env and current_app.update_template_context.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "flask.send_file uses werkzeug.utils.send_file with app-derived kwargs.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "These delegating helpers mostly changed in Flask 2.2.", "section": "20.3 Which helper delegates to which app method"}
+{"claim": "Process / app object state lives on the Flask instance: config, url_map, view_functions, hook registries, blueprints, extensions, jinja_env, json and logger.", "section": "20.4 State lifetimes"}
+{"claim": "App context state lives in AppContext: g and url_adapter (if SERVER_NAME).", "section": "20.4 State lifetimes"}
+{"claim": "Request context state lives in RequestContext: request, session, flashes, url_adapter and _after_request_functions.", "section": "20.4 State lifetimes"}
+{"claim": "Session data persists across requests in a signed cookie on the client side.", "section": "20.4 State lifetimes"}
+{"claim": "Adding routes, hooks or blueprints after the app has handled a request raises AssertionError via setupmethod.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "Changing a blueprint after registering it raises AssertionError.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "before_request runs even for 404s, because routing errors are stored and raised in dispatch_request after preprocess_request.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "An app @errorhandler(404) beats a blueprint @errorhandler(HTTPException).", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "If an app context for the same app is already active, such as client.get() inside `with app.app_context():`, RequestContext.push reuses it.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "When the app context is reused, g and the app-context teardowns outlive the single request.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "With TESTING=True the test client raises the view's exception instead of returning a 500.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "With no secret key by default, the session is a NullSession whose reads work and writes raise.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "Expired or tampered session cookies quietly become an empty session.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "save_session runs in process_response, so session changes made inside a streaming generator are not persisted.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "stream_with_context delays teardown until the generator finishes.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "A generator without stream_with_context cannot use request once the view returns.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "The Jinja environment is created lazily and only once, so jinja_options changes after the first app.jinja_env access have no effect.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "jinja_options changes after any template_filter/template_global registration have no effect.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "url_for outside a request needs SERVER_NAME and produces absolute URLs by default.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "app.run() is ignored under flask run because of FLASK_RUN_FROM_CLI.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "test_cli_runner().invoke(args=[\"routes\"]) fails because it invokes app.cli, which does not contain the built-in commands.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "To test built-in commands, flask.cli.cli or a FlaskGroup must be passed explicitly to invoke.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "bp.endpoint(\"name\") is not prefixed with the blueprint name, unlike bp.route.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "HEAD comes from Werkzeug whenever GET is allowed.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "OPTIONS is added by Flask unless PROVIDE_AUTOMATIC_OPTIONS=False or the view opts out.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": ".devcontainer/on-create-command.sh installs from requirements/dev.txt, which does not exist at this commit.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "The project now uses uv dependency groups instead of requirements/dev.txt.", "section": "21. Gotchas and non-obvious behavior"}
+{"claim": "The project uses uv with dependency groups ([dependency-groups] in pyproject.toml) and a lock file (uv.lock).", "section": "22.1 Environment setup"}
+{"claim": "[tool.uv] default-groups = [\"dev\", \"pre-commit\", \"tests\", \"typing\"].", "section": "22.1 Environment setup"}
+{"claim": "`uv sync` creates .venv and installs Flask (editable) plus the dev, pre-commit, tests and typing groups.", "section": "22.1 Environment setup"}
+{"claim": "`uv run pytest` runs the full test suite, with testpaths = [\"tests\"].", "section": "22.1 Environment setup"}
+{"claim": "`uv run pre-commit install` installs hooks for ruff, ruff-format, uv-lock and whitespace.", "section": "22.1 Environment setup"}
+{"claim": "The build backend is flit_core.", "section": "22.1 Environment setup"}
+{"claim": "The package is src/flask.", "section": "22.1 Environment setup"}
+{"claim": "[tool.tox] in pyproject.toml uses tox-uv with the uv-venv-lock-runner.", "section": "22.2 Tox environments"}
+{"claim": "The tox envs py3.13, py3.12, py3.11, py3.10 and pypy3.11 run pytest on locked latest deps.", "section": "22.2 Tox environments"}
+{"claim": "The tox env tests-min runs pytest with the minimum supported versions of Werkzeug, Jinja, Click, etc.", "section": "22.2 Tox environments"}
+{"claim": "The tox env tests-dev runs pytest against the main branches of the Pallets dependencies.", "section": "22.2 Tox environments"}
+{"claim": "The tox env style runs pre-commit run --all-files.", "section": "22.2 Tox environments"}
+{"claim": "The tox env typing runs mypy (strict) and pyright over src and tests/type_check.", "section": "22.2 Tox environments"}
+{"claim": "The tox env docs runs sphinx-build -W, with warnings as errors.", "section": "22.2 Tox environments"}
+{"claim": "The tox env docs-auto is a live-reloading docs server.", "section": "22.2 Tox environments"}
+{"claim": "CI in .github/workflows/tests.yaml runs `uv run --locked tox run -e <env>`.", "section": "22.2 Tox environments"}
+{"claim": "CI runs on Linux, plus Windows and macOS on 3.13, PyPy, and the min/dev dependency versions.", "section": "22.2 Tox environments"}
+{"claim": "A separate CI job runs typing.", "section": "22.2 Tox environments"}
+{"claim": "pytest config has filterwarnings = [\"error\"], so any warning fails the test.", "section": "22.2 Tox environments"}
+{"claim": "mypy runs in strict mode.", "section": "22.2 Tox environments"}
+{"claim": "tests/type_check/*.py are not executed but are type-checked to make sure public decorators keep their signatures.", "section": "22.2 Tox environments"}
+{"claim": "Ruff lint rules are B, E, F, I, UP and W.", "section": "22.2 Tox environments"}
+{"claim": "The isort rule in ruff uses force-single-line imports, which is why every import in the source is on its own line.", "section": "22.2 Tox environments"}
+{"claim": "User-visible changes need a CHANGES.rst entry under the unreleased version.", "section": "22.2 Tox environments"}
+{"claim": "Public APIs use Sphinx .. versionadded:: / .. versionchanged:: notes in their docstrings.", "section": "22.2 Tox environments"}
+{"claim": "tests/test_basic.py covers app.py dispatch, make_response, routing and hooks, and is the largest test file at about 1,900 lines.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_blueprints.py covers blueprints.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_appctx.py and tests/test_reqctx.py cover contexts.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_user_error_handler.py covers error handlers.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_cli.py covers the CLI and uses tests/test_apps/cliapp and helloworld.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_config.py and tests/test_instance_config.py cover config.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_json.py and tests/test_json_tag.py cover JSON.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_templating.py covers templates, which are in tests/templates/.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_helpers.py covers helpers (url_for, send_file, flash, streaming).", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_testing.py covers the test client.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_signals.py covers signals.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_views.py covers views.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_async.py covers async.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_session_interface.py covers sessions, plus session tests in test_basic.py.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_logging.py covers logging.", "section": "22.3 Where the tests are"}
+{"claim": "tests/test_request.py covers request limits.", "section": "22.3 Where the tests are"}
+{"claim": "Changes to how view return values become responses start in Flask.make_response in app.py.", "section": "22.4 Where to make common changes"}
+{"claim": "Hook ordering or the pipeline is in Flask.full_dispatch_request, preprocess_request, process_response and do_teardown_*.", "section": "22.4 Where to make common changes"}
+{"claim": "Routing registration is in App.add_url_rule (sansio/app.py) and BlueprintSetupState.add_url_rule.", "section": "22.4 Where to make common changes"}
+{"claim": "Host/subdomain matching is in Flask.create_url_adapter.", "section": "22.4 Where to make common changes"}
+{"claim": "Error handler lookup is in App._find_error_handler and Scaffold._get_exc_class_and_code.", "section": "22.4 Where to make common changes"}
+{"claim": "Blueprint nesting or naming is in Blueprint.register and _merge_blueprint_funcs in sansio/blueprints.py.", "section": "22.4 Where to make common changes"}
+{"claim": "Adding a config key involves Flask.default_config, the consumer, and docs/config.rst.", "section": "22.4 Where to make common changes"}
+{"claim": "Context push/pop is in ctx.py.", "section": "22.4 Where to make common changes"}
+{"claim": "CLI app discovery is in ScriptInfo.load_app, locate_app, find_best_app and find_app_by_string.", "section": "22.4 Where to make common changes"}
+{"claim": "Session cookies are in SecureCookieSessionInterface.", "section": "22.4 Where to make common changes"}
+{"claim": "docs/lifecycle.rst, docs/appcontext.rst, docs/reqcontext.rst, docs/blueprints.rst, docs/design.rst and docs/api.rst exist as background docs.", "section": "22.5 Suggested reading order"}
+{"claim": "examples/tutorial (flaskr) is a small complete application with a factory, blueprints, an app-context database helper, a CLI command and tests.", "section": "22.5 Suggested reading order"}
+{"claim": "Section 5.2 shows the trace produced by a tiny app with hooks on the app and on a nested blueprint called through app.test_client().", "section": "22.5 Suggested reading order"}

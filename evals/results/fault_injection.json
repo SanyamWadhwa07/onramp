@@ -1,0 +1,4385 @@
+{
+ "seed": 7,
+ "summary": {
+  "control": {
+   "passed": 200,
+   "total": 200
+  },
+  "fabricated": {
+   "passed": 200,
+   "total": 200
+  },
+  "missing": {
+   "passed": 200,
+   "total": 200
+  },
+  "drift": {
+   "passed": 125,
+   "total": 125
+  }
+ },
+ "repos": [
+  {
+   "repo": "PaperMind",
+   "citations_in_guide": 894,
+   "cases": [
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:43-46|async def get_owned(]]",
+     "mutant": "[[backend/repositories/summary_repository.py:43-46|async def get_owned(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:43-46|async def get_owned(]]",
+     "mutant": "[[backend/repositories/summary_repository.py:43-46|async_cache def get_owned(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:43-46|async def get_owned(]]",
+     "mutant": "[[backend/repositories/summary_repository_old.py:43-46|async def get_owned(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:43-46|async def get_owned(]]",
+     "mutant": "[[backend/repositories/summary_repository.py:46-49|async def get_owned(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return_cache]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return]]",
+     "mutant": "[[frontend/src/pages/HomePage_old.jsx:75-77|!requireAuth()) return]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:75-77|!requireAuth()) return]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:72-74|!requireAuth()) return]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agents/structure_agent.py:22|from backend.main import AdvancedSectionExtractor]]",
+     "mutant": "[[core/agents/structure_agent.py:22|from backend.main import AdvancedSectionExtractor]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agents/structure_agent.py:22|from backend.main import AdvancedSectionExtractor]]",
+     "mutant": "[[core/agents/structure_agent.py:22-22|from_async backend.main import AdvancedSectionExtractor]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agents/structure_agent.py:22|from backend.main import AdvancedSectionExtractor]]",
+     "mutant": "[[core/agents/structure_agent_old.py:22-22|from backend.main import AdvancedSectionExtractor]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/agents/structure_agent.py:22|from backend.main import AdvancedSectionExtractor]]",
+     "mutant": "[[core/agents/structure_agent.py:13-13|from backend.main import AdvancedSectionExtractor]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis-network]]",
+     "mutant": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis-network]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis-network]]",
+     "mutant": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis_cache-network]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis-network]]",
+     "mutant": "[[frontend/src/components/KnowledgeGraph_old.jsx:10-19|Replaces vis-network]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/components/KnowledgeGraph.jsx:10-19|Replaces vis-network]]",
+     "mutant": "[[frontend/src/components/KnowledgeGraph.jsx:15-24|Replaces vis-network]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:553-564|def _route_after_grade(]]",
+     "mutant": "[[core/graph/summary_graph.py:553-564|def _route_after_grade(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:553-564|def _route_after_grade(]]",
+     "mutant": "[[core/graph/summary_graph.py:553-564|def _route_after_grade_v2(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:553-564|def _route_after_grade(]]",
+     "mutant": "[[core/graph/summary_graph_old.py:553-564|def _route_after_grade(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[evals/label.py:235-236|def _validate(]]",
+     "mutant": "[[evals/label.py:235-236|def _validate(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[evals/label.py:235-236|def _validate(]]",
+     "mutant": "[[evals/label.py:235-236|def _validate_internal(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[evals/label.py:235-236|def _validate(]]",
+     "mutant": "[[evals/label_old.py:235-236|def _validate(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[evals/label.py:235-236|def _validate(]]",
+     "mutant": "[[evals/label.py:238-239|def _validate(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:619-661|def get_summary_graph():]]",
+     "mutant": "[[core/graph/summary_graph.py:619-661|def get_summary_graph():]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:619-661|def get_summary_graph():]]",
+     "mutant": "[[core/graph/summary_graph.py:619-661|def get_summary_graph_async():]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:619-661|def get_summary_graph():]]",
+     "mutant": "[[core/graph/summary_graph_old.py:619-661|def get_summary_graph():]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[docker-compose.yml:74-84|--maxmemory 256mb]]",
+     "mutant": "[[docker-compose.yml:74-84|--maxmemory 256mb]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[docker-compose.yml:74-84|--maxmemory 256mb]]",
+     "mutant": "[[docker-compose.yml:74-84|--maxmemory_async 256mb]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[docker-compose.yml:74-84|--maxmemory 256mb]]",
+     "mutant": "[[docker-compose_old.yml:74-84|--maxmemory 256mb]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[docker-compose.yml:74-84|--maxmemory 256mb]]",
+     "mutant": "[[docker-compose.yml:69-79|--maxmemory 256mb]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:37-60|export default function App()]]",
+     "mutant": "[[frontend/src/App.jsx:37-60|export default function App()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:37-60|export default function App()]]",
+     "mutant": "[[frontend/src/App.jsx:37-60|export_cache default function App()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:37-60|export default function App()]]",
+     "mutant": "[[frontend/src/App_old.jsx:37-60|export default function App()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:399-454|async def _post_save_tasks(]]",
+     "mutant": "[[backend/services/paper_processing_service.py:399-454|async def _post_save_tasks(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:399-454|async def _post_save_tasks(]]",
+     "mutant": "[[backend/services/paper_processing_service.py:399-454|async def _post_save_tasks_v2(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:399-454|async def _post_save_tasks(]]",
+     "mutant": "[[backend/services/paper_processing_service_old.py:399-454|async def _post_save_tasks(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:186-197|def _rates(]]",
+     "mutant": "[[evals/golden_eval.py:186-197|def _rates(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:186-197|def _rates(]]",
+     "mutant": "[[evals/golden_eval.py:186-197|def_async _rates(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:186-197|def _rates(]]",
+     "mutant": "[[evals/golden_eval_old.py:186-197|def _rates(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:186-197|def _rates(]]",
+     "mutant": "[[evals/golden_eval.py:191-202|def _rates(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/db/client.py:22-36|class SupabaseProvider:]]",
+     "mutant": "[[backend/db/client.py:22-36|class SupabaseProvider:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/db/client.py:22-36|class SupabaseProvider:]]",
+     "mutant": "[[backend/db/client.py:22-36|class_legacy SupabaseProvider:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/db/client.py:22-36|class SupabaseProvider:]]",
+     "mutant": "[[backend/db/client_old.py:22-36|class SupabaseProvider:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token_legacy)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:14-22|function isTokenExpired(token)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:19-27|function isTokenExpired(token)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload(file]]",
+     "mutant": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload(file]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload(file]]",
+     "mutant": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload_v2(file]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload(file]]",
+     "mutant": "[[frontend/src/lib/processingStore_old.js:201-205|export async function enqueueUpload(file]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/lib/processingStore.js:201-205|export async function enqueueUpload(file]]",
+     "mutant": "[[frontend/src/lib/processingStore.js:192-196|export async function enqueueUpload(file]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]",
+     "mutant": "[[backend/auth/utils.py:11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]",
+     "mutant": "[[backend/auth/utils.py:11-11|from_legacy database.config import JWT_ACCESS_TOKEN_EXPIRES]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]",
+     "mutant": "[[backend/auth/utils_old.py:11-11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:11|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]",
+     "mutant": "[[backend/auth/utils.py:16-16|from database.config import JWT_ACCESS_TOKEN_EXPIRES]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:41-49|isTokenExpired(saved)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:41-49|isTokenExpired(saved)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:41-49|isTokenExpired(saved)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:41-49|isTokenExpired_cache(saved)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:41-49|isTokenExpired(saved)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:41-49|isTokenExpired(saved)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[evals/label.py:184-187|pass --force to overwrite]]",
+     "mutant": "[[evals/label.py:184-187|pass --force to overwrite]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[evals/label.py:184-187|pass --force to overwrite]]",
+     "mutant": "[[evals/label.py:184-187|pass_internal --force to overwrite]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[evals/label.py:184-187|pass --force to overwrite]]",
+     "mutant": "[[evals/label_old.py:184-187|pass --force to overwrite]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[evals/label.py:184-187|pass --force to overwrite]]",
+     "mutant": "[[evals/label.py:175-178|pass --force to overwrite]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:108-117|RelationType = Literal[]]",
+     "mutant": "[[core/graph/schemas.py:108-117|RelationType = Literal[]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:108-117|RelationType = Literal[]]",
+     "mutant": "[[core/graph/schemas.py:108-117|RelationType_internal = Literal[]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:108-117|RelationType = Literal[]]",
+     "mutant": "[[core/graph/schemas_old.py:108-117|RelationType = Literal[]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:114-115|def grounding_scores(]]",
+     "mutant": "[[evals/golden_eval.py:114-115|def grounding_scores(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:114-115|def grounding_scores(]]",
+     "mutant": "[[evals/golden_eval.py:114-115|def grounding_scores_legacy(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:114-115|def grounding_scores(]]",
+     "mutant": "[[evals/golden_eval_old.py:114-115|def grounding_scores(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:114-115|def grounding_scores(]]",
+     "mutant": "[[evals/golden_eval.py:111-112|def grounding_scores(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:122-133|def _transform_to_legacy_format(]]",
+     "mutant": "[[core/agent_integration.py:122-133|def _transform_to_legacy_format(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:122-133|def _transform_to_legacy_format(]]",
+     "mutant": "[[core/agent_integration.py:122-133|def_cache _transform_to_legacy_format(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:122-133|def _transform_to_legacy_format(]]",
+     "mutant": "[[core/agent_integration_old.py:122-133|def _transform_to_legacy_format(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:122-133|def _transform_to_legacy_format(]]",
+     "mutant": "[[core/agent_integration.py:127-138|def _transform_to_legacy_format(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:434-474|def cmd_calibrate(]]",
+     "mutant": "[[evals/golden_eval.py:434-474|def cmd_calibrate(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:434-474|def cmd_calibrate(]]",
+     "mutant": "[[evals/golden_eval.py:434-474|def_internal cmd_calibrate(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[evals/golden_eval.py:434-474|def cmd_calibrate(]]",
+     "mutant": "[[evals/golden_eval_old.py:434-474|def cmd_calibrate(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:1-7|without changing their contract]]",
+     "mutant": "[[core/graph/adapter.py:1-7|without changing their contract]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:1-7|without changing their contract]]",
+     "mutant": "[[core/graph/adapter.py:1-7|without_cache changing their contract]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:1-7|without changing their contract]]",
+     "mutant": "[[core/graph/adapter_old.py:1-7|without changing their contract]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:1-7|without changing their contract]]",
+     "mutant": "[[core/graph/adapter.py:10-16|without changing their contract]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:173-175|export function prime(key, data)]]",
+     "mutant": "[[frontend/src/lib/query.js:173-175|export function prime(key, data)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:173-175|export function prime(key, data)]]",
+     "mutant": "[[frontend/src/lib/query.js:173-175|export function prime_v2(key, data)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:173-175|export function prime(key, data)]]",
+     "mutant": "[[frontend/src/lib/query_old.js:173-175|export function prime(key, data)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:173-175|export function prime(key, data)]]",
+     "mutant": "[[frontend/src/lib/query.js:164-166|export function prime(key, data)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/paper_search.py:215-237|want=40]]",
+     "mutant": "[[core/knowledge/paper_search.py:215-237|want=40]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/paper_search.py:215-237|want=40]]",
+     "mutant": "[[core/knowledge/paper_search.py:215-237|want_cache=40]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/paper_search.py:215-237|want=40]]",
+     "mutant": "[[core/knowledge/paper_search_old.py:215-237|want=40]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/paper_search.py:215-237|want=40]]",
+     "mutant": "[[core/knowledge/paper_search.py:224-246|want=40]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True]]",
+     "mutant": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True]]",
+     "mutant": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True_v2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True]]",
+     "mutant": "[[core/knowledge/embedding_service_old.py:30-33|normalize_embeddings=True]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:30-33|normalize_embeddings=True]]",
+     "mutant": "[[core/knowledge/embedding_service.py:27-30|normalize_embeddings=True]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:152-163|interval = max(self._settings.job_lease_seconds // 3, 5)]]",
+     "mutant": "[[backend/services/job_queue.py:152-163|interval = max(self._settings.job_lease_seconds // 3, 5)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:152-163|interval = max(self._settings.job_lease_seconds // 3, 5)]]",
+     "mutant": "[[backend/services/job_queue.py:152-163|interval = max_cache(self._settings.job_lease_seconds // 3, 5)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:152-163|interval = max(self._settings.job_lease_seconds // 3, 5)]]",
+     "mutant": "[[backend/services/job_queue_old.py:152-163|interval = max(self._settings.job_lease_seconds // 3, 5)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/nginx.conf:50-67|try_files $uri $uri/ /index.html;]]",
+     "mutant": "[[frontend/nginx.conf:50-67|try_files $uri $uri/ /index.html;]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/nginx.conf:50-67|try_files $uri $uri/ /index.html;]]",
+     "mutant": "[[frontend/nginx.conf:50-67|try_files $uri_cache $uri/ /index.html;]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/nginx.conf:50-67|try_files $uri $uri/ /index.html;]]",
+     "mutant": "[[frontend/nginx_old.conf:50-67|try_files $uri $uri/ /index.html;]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/nginx.conf:50-67|try_files $uri $uri/ /index.html;]]",
+     "mutant": "[[frontend/nginx.conf:41-58|try_files $uri $uri/ /index.html;]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:45-61|def normalise_numbers(text: str) -> str:]]",
+     "mutant": "[[core/intelligence/hallucination_guard.py:45-61|def normalise_numbers(text: str) -> str:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:45-61|def normalise_numbers(text: str) -> str:]]",
+     "mutant": "[[core/intelligence/hallucination_guard.py:45-61|def normalise_numbers(text_cache: str) -> str:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:45-61|def normalise_numbers(text: str) -> str:]]",
+     "mutant": "[[core/intelligence/hallucination_guard_old.py:45-61|def normalise_numbers(text: str) -> str:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/components/ProcessingTray.jsx:66-89|job.status === 'queued' && (]]",
+     "mutant": "[[frontend/src/components/ProcessingTray.jsx:66-89|job.status === 'queued' && (]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/components/ProcessingTray.jsx:66-89|job.status === 'queued' && (]]",
+     "mutant": "[[frontend/src/components/ProcessingTray.jsx:66-89|job.status === 'queued_cache' && (]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/components/ProcessingTray.jsx:66-89|job.status === 'queued' && (]]",
+     "mutant": "[[frontend/src/components/ProcessingTray_old.jsx:66-89|job.status === 'queued' && (]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[CLAUDE.md:282-286|phase 2 (parallel)]]",
+     "mutant": "[[CLAUDE.md:282-286|phase 2 (parallel)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[CLAUDE.md:282-286|phase 2 (parallel)]]",
+     "mutant": "[[CLAUDE.md:282-286|phase_legacy 2 (parallel)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[CLAUDE.md:282-286|phase 2 (parallel)]]",
+     "mutant": "[[CLAUDE_old.md:282-286|phase 2 (parallel)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[CLAUDE.md:282-286|phase 2 (parallel)]]",
+     "mutant": "[[CLAUDE.md:291-295|phase 2 (parallel)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:300-315|def get_provider_info()]]",
+     "mutant": "[[core/llm/providers.py:300-315|def get_provider_info()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:300-315|def get_provider_info()]]",
+     "mutant": "[[core/llm/providers.py:300-315|def_async get_provider_info()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:300-315|def get_provider_info()]]",
+     "mutant": "[[core/llm/providers_old.py:300-315|def get_provider_info()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agents/base_agent.py:299-324|async def ask_agent(]]",
+     "mutant": "[[core/agents/base_agent.py:299-324|async def ask_agent(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agents/base_agent.py:299-324|async def ask_agent(]]",
+     "mutant": "[[core/agents/base_agent.py:299-324|async_legacy def ask_agent(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agents/base_agent.py:299-324|async def ask_agent(]]",
+     "mutant": "[[core/agents/base_agent_old.py:299-324|async def ask_agent(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-128|# worker:]]",
+     "mutant": "[[docker-compose.yml:93-128|# worker:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-128|# worker:]]",
+     "mutant": "[[docker-compose.yml:93-128|# worker_cache:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-128|# worker:]]",
+     "mutant": "[[docker-compose_old.yml:93-128|# worker:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/pipeline/table_extractor.py:509-561|def extract_tables_with_status(]]",
+     "mutant": "[[core/pipeline/table_extractor.py:509-561|def extract_tables_with_status(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/pipeline/table_extractor.py:509-561|def extract_tables_with_status(]]",
+     "mutant": "[[core/pipeline/table_extractor.py:509-561|def extract_tables_with_status_legacy(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/pipeline/table_extractor.py:509-561|def extract_tables_with_status(]]",
+     "mutant": "[[core/pipeline/table_extractor_old.py:509-561|def extract_tables_with_status(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:132-138|class SummaryGrade(BaseModel):]]",
+     "mutant": "[[core/graph/schemas.py:132-138|class SummaryGrade(BaseModel):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:132-138|class SummaryGrade(BaseModel):]]",
+     "mutant": "[[core/graph/schemas.py:132-138|class SummaryGrade(BaseModel_cache):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/schemas.py:132-138|class SummaryGrade(BaseModel):]]",
+     "mutant": "[[core/graph/schemas_old.py:132-138|class SummaryGrade(BaseModel):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/api/errors.py:80-84|class ExternalServiceError(AppError):]]",
+     "mutant": "[[backend/api/errors.py:80-84|class ExternalServiceError(AppError):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/api/errors.py:80-84|class ExternalServiceError(AppError):]]",
+     "mutant": "[[backend/api/errors.py:80-84|class_async ExternalServiceError(AppError):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/api/errors.py:80-84|class ExternalServiceError(AppError):]]",
+     "mutant": "[[backend/api/errors_old.py:80-84|class ExternalServiceError(AppError):]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/api/errors.py:80-84|class ExternalServiceError(AppError):]]",
+     "mutant": "[[backend/api/errors.py:83-87|class ExternalServiceError(AppError):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service.py:184-198|summary_data->entities_v2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service_old.py:184-198|summary_data->entities]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:59-70|async def login(]]",
+     "mutant": "[[backend/auth/routes.py:59-70|async def login(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:59-70|async def login(]]",
+     "mutant": "[[backend/auth/routes.py:59-70|async_cache def login(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:59-70|async def login(]]",
+     "mutant": "[[backend/auth/routes_old.py:59-70|async def login(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:114-117|def verify_claims(]]",
+     "mutant": "[[core/intelligence/hallucination_guard.py:114-117|def verify_claims(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:114-117|def verify_claims(]]",
+     "mutant": "[[core/intelligence/hallucination_guard.py:114-117|def_v2 verify_claims(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:114-117|def verify_claims(]]",
+     "mutant": "[[core/intelligence/hallucination_guard_old.py:114-117|def verify_claims(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/intelligence/hallucination_guard.py:114-117|def verify_claims(]]",
+     "mutant": "[[core/intelligence/hallucination_guard.py:119-122|def verify_claims(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/components/ui/primitives.jsx:52-85|export const Button = forwardRef(function Button(]]",
+     "mutant": "[[frontend/src/components/ui/primitives.jsx:52-85|export const Button = forwardRef(function Button(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/components/ui/primitives.jsx:52-85|export const Button = forwardRef(function Button(]]",
+     "mutant": "[[frontend/src/components/ui/primitives.jsx:52-85|export const_cache Button = forwardRef(function Button(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/components/ui/primitives.jsx:52-85|export const Button = forwardRef(function Button(]]",
+     "mutant": "[[frontend/src/components/ui/primitives_old.jsx:52-85|export const Button = forwardRef(function Button(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:73-79|Disabled under pytest]]",
+     "mutant": "[[backend/config/settings.py:73-79|Disabled under pytest]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:73-79|Disabled under pytest]]",
+     "mutant": "[[backend/config/settings.py:73-79|Disabled under pytest_v2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:73-79|Disabled under pytest]]",
+     "mutant": "[[backend/config/settings_old.py:73-79|Disabled under pytest]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:73-79|Disabled under pytest]]",
+     "mutant": "[[backend/config/settings.py:68-74|Disabled under pytest]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null)]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null)]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null_cache)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null)]]",
+     "mutant": "[[frontend/src/pages/SummaryPage_old.jsx:254-259|setGraphData(null)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:254-259|setGraphData(null)]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:263-268|setGraphData(null)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id)]]",
+     "mutant": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id)]]",
+     "mutant": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id_v2)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id)]]",
+     "mutant": "[[core/knowledge/graph_service_old.py:81-95|.eq('paper_a_id', summary_id)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:81-95|.eq('paper_a_id', summary_id)]]",
+     "mutant": "[[core/knowledge/graph_service.py:72-86|.eq('paper_a_id', summary_id)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:10-41|SORTABLE_COLUMNS = frozenset(]]",
+     "mutant": "[[backend/repositories/summary_repository.py:10-41|SORTABLE_COLUMNS = frozenset(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:10-41|SORTABLE_COLUMNS = frozenset(]]",
+     "mutant": "[[backend/repositories/summary_repository.py:10-41|SORTABLE_COLUMNS_legacy = frozenset(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/repositories/summary_repository.py:10-41|SORTABLE_COLUMNS = frozenset(]]",
+     "mutant": "[[backend/repositories/summary_repository_old.py:10-41|SORTABLE_COLUMNS = frozenset(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/provenance.py:120-128|A callback is used rather than]]",
+     "mutant": "[[core/graph/provenance.py:120-128|A callback is used rather than]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/provenance.py:120-128|A callback is used rather than]]",
+     "mutant": "[[core/graph/provenance.py:120-128|A callback is used_internal rather than]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/provenance.py:120-128|A callback is used rather than]]",
+     "mutant": "[[core/graph/provenance_old.py:120-128|A callback is used rather than]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/graph/provenance.py:120-128|A callback is used rather than]]",
+     "mutant": "[[core/graph/provenance.py:129-137|A callback is used rather than]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:84-91|from backend.database.config import SUPABASE_URL, SUPABASE_SERVICE_KEY]]",
+     "mutant": "[[core/agent_integration.py:84-91|from backend.database.config import SUPABASE_URL, SUPABASE_SERVICE_KEY]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:84-91|from backend.database.config import SUPABASE_URL, SUPABASE_SERVICE_KEY]]",
+     "mutant": "[[core/agent_integration.py:84-91|from backend.database.config_v2 import SUPABASE_URL, SUPABASE_SERVICE_KEY]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:84-91|from backend.database.config import SUPABASE_URL, SUPABASE_SERVICE_KEY]]",
+     "mutant": "[[core/agent_integration_old.py:84-91|from backend.database.config import SUPABASE_URL, SUPABASE_SERVICE_KEY]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:107-128|async def forgot_password(]]",
+     "mutant": "[[backend/auth/routes.py:107-128|async def forgot_password(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:107-128|async def forgot_password(]]",
+     "mutant": "[[backend/auth/routes.py:107-128|async def forgot_password_cache(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:107-128|async def forgot_password(]]",
+     "mutant": "[[backend/auth/routes_old.py:107-128|async def forgot_password(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:8-23|const HomePage = lazy(() => import('./pages/HomePage'))]]",
+     "mutant": "[[frontend/src/App.jsx:8-23|const HomePage = lazy(() => import('./pages/HomePage'))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:8-23|const HomePage = lazy(() => import('./pages/HomePage'))]]",
+     "mutant": "[[frontend/src/App.jsx:8-23|const HomePage = lazy_cache(() => import('./pages/HomePage'))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/App.jsx:8-23|const HomePage = lazy(() => import('./pages/HomePage'))]]",
+     "mutant": "[[frontend/src/App_old.jsx:8-23|const HomePage = lazy(() => import('./pages/HomePage'))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:429-476|async def synthesize(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:429-476|async def synthesize(state: SummaryState)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:429-476|async def synthesize(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:429-476|async_v2 def synthesize(state: SummaryState)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:429-476|async def synthesize(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph_old.py:429-476|async def synthesize(state: SummaryState)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:29-41|function watch(page, label)]]",
+     "mutant": "[[frontend/scripts/smoke.mjs:29-41|function watch(page, label)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:29-41|function watch(page, label)]]",
+     "mutant": "[[frontend/scripts/smoke.mjs:29-41|function watch(page_v2, label)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:29-41|function watch(page, label)]]",
+     "mutant": "[[frontend/scripts/smoke_old.mjs:29-41|function watch(page, label)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/intelligence/peer_review_agent.py:146-151|temperature=0.15]]",
+     "mutant": "[[core/intelligence/peer_review_agent.py:146-151|temperature=0.15]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/intelligence/peer_review_agent.py:146-151|temperature=0.15]]",
+     "mutant": "[[core/intelligence/peer_review_agent.py:146-151|temperature_v2=0.15]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/intelligence/peer_review_agent.py:146-151|temperature=0.15]]",
+     "mutant": "[[core/intelligence/peer_review_agent_old.py:146-151|temperature=0.15]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:100-110|for (const tab of]]",
+     "mutant": "[[frontend/scripts/smoke.mjs:100-110|for (const tab of]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:100-110|for (const tab of]]",
+     "mutant": "[[frontend/scripts/smoke.mjs:100-110|for_cache (const tab of]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/scripts/smoke.mjs:100-110|for (const tab of]]",
+     "mutant": "[[frontend/scripts/smoke_old.mjs:100-110|for (const tab of]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:63-74|Password must be at most 72 bytes long]]",
+     "mutant": "[[backend/auth/utils.py:63-74|Password must be at most 72 bytes long]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:63-74|Password must be at most 72 bytes long]]",
+     "mutant": "[[backend/auth/utils.py:63-74|Password must be at most_cache 72 bytes long]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:63-74|Password must be at most 72 bytes long]]",
+     "mutant": "[[backend/auth/utils_old.py:63-74|Password must be at most 72 bytes long]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:63-74|Password must be at most 72 bytes long]]",
+     "mutant": "[[backend/auth/utils.py:54-65|Password must be at most 72 bytes long]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/main.py:267-270|sections['__references__'] = reference_text]]",
+     "mutant": "[[backend/main.py:267-270|sections['__references__'] = reference_text]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/main.py:267-270|sections['__references__'] = reference_text]]",
+     "mutant": "[[backend/main.py:267-270|sections_cache['__references__'] = reference_text]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/main.py:267-270|sections['__references__'] = reference_text]]",
+     "mutant": "[[backend/main_old.py:267-270|sections['__references__'] = reference_text]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/main.py:267-270|sections['__references__'] = reference_text]]",
+     "mutant": "[[backend/main.py:262-265|sections['__references__'] = reference_text]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]",
+     "mutant": "[[backend/auth/utils.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]",
+     "mutant": "[[backend/auth/utils.py:39-47|def create_access_token(user_id_internal: str, email: str) -> str:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]",
+     "mutant": "[[backend/auth/utils_old.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/auth/utils.py:39-47|def create_access_token(user_id: str, email: str) -> str:]]",
+     "mutant": "[[backend/auth/utils.py:42-50|def create_access_token(user_id: str, email: str) -> str:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:96-102|Block here, not after claiming]]",
+     "mutant": "[[backend/services/job_queue.py:96-102|Block here, not after claiming]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:96-102|Block here, not after claiming]]",
+     "mutant": "[[backend/services/job_queue.py:96-102|Block here_legacy, not after claiming]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/services/job_queue.py:96-102|Block here, not after claiming]]",
+     "mutant": "[[backend/services/job_queue_old.py:96-102|Block here, not after claiming]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force_v2 = false) =>]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]",
+     "mutant": "[[frontend/src/pages/SummaryPage_old.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/pages/SummaryPage.jsx:153-167|const handleSimulatePeerReview = async (force = false) =>]]",
+     "mutant": "[[frontend/src/pages/SummaryPage.jsx:162-176|const handleSimulatePeerReview = async (force = false) =>]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/dependencies.py:14-44|CurrentUser = Annotated[dict, Depends(get_current_user)]]",
+     "mutant": "[[backend/auth/dependencies.py:14-44|CurrentUser = Annotated[dict, Depends(get_current_user)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/dependencies.py:14-44|CurrentUser = Annotated[dict, Depends(get_current_user)]]",
+     "mutant": "[[backend/auth/dependencies.py:14-44|CurrentUser = Annotated[dict, Depends_async(get_current_user)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/dependencies.py:14-44|CurrentUser = Annotated[dict, Depends(get_current_user)]]",
+     "mutant": "[[backend/auth/dependencies_old.py:14-44|CurrentUser = Annotated[dict, Depends(get_current_user)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:51-65|startProcessingPoller()]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:51-65|startProcessingPoller()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:51-65|startProcessingPoller()]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:51-65|startProcessingPoller_v2()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:51-65|startProcessingPoller()]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:51-65|startProcessingPoller()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:575-611|async def verify(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:575-611|async def verify(state: SummaryState)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:575-611|async def verify(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:575-611|async_cache def verify(state: SummaryState)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:575-611|async def verify(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph_old.py:575-611|async def verify(state: SummaryState)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:124-128|payload['reset_token'] = token]]",
+     "mutant": "[[backend/auth/routes.py:124-128|payload['reset_token'] = token]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:124-128|payload['reset_token'] = token]]",
+     "mutant": "[[backend/auth/routes.py:124-128|payload_legacy['reset_token'] = token]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:124-128|payload['reset_token'] = token]]",
+     "mutant": "[[backend/auth/routes_old.py:124-128|payload['reset_token'] = token]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/auth/routes.py:124-128|payload['reset_token'] = token]]",
+     "mutant": "[[backend/auth/routes.py:119-123|payload['reset_token'] = token]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:27-28|SupabaseDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:27-28|SupabaseDep = Annotated]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:27-28|SupabaseDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:27-28|SupabaseDep_internal = Annotated]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:27-28|SupabaseDep = Annotated]]",
+     "mutant": "[[backend/api/deps_old.py:27-28|SupabaseDep = Annotated]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:27-28|SupabaseDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:24-25|SupabaseDep = Annotated]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:326-362|async def map_sections(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:326-362|async def map_sections(state: SummaryState)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:326-362|async def map_sections(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph.py:326-362|async def map_sections_legacy(state: SummaryState)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/summary_graph.py:326-362|async def map_sections(state: SummaryState)]]",
+     "mutant": "[[core/graph/summary_graph_old.py:326-362|async def map_sections(state: SummaryState)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app.py:101-116|def create_app() -> FastAPI_v2:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app_old.py:101-116|def create_app() -> FastAPI:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|const login = useCallback(]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:82-92|const login = useCallback(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|const login = useCallback(]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:82-92|const login = useCallback_legacy(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|const login = useCallback(]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:82-92|const login = useCallback(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:131-159|async def fail_for_retry(]]",
+     "mutant": "[[backend/repositories/job_repository.py:131-159|async def fail_for_retry(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:131-159|async def fail_for_retry(]]",
+     "mutant": "[[backend/repositories/job_repository.py:131-159|async def_v2 fail_for_retry(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:131-159|async def fail_for_retry(]]",
+     "mutant": "[[backend/repositories/job_repository_old.py:131-159|async def fail_for_retry(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:131-159|async def fail_for_retry(]]",
+     "mutant": "[[backend/repositories/job_repository.py:140-168|async def fail_for_retry(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app.py:101-116|def create_app() -> FastAPI_v2:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/main_app.py:101-116|def create_app() -> FastAPI:]]",
+     "mutant": "[[backend/main_app_old.py:101-116|def create_app() -> FastAPI:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:166-178|Graph extraction is authoritative; regex is only a last resort.]]",
+     "mutant": "[[core/agent_integration.py:166-178|Graph extraction is authoritative; regex is only a last resort.]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:166-178|Graph extraction is authoritative; regex is only a last resort.]]",
+     "mutant": "[[core/agent_integration.py:166-178|Graph extraction is authoritative; regex is only a last resort_async.]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agent_integration.py:166-178|Graph extraction is authoritative; regex is only a last resort.]]",
+     "mutant": "[[core/agent_integration_old.py:166-178|Graph extraction is authoritative; regex is only a last resort.]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query.trim()}]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query.trim()}]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query.trim()}]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query_cache.trim()}]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query.trim()}]]",
+     "mutant": "[[frontend/src/pages/HomePage_old.jsx:238-240|loading={searching} disabled={!query.trim()}]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:238-240|loading={searching} disabled={!query.trim()}]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:241-243|loading={searching} disabled={!query.trim()}]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:154-169|export function invalidate(prefix)]]",
+     "mutant": "[[frontend/src/lib/query.js:154-169|export function invalidate(prefix)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:154-169|export function invalidate(prefix)]]",
+     "mutant": "[[frontend/src/lib/query.js:154-169|export function invalidate_cache(prefix)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:154-169|export function invalidate(prefix)]]",
+     "mutant": "[[frontend/src/lib/query_old.js:154-169|export function invalidate(prefix)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/lib/query.js:154-169|export function invalidate(prefix)]]",
+     "mutant": "[[frontend/src/lib/query.js:157-172|export function invalidate(prefix)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:94-103|Three-valued on]]",
+     "mutant": "[[core/graph/adapter.py:94-103|Three-valued on]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:94-103|Three-valued on]]",
+     "mutant": "[[core/graph/adapter.py:94-103|Three_cache-valued on]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/graph/adapter.py:94-103|Three-valued on]]",
+     "mutant": "[[core/graph/adapter_old.py:94-103|Three-valued on]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:37-39|logger.exception('knowledge_graph_error']]",
+     "mutant": "[[backend/routes/knowledge_graph.py:37-39|logger.exception('knowledge_graph_error']]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:37-39|logger.exception('knowledge_graph_error']]",
+     "mutant": "[[backend/routes/knowledge_graph.py:37-39|logger_legacy.exception('knowledge_graph_error']]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:37-39|logger.exception('knowledge_graph_error']]",
+     "mutant": "[[backend/routes/knowledge_graph_old.py:37-39|logger.exception('knowledge_graph_error']]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:37-39|logger.exception('knowledge_graph_error']]",
+     "mutant": "[[backend/routes/knowledge_graph.py:46-48|logger.exception('knowledge_graph_error']]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:14-22|function_internal isTokenExpired(token)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:14-22|function isTokenExpired(token)]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:14-22|function isTokenExpired(token)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:19-20|class JobRepository(BaseRepository):]]",
+     "mutant": "[[backend/repositories/job_repository.py:19-20|class JobRepository(BaseRepository):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:19-20|class JobRepository(BaseRepository):]]",
+     "mutant": "[[backend/repositories/job_repository.py:19-20|class JobRepository_legacy(BaseRepository):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:19-20|class JobRepository(BaseRepository):]]",
+     "mutant": "[[backend/repositories/job_repository_old.py:19-20|class JobRepository(BaseRepository):]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/repositories/job_repository.py:19-20|class JobRepository(BaseRepository):]]",
+     "mutant": "[[backend/repositories/job_repository.py:22-23|class JobRepository(BaseRepository):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:172-225|def _build_model(]]",
+     "mutant": "[[core/llm/providers.py:172-225|def _build_model(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:172-225|def _build_model(]]",
+     "mutant": "[[core/llm/providers.py:172-225|def _build_model_internal(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:172-225|def _build_model(]]",
+     "mutant": "[[core/llm/providers_old.py:172-225|def _build_model(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI):]]",
+     "mutant": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI):]]",
+     "mutant": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI_async):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI):]]",
+     "mutant": "[[backend/main_app_old.py:118-131|async def lifespan(app: FastAPI):]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/main_app.py:118-131|async def lifespan(app: FastAPI):]]",
+     "mutant": "[[backend/main_app.py:121-134|async def lifespan(app: FastAPI):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-102|set JOB_WORKER_ENABLED=false on]]",
+     "mutant": "[[docker-compose.yml:93-102|set JOB_WORKER_ENABLED=false on]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-102|set JOB_WORKER_ENABLED=false on]]",
+     "mutant": "[[docker-compose.yml:93-102|set_async JOB_WORKER_ENABLED=false on]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[docker-compose.yml:93-102|set JOB_WORKER_ENABLED=false on]]",
+     "mutant": "[[docker-compose_old.yml:93-102|set JOB_WORKER_ENABLED=false on]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:145-164|def validate_for_runtime(self) -> list[str]:]]",
+     "mutant": "[[backend/config/settings.py:145-164|def validate_for_runtime(self) -> list[str]:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:145-164|def validate_for_runtime(self) -> list[str]:]]",
+     "mutant": "[[backend/config/settings.py:145-164|def_v2 validate_for_runtime(self) -> list[str]:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:145-164|def validate_for_runtime(self) -> list[str]:]]",
+     "mutant": "[[backend/config/settings_old.py:145-164|def validate_for_runtime(self) -> list[str]:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:145-164|def validate_for_runtime(self) -> list[str]:]]",
+     "mutant": "[[backend/config/settings.py:148-167|def validate_for_runtime(self) -> list[str]:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity(]]",
+     "mutant": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity(]]",
+     "mutant": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity_async(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity(]]",
+     "mutant": "[[core/knowledge/graph_service_old.py:26-31|def compute_and_cache_similarity(]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:26-31|def compute_and_cache_similarity(]]",
+     "mutant": "[[core/knowledge/graph_service.py:29-34|def compute_and_cache_similarity(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:347-353|.eq('entity_1', entity_1)]]",
+     "mutant": "[[core/memory/experience_db.py:347-353|.eq('entity_1', entity_1)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:347-353|.eq('entity_1', entity_1)]]",
+     "mutant": "[[core/memory/experience_db.py:347-353|.eq('entity_1_v2', entity_1)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:347-353|.eq('entity_1', entity_1)]]",
+     "mutant": "[[core/memory/experience_db_old.py:347-353|.eq('entity_1', entity_1)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:264-288|def _would_create_cycle(self, sender: str, recipient: str) -> bool:]]",
+     "mutant": "[[core/agents/message_bus.py:264-288|def _would_create_cycle(self, sender: str, recipient: str) -> bool:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:264-288|def _would_create_cycle(self, sender: str, recipient: str) -> bool:]]",
+     "mutant": "[[core/agents/message_bus.py:264-288|def _would_create_cycle_async(self, sender: str, recipient: str) -> bool:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:264-288|def _would_create_cycle(self, sender: str, recipient: str) -> bool:]]",
+     "mutant": "[[core/agents/message_bus_old.py:264-288|def _would_create_cycle(self, sender: str, recipient: str) -> bool:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/db/client.py:43-52|settings.supabase_service_key]]",
+     "mutant": "[[backend/db/client.py:43-52|settings.supabase_service_key]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/db/client.py:43-52|settings.supabase_service_key]]",
+     "mutant": "[[backend/db/client.py:43-52|settings.supabase_service_key_cache]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/db/client.py:43-52|settings.supabase_service_key]]",
+     "mutant": "[[backend/db/client_old.py:43-52|settings.supabase_service_key]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/db/client.py:43-52|settings.supabase_service_key]]",
+     "mutant": "[[backend/db/client.py:52-61|settings.supabase_service_key]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service.py:184-198|summary_data->entities_async]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/graph_service.py:184-198|summary_data->entities]]",
+     "mutant": "[[core/knowledge/graph_service_old.py:184-198|summary_data->entities]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:19-19|const_cache MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]",
+     "mutant": "[[frontend/src/pages/HomePage_old.jsx:19-19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[frontend/src/pages/HomePage.jsx:19|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]",
+     "mutant": "[[frontend/src/pages/HomePage.jsx:22-22|const MAX_UPLOAD_BYTES = 50 * 1024 * 1024]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[docs/BENCHMARKS.md:99|182s/paper]]",
+     "mutant": "[[docs/BENCHMARKS.md:99|182s/paper]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[docs/BENCHMARKS.md:99|182s/paper]]",
+     "mutant": "[[docs/BENCHMARKS.md:99-99|182s/paper_internal]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[docs/BENCHMARKS.md:99|182s/paper]]",
+     "mutant": "[[docs/BENCHMARKS_old.md:99-99|182s/paper]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[docs/BENCHMARKS.md:99|182s/paper]]",
+     "mutant": "[[docs/BENCHMARKS.md:108-108|182s/paper]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:42-54|get_paper_recommendations(summary_id, supabase, top_k=k)]]",
+     "mutant": "[[backend/routes/knowledge_graph.py:42-54|get_paper_recommendations(summary_id, supabase, top_k=k)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:42-54|get_paper_recommendations(summary_id, supabase, top_k=k)]]",
+     "mutant": "[[backend/routes/knowledge_graph.py:42-54|get_paper_recommendations_legacy(summary_id, supabase, top_k=k)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:42-54|get_paper_recommendations(summary_id, supabase, top_k=k)]]",
+     "mutant": "[[backend/routes/knowledge_graph_old.py:42-54|get_paper_recommendations(summary_id, supabase, top_k=k)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase]]",
+     "mutant": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase]]",
+     "mutant": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase_internal]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase]]",
+     "mutant": "[[backend/routes/knowledge_graph_old.py:9-21|supabase = _shared_supabase]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/routes/knowledge_graph.py:9-21|supabase = _shared_supabase]]",
+     "mutant": "[[backend/routes/knowledge_graph.py:6-18|supabase = _shared_supabase]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars]]",
+     "mutant": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars]]",
+     "mutant": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars_legacy]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars]]",
+     "mutant": "[[core/knowledge/embedding_service_old.py:40-42|cap at 2k chars]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/embedding_service.py:40-42|cap at 2k chars]]",
+     "mutant": "[[core/knowledge/embedding_service.py:49-51|cap at 2k chars]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/routes/process_jobs.py:147-152|reachable from]]",
+     "mutant": "[[backend/routes/process_jobs.py:147-152|reachable from]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/routes/process_jobs.py:147-152|reachable from]]",
+     "mutant": "[[backend/routes/process_jobs.py:147-152|reachable from_async]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/routes/process_jobs.py:147-152|reachable from]]",
+     "mutant": "[[backend/routes/process_jobs_old.py:147-152|reachable from]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:581-627|'paper_title':              paper_title,]]",
+     "mutant": "[[backend/services/paper_processing_service.py:581-627|'paper_title':              paper_title,]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:581-627|'paper_title':              paper_title,]]",
+     "mutant": "[[backend/services/paper_processing_service.py:581-627|'paper_title_async':              paper_title,]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:581-627|'paper_title':              paper_title,]]",
+     "mutant": "[[backend/services/paper_processing_service_old.py:581-627|'paper_title':              paper_title,]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|return { success: false, error: error.message }]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:82-92|return { success: false, error: error.message }]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|return { success: false, error: error.message }]]",
+     "mutant": "[[frontend/src/contexts/AuthContext.jsx:82-92|return { success_async: false, error: error.message }]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[frontend/src/contexts/AuthContext.jsx:82-92|return { success: false, error: error.message }]]",
+     "mutant": "[[frontend/src/contexts/AuthContext_old.jsx:82-92|return { success: false, error: error.message }]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:22-30|class Settings(BaseSettings):]]",
+     "mutant": "[[backend/config/settings.py:22-30|class Settings(BaseSettings):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:22-30|class Settings(BaseSettings):]]",
+     "mutant": "[[backend/config/settings.py:22-30|class Settings(BaseSettings_async):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:22-30|class Settings(BaseSettings):]]",
+     "mutant": "[[backend/config/settings_old.py:22-30|class Settings(BaseSettings):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:134-165|response = await asyncio.wait_for(response_future, timeout=timeout)]]",
+     "mutant": "[[core/agents/message_bus.py:134-165|response = await asyncio.wait_for(response_future, timeout=timeout)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:134-165|response = await asyncio.wait_for(response_future, timeout=timeout)]]",
+     "mutant": "[[core/agents/message_bus.py:134-165|response_cache = await asyncio.wait_for(response_future, timeout=timeout)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/agents/message_bus.py:134-165|response = await asyncio.wait_for(response_future, timeout=timeout)]]",
+     "mutant": "[[core/agents/message_bus_old.py:134-165|response = await asyncio.wait_for(response_future, timeout=timeout)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:113-123|self.client.table('entity_knowledge')]]",
+     "mutant": "[[core/memory/experience_db.py:113-123|self.client.table('entity_knowledge')]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:113-123|self.client.table('entity_knowledge')]]",
+     "mutant": "[[core/memory/experience_db.py:113-123|self.client_internal.table('entity_knowledge')]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:113-123|self.client.table('entity_knowledge')]]",
+     "mutant": "[[core/memory/experience_db_old.py:113-123|self.client.table('entity_knowledge')]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/memory/experience_db.py:113-123|self.client.table('entity_knowledge')]]",
+     "mutant": "[[core/memory/experience_db.py:118-128|self.client.table('entity_knowledge')]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/routes/corpus.py:137-149|def _build_contradiction_map]]",
+     "mutant": "[[backend/routes/corpus.py:137-149|def _build_contradiction_map]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/routes/corpus.py:137-149|def _build_contradiction_map]]",
+     "mutant": "[[backend/routes/corpus.py:137-149|def_v2 _build_contradiction_map]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/routes/corpus.py:137-149|def _build_contradiction_map]]",
+     "mutant": "[[backend/routes/corpus_old.py:137-149|def _build_contradiction_map]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/routes/corpus.py:137-149|def _build_contradiction_map]]",
+     "mutant": "[[backend/routes/corpus.py:146-158|def _build_contradiction_map]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:105-112|GROQ_API_KEY]]",
+     "mutant": "[[core/llm/providers.py:105-112|GROQ_API_KEY]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:105-112|GROQ_API_KEY]]",
+     "mutant": "[[core/llm/providers.py:105-112|GROQ_API_KEY_v2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:105-112|GROQ_API_KEY]]",
+     "mutant": "[[core/llm/providers_old.py:105-112|GROQ_API_KEY]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/llm/providers.py:105-112|GROQ_API_KEY]]",
+     "mutant": "[[core/llm/providers.py:96-103|GROQ_API_KEY]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:74-75|AuthServiceDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:74-75|AuthServiceDep = Annotated]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:74-75|AuthServiceDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:74-75|AuthServiceDep_cache = Annotated]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:74-75|AuthServiceDep = Annotated]]",
+     "mutant": "[[backend/api/deps_old.py:74-75|AuthServiceDep = Annotated]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/api/deps.py:74-75|AuthServiceDep = Annotated]]",
+     "mutant": "[[backend/api/deps.py:69-70|AuthServiceDep = Annotated]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:573-630|def _build_summary_record(]]",
+     "mutant": "[[backend/services/paper_processing_service.py:573-630|def _build_summary_record(]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:573-630|def _build_summary_record(]]",
+     "mutant": "[[backend/services/paper_processing_service.py:573-630|def _build_summary_record_legacy(]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/services/paper_processing_service.py:573-630|def _build_summary_record(]]",
+     "mutant": "[[backend/services/paper_processing_service_old.py:573-630|def _build_summary_record(]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites',]]",
+     "mutant": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites',]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites',]]",
+     "mutant": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites_async',]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites',]]",
+     "mutant": "[[core/knowledge/lineage_service_old.py:25-37|'link_type': 'cites',]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[core/knowledge/lineage_service.py:25-37|'link_type': 'cites',]]",
+     "mutant": "[[core/knowledge/lineage_service.py:16-28|'link_type': 'cites',]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:85-90|job_max_per_user: int = 2]]",
+     "mutant": "[[backend/config/settings.py:85-90|job_max_per_user: int = 2]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:85-90|job_max_per_user: int = 2]]",
+     "mutant": "[[backend/config/settings.py:85-90|job_max_per_user_async: int = 2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:85-90|job_max_per_user: int = 2]]",
+     "mutant": "[[backend/config/settings_old.py:85-90|job_max_per_user: int = 2]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[backend/config/settings.py:85-90|job_max_per_user: int = 2]]",
+     "mutant": "[[backend/config/settings.py:90-95|job_max_per_user: int = 2]]"
+    }
+   ]
+  },
+  {
+   "repo": "nanoGPT",
+   "citations_in_guide": 495,
+   "cases": [
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]",
+     "mutant": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]",
+     "mutant": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else_cache torch.amp.autocast]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]",
+     "mutant": "[[train_old.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]",
+     "mutant": "[[train.py:100-103|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|dropout = 0.2]]",
+     "mutant": "[[config/train_shakespeare_char.py:21-25|dropout = 0.2]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|dropout = 0.2]]",
+     "mutant": "[[config/train_shakespeare_char.py:21-25|dropout_v2 = 0.2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|dropout = 0.2]]",
+     "mutant": "[[config/train_shakespeare_char_old.py:21-25|dropout = 0.2]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|dropout = 0.2]]",
+     "mutant": "[[config/train_shakespeare_char.py:30-34|dropout = 0.2]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:268-275|if p.dim() >= 2]]",
+     "mutant": "[[model.py:268-275|if p.dim() >= 2]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:268-275|if p.dim() >= 2]]",
+     "mutant": "[[model.py:268-275|if p.dim_legacy() >= 2]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:268-275|if p.dim() >= 2]]",
+     "mutant": "[[model_old.py:268-275|if p.dim() >= 2]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:206-261|def from_pretrained(cls, model_type, override_args=None):]]",
+     "mutant": "[[model.py:206-261|def from_pretrained(cls, model_type, override_args=None):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:206-261|def from_pretrained(cls, model_type, override_args=None):]]",
+     "mutant": "[[model.py:206-261|def from_pretrained(cls_cache, model_type, override_args=None):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:206-261|def from_pretrained(cls, model_type, override_args=None):]]",
+     "mutant": "[[model_old.py:206-261|def from_pretrained(cls, model_type, override_args=None):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self_legacy.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model_old.py:103-106|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:100-103|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:54-61|'itos': itos,]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:54-61|'itos': itos,]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:54-61|'itos': itos,]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:54-61|'itos_v2': itos,]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:54-61|'itos': itos,]]",
+     "mutant": "[[data/shakespeare_char/prepare_old.py:54-61|'itos': itos,]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[configurator.py:41-42|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:41-42|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[configurator.py:41-42|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:41-42|assert type(attempt_legacy) == type(globals()[key])]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[configurator.py:41-42|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator_old.py:41-42|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[configurator.py:41-42|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:46-47|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:13|The code itself is plain and readable]]",
+     "mutant": "[[README.md:13|The code itself is plain and readable]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:13|The code itself is plain and readable]]",
+     "mutant": "[[README.md:13-13|The code itself is plain and_cache readable]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:13|The code itself is plain and readable]]",
+     "mutant": "[[README_old.md:13-13|The code itself is plain and readable]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:13|The code itself is plain and readable]]",
+     "mutant": "[[README.md:10-10|The code itself is plain and readable]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:295-297|I really dislike that this bloats the code]]",
+     "mutant": "[[train.py:295-297|I really dislike that this bloats the code]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:295-297|I really dislike that this bloats the code]]",
+     "mutant": "[[train.py:295-297|I really dislike that this bloats_v2 the code]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:295-297|I really dislike that this bloats the code]]",
+     "mutant": "[[train_old.py:295-297|I really dislike that this bloats the code]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:295-297|I really dislike that this bloats the code]]",
+     "mutant": "[[train.py:298-300|I really dislike that this bloats the code]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]",
+     "mutant": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]",
+     "mutant": "[[train.py:109-112|ctx_cache = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]",
+     "mutant": "[[train_old.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:109-112|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]",
+     "mutant": "[[train.py:114-117|ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:76-78|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:76-78|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:76-78|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:76-78|exec_legacy(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:76-78|exec(open('configurator.py').read())]]",
+     "mutant": "[[train_old.py:76-78|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:76-78|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:79-81|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:195-196|scaler_internal = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train_old.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:195-196|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:200-201|scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:92-95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:92-95|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:92-95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:92-95|gradient_accumulation_steps_v2 //= ddp_world_size]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:92-95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train_old.py:92-95|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:92-95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:97-100|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/eval_gpt2_xl.py:8|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/eval_gpt2_xl.py:8|init_from = 'gpt2-xl']]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/eval_gpt2_xl.py:8|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/eval_gpt2_xl.py:8-8|init_from = 'gpt2_async-xl']]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/eval_gpt2_xl.py:8|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/eval_gpt2_xl_old.py:8-8|init_from = 'gpt2-xl']]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]",
+     "mutant": "[[model.py:68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]",
+     "mutant": "[[model.py:68-68|att_internal.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]",
+     "mutant": "[[model_old.py:68-68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:68|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]",
+     "mutant": "[[model.py:63-63|att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]",
+     "mutant": "[[train.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]",
+     "mutant": "[[train.py:123-125|ix = torch.randint(len_v2(data) - block_size, (batch_size,))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]",
+     "mutant": "[[train_old.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:123-125|ix = torch.randint(len(data) - block_size, (batch_size,))]]",
+     "mutant": "[[train.py:114-116|ix = torch.randint(len(data) - block_size, (batch_size,))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:106|torch.manual_seed(1337 + seed_offset)]]",
+     "mutant": "[[train.py:106|torch.manual_seed(1337 + seed_offset)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:106|torch.manual_seed(1337 + seed_offset)]]",
+     "mutant": "[[train.py:106-106|torch.manual_seed_cache(1337 + seed_offset)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:106|torch.manual_seed(1337 + seed_offset)]]",
+     "mutant": "[[train_old.py:106-106|torch.manual_seed(1337 + seed_offset)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:106|torch.manual_seed(1337 + seed_offset)]]",
+     "mutant": "[[train.py:97-97|torch.manual_seed(1337 + seed_offset)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:253|raw_model = model.module if ddp else model]]",
+     "mutant": "[[train.py:253|raw_model = model.module if ddp else model]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:253|raw_model = model.module if ddp else model]]",
+     "mutant": "[[train.py:253-253|raw_model = model.module if ddp_async else model]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:253|raw_model = model.module if ddp else model]]",
+     "mutant": "[[train_old.py:253-253|raw_model = model.module if ddp else model]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:253|raw_model = model.module if ddp else model]]",
+     "mutant": "[[train.py:256-256|raw_model = model.module if ddp else model]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:114|poor man's data loader]]",
+     "mutant": "[[train.py:114|poor man's data loader]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:114|poor man's data loader]]",
+     "mutant": "[[train.py:114-114|poor man's data_internal loader]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:114|poor man's data loader]]",
+     "mutant": "[[train_old.py:114-114|poor man's data loader]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:114|poor man's data loader]]",
+     "mutant": "[[train.py:111-111|poor man's data loader]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[transformer_sizing.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]",
+     "mutant": "[[transformer_sizing.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[transformer_sizing.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]",
+     "mutant": "[[transformer_sizing.ipynb:277-283|mf_per_token_legacy = 6*N + 12*L*H*Q*T]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[transformer_sizing.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]",
+     "mutant": "[[transformer_sizing_old.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[transformer_sizing.ipynb:277-283|mf_per_token = 6*N + 12*L*H*Q*T]]",
+     "mutant": "[[transformer_sizing.ipynb:272-278|mf_per_token = 6*N + 12*L*H*Q*T]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:72-74|compile = True]]",
+     "mutant": "[[train.py:72-74|compile = True]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:72-74|compile = True]]",
+     "mutant": "[[train.py:72-74|compile_cache = True]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:72-74|compile = True]]",
+     "mutant": "[[train_old.py:72-74|compile = True]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:72-74|compile = True]]",
+     "mutant": "[[train.py:67-69|compile = True]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:116|bias: bool = True]]",
+     "mutant": "[[model.py:116|bias: bool = True]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:116|bias: bool = True]]",
+     "mutant": "[[model.py:116-116|bias_v2: bool = True]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:116|bias: bool = True]]",
+     "mutant": "[[model_old.py:116-116|bias: bool = True]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:116|bias: bool = True]]",
+     "mutant": "[[model.py:119-119|bias: bool = True]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:230-235|discard this mask / buffer, not a param]]",
+     "mutant": "[[model.py:230-235|discard this mask / buffer, not a param]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:230-235|discard this mask / buffer, not a param]]",
+     "mutant": "[[model.py:230-235|discard this mask / buffer, not a param_internal]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:230-235|discard this mask / buffer, not a param]]",
+     "mutant": "[[model_old.py:230-235|discard this mask / buffer, not a param]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:230-235|discard this mask / buffer, not a param]]",
+     "mutant": "[[model.py:221-226|discard this mask / buffer, not a param]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:306-312|scaler.unscale_(optimizer)]]",
+     "mutant": "[[train.py:306-312|scaler.unscale_(optimizer)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:306-312|scaler.unscale_(optimizer)]]",
+     "mutant": "[[train.py:306-312|scaler.unscale_(optimizer_legacy)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:306-312|scaler.unscale_(optimizer)]]",
+     "mutant": "[[train_old.py:306-312|scaler.unscale_(optimizer)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:314|optimizer.zero_grad(set_to_none=True)]]",
+     "mutant": "[[train.py:314|optimizer.zero_grad(set_to_none=True)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:314|optimizer.zero_grad(set_to_none=True)]]",
+     "mutant": "[[train.py:314-314|optimizer_cache.zero_grad(set_to_none=True)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:314|optimizer.zero_grad(set_to_none=True)]]",
+     "mutant": "[[train_old.py:314-314|optimizer.zero_grad(set_to_none=True)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:314|optimizer.zero_grad(set_to_none=True)]]",
+     "mutant": "[[train.py:317-317|optimizer.zero_grad(set_to_none=True)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:196-201|--init_from=gpt2-xl]]",
+     "mutant": "[[README.md:196-201|--init_from=gpt2-xl]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:196-201|--init_from=gpt2-xl]]",
+     "mutant": "[[README.md:196-201|--init_from_cache=gpt2-xl]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:196-201|--init_from=gpt2-xl]]",
+     "mutant": "[[README_old.md:196-201|--init_from=gpt2-xl]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:196-201|--init_from=gpt2-xl]]",
+     "mutant": "[[README.md:205-210|--init_from=gpt2-xl]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:82-91|init_process_group(backend=backend)]]",
+     "mutant": "[[train.py:82-91|init_process_group(backend=backend)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:82-91|init_process_group(backend=backend)]]",
+     "mutant": "[[train.py:82-91|init_process_group_legacy(backend=backend)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:82-91|init_process_group(backend=backend)]]",
+     "mutant": "[[train_old.py:82-91|init_process_group(backend=backend)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:114-131|poor man's data loader]]",
+     "mutant": "[[train.py:114-131|poor man's data loader]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:114-131|poor man's data loader]]",
+     "mutant": "[[train.py:114-131|poor man's data_legacy loader]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:114-131|poor man's data loader]]",
+     "mutant": "[[train_old.py:114-131|poor man's data loader]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:114-131|poor man's data loader]]",
+     "mutant": "[[train.py:117-134|poor man's data loader]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:115|data_dir = os.path.join('data', dataset)]]",
+     "mutant": "[[train.py:115|data_dir = os.path.join('data', dataset)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:115|data_dir = os.path.join('data', dataset)]]",
+     "mutant": "[[train.py:115-115|data_dir = os.path.join('data', dataset_internal)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:115|data_dir = os.path.join('data', dataset)]]",
+     "mutant": "[[train_old.py:115-115|data_dir = os.path.join('data', dataset)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:115|data_dir = os.path.join('data', dataset)]]",
+     "mutant": "[[train.py:110-110|data_dir = os.path.join('data', dataset)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:299-300|with ctx:]]",
+     "mutant": "[[train.py:299-300|with ctx:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:299-300|with ctx:]]",
+     "mutant": "[[train.py:299-300|with ctx_async:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:299-300|with ctx:]]",
+     "mutant": "[[train_old.py:299-300|with ctx:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:299-300|with ctx:]]",
+     "mutant": "[[train.py:302-303|with ctx:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:69|att = F.softmax(att, dim=-1)]]",
+     "mutant": "[[model.py:69|att = F.softmax(att, dim=-1)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:69|att = F.softmax(att, dim=-1)]]",
+     "mutant": "[[model.py:69-69|att = F.softmax_internal(att, dim=-1)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:69|att = F.softmax(att, dim=-1)]]",
+     "mutant": "[[model_old.py:69-69|att = F.softmax(att, dim=-1)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:69|att = F.softmax(att, dim=-1)]]",
+     "mutant": "[[model.py:74-74|att = F.softmax(att, dim=-1)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]",
+     "mutant": "[[model.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]",
+     "mutant": "[[model.py:170-174|pos_legacy = torch.arange(0, t, dtype=torch.long, device=device)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]",
+     "mutant": "[[model_old.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:170-174|pos = torch.arange(0, t, dtype=torch.long, device=device)]]",
+     "mutant": "[[model.py:175-179|pos = torch.arange(0, t, dtype=torch.long, device=device)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:70-74|compile = True]]",
+     "mutant": "[[train.py:70-74|compile = True]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:70-74|compile = True]]",
+     "mutant": "[[train.py:70-74|compile = True_internal]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:70-74|compile = True]]",
+     "mutant": "[[train_old.py:70-74|compile = True]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:70-74|compile = True]]",
+     "mutant": "[[train.py:65-69|compile = True]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self.attn(self.ln_1_internal(x))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model_old.py:103-106|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.attn(self.ln_1(x))]]",
+     "mutant": "[[model.py:112-115|x = x + self.attn(self.ln_1(x))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:176-179|x = self.transformer.drop(tok_emb + pos_emb)]]",
+     "mutant": "[[model.py:176-179|x = self.transformer.drop(tok_emb + pos_emb)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:176-179|x = self.transformer.drop(tok_emb + pos_emb)]]",
+     "mutant": "[[model.py:176-179|x = self.transformer.drop_async(tok_emb + pos_emb)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:176-179|x = self.transformer.drop(tok_emb + pos_emb)]]",
+     "mutant": "[[model_old.py:176-179|x = self.transformer.drop(tok_emb + pos_emb)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]",
+     "mutant": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]",
+     "mutant": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter_legacy, dt):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]",
+     "mutant": "[[model_old.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:289-303|def estimate_mfu(self, fwdbwd_per_iter, dt):]]",
+     "mutant": "[[model.py:294-308|def estimate_mfu(self, fwdbwd_per_iter, dt):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:64-68|should be ~= learning_rate/10 per Chinchilla]]",
+     "mutant": "[[train.py:64-68|should be ~= learning_rate/10 per Chinchilla]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:64-68|should be ~= learning_rate/10 per Chinchilla]]",
+     "mutant": "[[train.py:64-68|should be ~= learning_rate_async/10 per Chinchilla]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:64-68|should be ~= learning_rate/10 per Chinchilla]]",
+     "mutant": "[[train_old.py:64-68|should be ~= learning_rate/10 per Chinchilla]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:64-68|should be ~= learning_rate/10 per Chinchilla]]",
+     "mutant": "[[train.py:61-65|should be ~= learning_rate/10 per Chinchilla]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:182|x = self.transformer.ln_f(x)]]",
+     "mutant": "[[model.py:182|x = self.transformer.ln_f(x)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:182|x = self.transformer.ln_f(x)]]",
+     "mutant": "[[model.py:182-182|x = self.transformer_async.ln_f(x)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:182|x = self.transformer.ln_f(x)]]",
+     "mutant": "[[model_old.py:182-182|x = self.transformer.ln_f(x)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:182|x = self.transformer.ln_f(x)]]",
+     "mutant": "[[model.py:187-187|x = self.transformer.ln_f(x)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:156|there is a dataset domain gap]]",
+     "mutant": "[[README.md:156|there is a dataset domain gap]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:156|there is a dataset domain gap]]",
+     "mutant": "[[README.md:156-156|there is a dataset_legacy domain gap]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:156|there is a dataset domain gap]]",
+     "mutant": "[[README_old.md:156-156|there is a dataset domain gap]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:156|there is a dataset domain gap]]",
+     "mutant": "[[README.md:153-153|there is a dataset domain gap]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[sample.py:76-89|start_ids = encode(start)]]",
+     "mutant": "[[sample.py:76-89|start_ids = encode(start)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[sample.py:76-89|start_ids = encode(start)]]",
+     "mutant": "[[sample.py:76-89|start_internal_ids = encode(start)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[sample.py:76-89|start_ids = encode(start)]]",
+     "mutant": "[[sample_old.py:76-89|start_ids = encode(start)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:82-91|master_process = ddp_rank == 0]]",
+     "mutant": "[[train.py:82-91|master_process = ddp_rank == 0]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:82-91|master_process = ddp_rank == 0]]",
+     "mutant": "[[train.py:82-91|master_process_async = ddp_rank == 0]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:82-91|master_process = ddp_rank == 0]]",
+     "mutant": "[[train_old.py:82-91|master_process = ddp_rank == 0]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:82-91|master_process = ddp_rank == 0]]",
+     "mutant": "[[train.py:91-100|master_process = ddp_rank == 0]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:78-92|self.gelu    = nn.GELU()]]",
+     "mutant": "[[model.py:78-92|self.gelu    = nn.GELU()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:78-92|self.gelu    = nn.GELU()]]",
+     "mutant": "[[model.py:78-92|self.gelu_internal    = nn.GELU()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:78-92|self.gelu    = nn.GELU()]]",
+     "mutant": "[[model_old.py:78-92|self.gelu    = nn.GELU()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:111|vocab_size: int = 50304]]",
+     "mutant": "[[model.py:111|vocab_size: int = 50304]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:111|vocab_size: int = 50304]]",
+     "mutant": "[[model.py:111-111|vocab_size: int_async = 50304]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:111|vocab_size: int = 50304]]",
+     "mutant": "[[model_old.py:111-111|vocab_size: int = 50304]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:111|vocab_size: int = 50304]]",
+     "mutant": "[[model.py:106-106|vocab_size: int = 50304]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:48-61|train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:48-61|train_ids.tofile(os.path.join(os.path.dirname_async(__file__), 'train.bin'))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))]]",
+     "mutant": "[[data/shakespeare_char/prepare_old.py:48-61|train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:59-74|arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]",
+     "mutant": "[[data/openwebtext/prepare.py:59-74|arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:59-74|arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]",
+     "mutant": "[[data/openwebtext/prepare.py:59-74|arr = np.memmap_async(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:59-74|arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]",
+     "mutant": "[[data/openwebtext/prepare_old.py:59-74|arr = np.memmap(filename, dtype=dtype, mode='w+', shape=(arr_len,))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:181-188|model = GPT.from_pretrained(init_from, override_args)]]",
+     "mutant": "[[train.py:181-188|model = GPT.from_pretrained(init_from, override_args)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:181-188|model = GPT.from_pretrained(init_from, override_args)]]",
+     "mutant": "[[train.py:181-188|model_async = GPT.from_pretrained(init_from, override_args)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:181-188|model = GPT.from_pretrained(init_from, override_args)]]",
+     "mutant": "[[train_old.py:181-188|model = GPT.from_pretrained(init_from, override_args)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:48-50|gradient_accumulation_steps = 5 * 8]]",
+     "mutant": "[[train.py:48-50|gradient_accumulation_steps = 5 * 8]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:48-50|gradient_accumulation_steps = 5 * 8]]",
+     "mutant": "[[train.py:48-50|gradient_accumulation_steps_async = 5 * 8]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:48-50|gradient_accumulation_steps = 5 * 8]]",
+     "mutant": "[[train_old.py:48-50|gradient_accumulation_steps = 5 * 8]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:48-50|gradient_accumulation_steps = 5 * 8]]",
+     "mutant": "[[train.py:45-47|gradient_accumulation_steps = 5 * 8]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:184-193|if targets is not None:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:184-193|if targets is not None_legacy:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model_old.py:184-193|if targets is not None:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:187-196|if targets is not None:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[configurator.py:29-47|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:29-47|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[configurator.py:29-47|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:29-47|assert type(attempt_async) == type(globals()[key])]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[configurator.py:29-47|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator_old.py:29-47|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[configurator.py:29-47|assert type(attempt) == type(globals()[key])]]",
+     "mutant": "[[configurator.py:20-38|assert type(attempt) == type(globals()[key])]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:290-305|for micro_step in range(gradient_accumulation_steps):]]",
+     "mutant": "[[train.py:290-305|for micro_step in range(gradient_accumulation_steps):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:290-305|for micro_step in range(gradient_accumulation_steps):]]",
+     "mutant": "[[train.py:290-305|for_legacy micro_step in range(gradient_accumulation_steps):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:290-305|for micro_step in range(gradient_accumulation_steps):]]",
+     "mutant": "[[train_old.py:290-305|for micro_step in range(gradient_accumulation_steps):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:294-298|the official way to do this is with model.no_sync() context manager]]",
+     "mutant": "[[train.py:294-298|the official way to do this is with model.no_sync() context manager]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:294-298|the official way to do this is with model.no_sync() context manager]]",
+     "mutant": "[[train.py:294-298|the official way to do this is with model.no_sync_cache() context manager]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:294-298|the official way to do this is with model.no_sync() context manager]]",
+     "mutant": "[[train_old.py:294-298|the official way to do this is with model.no_sync() context manager]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:294-298|the official way to do this is with model.no_sync() context manager]]",
+     "mutant": "[[train.py:285-289|the official way to do this is with model.no_sync() context manager]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[configurator.py:20-28|exec(open(config_file).read())]]",
+     "mutant": "[[configurator.py:20-28|exec(open(config_file).read())]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[configurator.py:20-28|exec(open(config_file).read())]]",
+     "mutant": "[[configurator.py:20-28|exec_cache(open(config_file).read())]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[configurator.py:20-28|exec(open(config_file).read())]]",
+     "mutant": "[[configurator_old.py:20-28|exec(open(config_file).read())]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[sample.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]",
+     "mutant": "[[sample.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[sample.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]",
+     "mutant": "[[sample.py:35-38|ckpt_path_internal = os.path.join(out_dir, 'ckpt.pt')]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[sample.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]",
+     "mutant": "[[sample_old.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[sample.py:35-38|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]",
+     "mutant": "[[sample.py:44-47|ckpt_path = os.path.join(out_dir, 'ckpt.pt')]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]",
+     "mutant": "[[model.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]",
+     "mutant": "[[model.py:313-314|idx_cache_cond = idx if idx.size(1) <= self.config.block_size]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]",
+     "mutant": "[[model_old.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:313-314|idx_cond = idx if idx.size(1) <= self.config.block_size]]",
+     "mutant": "[[model.py:304-305|idx_cond = idx if idx.size(1) <= self.config.block_size]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:77|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:77|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:77|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:77-77|exec(open_legacy('configurator.py').read())]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:77|exec(open('configurator.py').read())]]",
+     "mutant": "[[train_old.py:77-77|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:77|exec(open('configurator.py').read())]]",
+     "mutant": "[[train.py:82-82|exec(open('configurator.py').read())]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:27-33|min_lr = 1e-4]]",
+     "mutant": "[[config/train_shakespeare_char.py:27-33|min_lr = 1e-4]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:27-33|min_lr = 1e-4]]",
+     "mutant": "[[config/train_shakespeare_char.py:27-33|min_lr_v2 = 1e-4]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:27-33|min_lr = 1e-4]]",
+     "mutant": "[[config/train_shakespeare_char_old.py:27-33|min_lr = 1e-4]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]",
+     "mutant": "[[model.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]",
+     "mutant": "[[model.py:26-27|F.layer_norm(input, self.weight_cache.shape, self.weight, self.bias, 1e-5)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]",
+     "mutant": "[[model_old.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:26-27|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]",
+     "mutant": "[[model.py:35-36|F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]",
+     "mutant": "[[train.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]",
+     "mutant": "[[train.py:33-34|default config values designed to train_internal a gpt2 (124M) on OpenWebText]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]",
+     "mutant": "[[train_old.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:33-34|default config values designed to train a gpt2 (124M) on OpenWebText]]",
+     "mutant": "[[train.py:42-43|default config values designed to train a gpt2 (124M) on OpenWebText]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:16-29|dataset = 'shakespeare_char']]",
+     "mutant": "[[config/train_shakespeare_char.py:16-29|dataset = 'shakespeare_char']]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:16-29|dataset = 'shakespeare_char']]",
+     "mutant": "[[config/train_shakespeare_char.py:16-29|dataset = 'shakespeare_char_async']]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:16-29|dataset = 'shakespeare_char']]",
+     "mutant": "[[config/train_shakespeare_char_old.py:16-29|dataset = 'shakespeare_char']]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:324-326|idx_next = torch.multinomial(probs, num_samples=1)]]",
+     "mutant": "[[model.py:324-326|idx_next = torch.multinomial(probs, num_samples=1)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:324-326|idx_next = torch.multinomial(probs, num_samples=1)]]",
+     "mutant": "[[model.py:324-326|idx_next = torch.multinomial(probs, num_samples_async=1)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:324-326|idx_next = torch.multinomial(probs, num_samples=1)]]",
+     "mutant": "[[model_old.py:324-326|idx_next = torch.multinomial(probs, num_samples=1)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:137-144|attempt to derive vocab_size from the dataset]]",
+     "mutant": "[[train.py:137-144|attempt to derive vocab_size from the dataset]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:137-144|attempt to derive vocab_size from the dataset]]",
+     "mutant": "[[train.py:137-144|attempt to derive_v2 vocab_size from the dataset]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:137-144|attempt to derive vocab_size from the dataset]]",
+     "mutant": "[[train_old.py:137-144|attempt to derive vocab_size from the dataset]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:137-144|attempt to derive vocab_size from the dataset]]",
+     "mutant": "[[train.py:140-147|attempt to derive vocab_size from the dataset]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:166|I didn't tune them much though]]",
+     "mutant": "[[README.md:166|I didn't tune them much though]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:166|I didn't tune them much though]]",
+     "mutant": "[[README.md:166-166|I didn't tune them much_legacy though]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:166|I didn't tune them much though]]",
+     "mutant": "[[README_old.md:166-166|I didn't tune them much though]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:166|I didn't tune them much though]]",
+     "mutant": "[[README.md:163-163|I didn't tune them much though]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:81-102|ddp = int(os.environ.get('RANK', -1)) != -1]]",
+     "mutant": "[[train.py:81-102|ddp = int(os.environ.get('RANK', -1)) != -1]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:81-102|ddp = int(os.environ.get('RANK', -1)) != -1]]",
+     "mutant": "[[train.py:81-102|ddp_cache = int(os.environ.get('RANK', -1)) != -1]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:81-102|ddp = int(os.environ.get('RANK', -1)) != -1]]",
+     "mutant": "[[train_old.py:81-102|ddp = int(os.environ.get('RANK', -1)) != -1]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:262-288|losses = estimate_loss()]]",
+     "mutant": "[[train.py:262-288|losses = estimate_loss()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:262-288|losses = estimate_loss()]]",
+     "mutant": "[[train.py:262-288|losses = estimate_loss_async()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:262-288|losses = estimate_loss()]]",
+     "mutant": "[[train_old.py:262-288|losses = estimate_loss()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:214-228|def estimate_loss():]]",
+     "mutant": "[[train.py:214-228|def estimate_loss():]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:214-228|def estimate_loss():]]",
+     "mutant": "[[train.py:214-228|def estimate_loss_cache():]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:214-228|def estimate_loss():]]",
+     "mutant": "[[train_old.py:214-228|def estimate_loss():]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:214-228|def estimate_loss():]]",
+     "mutant": "[[train.py:217-231|def estimate_loss():]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:133-138|self.transformer.wte.weight = self.lm_head.weight]]",
+     "mutant": "[[model.py:133-138|self.transformer.wte.weight = self.lm_head.weight]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:133-138|self.transformer.wte.weight = self.lm_head.weight]]",
+     "mutant": "[[model.py:133-138|self_internal.transformer.wte.weight = self.lm_head.weight]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:133-138|self.transformer.wte.weight = self.lm_head.weight]]",
+     "mutant": "[[model_old.py:133-138|self.transformer.wte.weight = self.lm_head.weight]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|n_embd = 384]]",
+     "mutant": "[[config/train_shakespeare_char.py:21-25|n_embd = 384]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|n_embd = 384]]",
+     "mutant": "[[config/train_shakespeare_char.py:21-25|n_embd_legacy = 384]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|n_embd = 384]]",
+     "mutant": "[[config/train_shakespeare_char_old.py:21-25|n_embd = 384]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:21-25|n_embd = 384]]",
+     "mutant": "[[config/train_shakespeare_char.py:12-16|n_embd = 384]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:195-204|def crop_block_size(self, block_size):]]",
+     "mutant": "[[model.py:195-204|def crop_block_size(self, block_size):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:195-204|def crop_block_size(self, block_size):]]",
+     "mutant": "[[model.py:195-204|def crop_block_size_cache(self, block_size):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:195-204|def crop_block_size(self, block_size):]]",
+     "mutant": "[[model_old.py:195-204|def crop_block_size(self, block_size):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:263|if iter_num % eval_interval == 0 and master_process:]]",
+     "mutant": "[[train.py:263|if iter_num % eval_interval == 0 and master_process:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:263|if iter_num % eval_interval == 0 and master_process:]]",
+     "mutant": "[[train.py:263-263|if iter_num_legacy % eval_interval == 0 and master_process:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:263|if iter_num % eval_interval == 0 and master_process:]]",
+     "mutant": "[[train_old.py:263-263|if iter_num % eval_interval == 0 and master_process:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:263|if iter_num % eval_interval == 0 and master_process:]]",
+     "mutant": "[[train.py:268-268|if iter_num % eval_interval == 0 and master_process:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:196|GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:196|GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:196|GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:196-196|GradScaler(enabled_async=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:196|GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train_old.py:196-196|GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:196|GradScaler(enabled=(dtype == 'float16'))]]",
+     "mutant": "[[train.py:205-205|GradScaler(enabled=(dtype == 'float16'))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for_internal i,ch in enumerate(chars) }]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]",
+     "mutant": "[[data/shakespeare_char/prepare_old.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:23-31|stoi = { ch:i for i,ch in enumerate(chars) }]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:20-28|stoi = { ch:i for i,ch in enumerate(chars) }]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:230-242|def get_lr(it):]]",
+     "mutant": "[[train.py:230-242|def get_lr(it):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:230-242|def get_lr(it):]]",
+     "mutant": "[[train.py:230-242|def_internal get_lr(it):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:230-242|def get_lr(it):]]",
+     "mutant": "[[train_old.py:230-242|def get_lr(it):]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:230-242|def get_lr(it):]]",
+     "mutant": "[[train.py:233-245|def get_lr(it):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:245-259|we have to transpose these weights when we import them]]",
+     "mutant": "[[model.py:245-259|we have to transpose these weights when we import them]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:245-259|we have to transpose these weights when we import them]]",
+     "mutant": "[[model.py:245-259|we have to transpose these weights when_async we import them]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:245-259|we have to transpose these weights when we import them]]",
+     "mutant": "[[model_old.py:245-259|we have to transpose these weights when we import them]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:245-259|we have to transpose these weights when we import them]]",
+     "mutant": "[[model.py:254-268|we have to transpose these weights when we import them]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[sample.py:66-68|encode = lambda s:]]",
+     "mutant": "[[sample.py:66-68|encode = lambda s:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[sample.py:66-68|encode = lambda s:]]",
+     "mutant": "[[sample.py:66-68|encode = lambda_internal s:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[sample.py:66-68|encode = lambda s:]]",
+     "mutant": "[[sample_old.py:66-68|encode = lambda s:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[sample.py:66-68|encode = lambda s:]]",
+     "mutant": "[[sample.py:57-59|encode = lambda s:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]",
+     "mutant": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]",
+     "mutant": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size_legacy == 0]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]",
+     "mutant": "[[train_old.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:92-95|assert gradient_accumulation_steps % ddp_world_size == 0]]",
+     "mutant": "[[train.py:97-100|assert gradient_accumulation_steps % ddp_world_size == 0]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:184-193|if targets is not None:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:184-193|if targets is not_cache None:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model_old.py:184-193|if targets is not None:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:184-193|if targets is not None:]]",
+     "mutant": "[[model.py:193-202|if targets is not None:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:188-191|only forward the lm_head on the very last position]]",
+     "mutant": "[[model.py:188-191|only forward the lm_head on the very last position]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:188-191|only forward the lm_head on the very last position]]",
+     "mutant": "[[model.py:188-191|only forward the lm_head on the very last position_async]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:188-191|only forward the lm_head on the very last position]]",
+     "mutant": "[[model_old.py:188-191|only forward the lm_head on the very last position]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:188-191|only forward the lm_head on the very last position]]",
+     "mutant": "[[model.py:197-200|only forward the lm_head on the very last position]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:16-19|with open(input_file_path, 'r') as f:]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:16-19|with open(input_file_path, 'r') as f:]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:16-19|with open(input_file_path, 'r') as f:]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:16-19|with_cache open(input_file_path, 'r') as f:]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:16-19|with open(input_file_path, 'r') as f:]]",
+     "mutant": "[[data/shakespeare_char/prepare_old.py:16-19|with open(input_file_path, 'r') as f:]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:16-19|with open(input_file_path, 'r') as f:]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:21-24|with open(input_file_path, 'r') as f:]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:124-125|astype(np.int64)]]",
+     "mutant": "[[train.py:124-125|astype(np.int64)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:124-125|astype(np.int64)]]",
+     "mutant": "[[train.py:124-125|astype_internal(np.int64)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:124-125|astype(np.int64)]]",
+     "mutant": "[[train_old.py:124-125|astype(np.int64)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:124-125|astype(np.int64)]]",
+     "mutant": "[[train.py:121-122|astype(np.int64)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:121|gets a val loss of about 3.11]]",
+     "mutant": "[[README.md:121|gets a val loss of about 3.11]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:121|gets a val loss of about 3.11]]",
+     "mutant": "[[README.md:121-121|gets_legacy a val loss of about 3.11]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:121|gets a val loss of about 3.11]]",
+     "mutant": "[[README_old.md:121-121|gets a val loss of about 3.11]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:121|gets a val loss of about 3.11]]",
+     "mutant": "[[README.md:118-118|gets a val loss of about 3.11]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]",
+     "mutant": "[[model.py:111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]",
+     "mutant": "[[model.py:111-111|GPT-2 vocab_size of 50257, padded up to nearest_cache multiple of 64]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]",
+     "mutant": "[[model_old.py:111-111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:111|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]",
+     "mutant": "[[model.py:102-102|GPT-2 vocab_size of 50257, padded up to nearest multiple of 64]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:134-138|TODO investigate]]",
+     "mutant": "[[model.py:134-138|TODO investigate]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:134-138|TODO investigate]]",
+     "mutant": "[[model.py:134-138|TODO_v2 investigate]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:134-138|TODO investigate]]",
+     "mutant": "[[model_old.py:134-138|TODO investigate]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|pickle.dump(meta, f)]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:48-61|pickle.dump(meta, f)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|pickle.dump(meta, f)]]",
+     "mutant": "[[data/shakespeare_char/prepare.py:48-61|pickle.dump_legacy(meta, f)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/shakespeare_char/prepare.py:48-61|pickle.dump(meta, f)]]",
+     "mutant": "[[data/shakespeare_char/prepare_old.py:48-61|pickle.dump(meta, f)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:162-168|def _init_weights(self, module):]]",
+     "mutant": "[[model.py:162-168|def _init_weights(self, module):]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:162-168|def _init_weights(self, module):]]",
+     "mutant": "[[model.py:162-168|def _init_weights(self_v2, module):]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:162-168|def _init_weights(self, module):]]",
+     "mutant": "[[model_old.py:162-168|def _init_weights(self, module):]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:76|isinstance(v, (int, float, bool, str))]]",
+     "mutant": "[[train.py:76|isinstance(v, (int, float, bool, str))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:76|isinstance(v, (int, float, bool, str))]]",
+     "mutant": "[[train.py:76-76|isinstance(v, (int, float_cache, bool, str))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:76|isinstance(v, (int, float, bool, str))]]",
+     "mutant": "[[train_old.py:76-76|isinstance(v, (int, float, bool, str))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:76|isinstance(v, (int, float, bool, str))]]",
+     "mutant": "[[train.py:81-81|isinstance(v, (int, float, bool, str))]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:320-322|-float('Inf')]]",
+     "mutant": "[[model.py:320-322|-float('Inf')]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:320-322|-float('Inf')]]",
+     "mutant": "[[model.py:320-322|-float_cache('Inf')]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:320-322|-float('Inf')]]",
+     "mutant": "[[model_old.py:320-322|-float('Inf')]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:320-322|-float('Inf')]]",
+     "mutant": "[[model.py:323-325|-float('Inf')]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:95|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:95-95|gradient_accumulation_steps_async //= ddp_world_size]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train_old.py:95-95|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:95|gradient_accumulation_steps //= ddp_world_size]]",
+     "mutant": "[[train.py:90-90|gradient_accumulation_steps //= ddp_world_size]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:184-187|logits = self.lm_head(x)]]",
+     "mutant": "[[model.py:184-187|logits = self.lm_head(x)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:184-187|logits = self.lm_head(x)]]",
+     "mutant": "[[model.py:184-187|logits_async = self.lm_head(x)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:184-187|logits = self.lm_head(x)]]",
+     "mutant": "[[model_old.py:184-187|logits = self.lm_head(x)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:184-187|logits = self.lm_head(x)]]",
+     "mutant": "[[model.py:187-190|logits = self.lm_head(x)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[sample.py:26-27|torch.manual_seed(seed)]]",
+     "mutant": "[[sample.py:26-27|torch.manual_seed(seed)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[sample.py:26-27|torch.manual_seed(seed)]]",
+     "mutant": "[[sample.py:26-27|torch.manual_seed_internal(seed)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[sample.py:26-27|torch.manual_seed(seed)]]",
+     "mutant": "[[sample_old.py:26-27|torch.manual_seed(seed)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[sample.py:26-27|torch.manual_seed(seed)]]",
+     "mutant": "[[sample.py:35-36|torch.manual_seed(seed)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:276-279|num decayed parameter tensors]]",
+     "mutant": "[[model.py:276-279|num decayed parameter tensors]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:276-279|num decayed parameter tensors]]",
+     "mutant": "[[model.py:276-279|num decayed_async parameter tensors]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:276-279|num decayed parameter tensors]]",
+     "mutant": "[[model_old.py:276-279|num decayed parameter tensors]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:276-279|num decayed parameter tensors]]",
+     "mutant": "[[model.py:273-276|num decayed parameter tensors]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[bench.py:99|torch.cuda.synchronize()]]",
+     "mutant": "[[bench.py:99|torch.cuda.synchronize()]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[bench.py:99|torch.cuda.synchronize()]]",
+     "mutant": "[[bench.py:99-99|torch.cuda.synchronize_cache()]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[bench.py:99|torch.cuda.synchronize()]]",
+     "mutant": "[[bench_old.py:99-99|torch.cuda.synchronize()]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[bench.py:99|torch.cuda.synchronize()]]",
+     "mutant": "[[bench.py:102-102|torch.cuda.synchronize()]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[sample.py:12-18|num_samples = 10]]",
+     "mutant": "[[sample.py:12-18|num_samples = 10]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[sample.py:12-18|num_samples = 10]]",
+     "mutant": "[[sample.py:12-18|num_samples_internal = 10]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[sample.py:12-18|num_samples = 10]]",
+     "mutant": "[[sample_old.py:12-18|num_samples = 10]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[sample.py:12-18|num_samples = 10]]",
+     "mutant": "[[sample.py:21-27|num_samples = 10]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]",
+     "mutant": "[[model.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]",
+     "mutant": "[[model.py:184-187|F.cross_entropy(logits.view_cache(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]",
+     "mutant": "[[model_old.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:184-187|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]",
+     "mutant": "[[model.py:181-184|F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/finetune_shakespeare.py:10-25|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/finetune_shakespeare.py:10-25|init_from = 'gpt2-xl']]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/finetune_shakespeare.py:10-25|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/finetune_shakespeare.py:10-25|init_from_legacy = 'gpt2-xl']]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/finetune_shakespeare.py:10-25|init_from = 'gpt2-xl']]",
+     "mutant": "[[config/finetune_shakespeare_old.py:10-25|init_from = 'gpt2-xl']]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:76-78|train has ~9B tokens (9,035,582,198)]]",
+     "mutant": "[[data/openwebtext/prepare.py:76-78|train has ~9B tokens (9,035,582,198)]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:76-78|train has ~9B tokens (9,035,582,198)]]",
+     "mutant": "[[data/openwebtext/prepare.py:76-78|train has_legacy ~9B tokens (9,035,582,198)]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:76-78|train has ~9B tokens (9,035,582,198)]]",
+     "mutant": "[[data/openwebtext/prepare_old.py:76-78|train has ~9B tokens (9,035,582,198)]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[data/openwebtext/prepare.py:76-78|train has ~9B tokens (9,035,582,198)]]",
+     "mutant": "[[data/openwebtext/prepare.py:79-81|train has ~9B tokens (9,035,582,198)]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[train.py:207|unoptimized_model = model]]",
+     "mutant": "[[train.py:207|unoptimized_model = model]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[train.py:207|unoptimized_model = model]]",
+     "mutant": "[[train.py:207-207|unoptimized_model_cache = model]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[train.py:207|unoptimized_model = model]]",
+     "mutant": "[[train_old.py:207-207|unoptimized_model = model]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[train.py:207|unoptimized_model = model]]",
+     "mutant": "[[train.py:198-198|unoptimized_model = model]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:147-148|number of parameters: %.2fM]]",
+     "mutant": "[[model.py:147-148|number of parameters: %.2fM]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:147-148|number of parameters: %.2fM]]",
+     "mutant": "[[model.py:147-148|number of parameters_legacy: %.2fM]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:147-148|number of parameters: %.2fM]]",
+     "mutant": "[[model_old.py:147-148|number of parameters: %.2fM]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:147-148|number of parameters: %.2fM]]",
+     "mutant": "[[model.py:142-143|number of parameters: %.2fM]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:31|beta2 = 0.99]]",
+     "mutant": "[[config/train_shakespeare_char.py:31|beta2 = 0.99]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:31|beta2 = 0.99]]",
+     "mutant": "[[config/train_shakespeare_char.py:31-31|beta2_legacy = 0.99]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:31|beta2 = 0.99]]",
+     "mutant": "[[config/train_shakespeare_char_old.py:31-31|beta2 = 0.99]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[config/train_shakespeare_char.py:31|beta2 = 0.99]]",
+     "mutant": "[[config/train_shakespeare_char.py:34-34|beta2 = 0.99]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[README.md:51|the best validation loss is 1.4697]]",
+     "mutant": "[[README.md:51|the best validation loss is 1.4697]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[README.md:51|the best validation loss is 1.4697]]",
+     "mutant": "[[README.md:51-51|the best validation loss_cache is 1.4697]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[README.md:51|the best validation loss is 1.4697]]",
+     "mutant": "[[README_old.md:51-51|the best validation loss is 1.4697]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[README.md:51|the best validation loss is 1.4697]]",
+     "mutant": "[[README.md:56-56|the best validation loss is 1.4697]]"
+    },
+    {
+     "kind": "control",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.mlp(self.ln_2(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self.mlp(self.ln_2(x))]]"
+    },
+    {
+     "kind": "fabricated",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.mlp(self.ln_2(x))]]",
+     "mutant": "[[model.py:103-106|x = x + self_legacy.mlp(self.ln_2(x))]]"
+    },
+    {
+     "kind": "missing",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.mlp(self.ln_2(x))]]",
+     "mutant": "[[model_old.py:103-106|x = x + self.mlp(self.ln_2(x))]]"
+    },
+    {
+     "kind": "drift",
+     "ok": true,
+     "citation": "[[model.py:103-106|x = x + self.mlp(self.ln_2(x))]]",
+     "mutant": "[[model.py:98-101|x = x + self.mlp(self.ln_2(x))]]"
+    }
+   ]
+  }
+ ]
+}

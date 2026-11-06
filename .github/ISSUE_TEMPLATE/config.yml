@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security issue
+    url: https://github.com/SanyamWadhwa07/onramp/security/advisories/new
+    about: Please report vulnerabilities privately.
+  - name: Website and live demos
+    url: https://onramp-skill.vercel.app
+    about: See what a guide looks like before you install.

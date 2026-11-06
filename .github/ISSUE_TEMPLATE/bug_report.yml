@@ -1,0 +1,58 @@
+name: Bug report
+description: Something in Onramp did not work as expected.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting. The more of the details below you can share, the faster this gets fixed.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Claude Code
+        - Codex
+        - GitHub Copilot
+        - Cursor
+        - Gemini CLI
+        - Antigravity
+        - Windsurf
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part
+      options:
+        - scan.py
+        - sessions.py
+        - verify.py
+        - render.py
+        - The guide viewer (index.html)
+        - SKILL.md instructions
+        - Installation
+        - Website
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Operating system, Python version and Onramp version.
+      placeholder: macOS 15, Python 3.12, Onramp 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: The script output or error. Please remove anything private from your codebase first.
+      render: text
