@@ -4,6 +4,13 @@ All notable changes to Onramp are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- `scan.py` skips installed agent skills (`.claude/skills/`, `.agents/skills/` and similar), so a
+  project-level install of Onramp or any other skill is not counted as the project's own code.
+
 ## [1.0.0] - 2026-11-06
 
 First public release.

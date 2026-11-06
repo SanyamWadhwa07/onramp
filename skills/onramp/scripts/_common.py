@@ -117,6 +117,12 @@ def run_git(root, *args):
     return out.stdout.decode("utf-8", errors="replace")
 
 
+def is_agent_skill_path(path):
+    """Installed agent skills (.claude/skills/, .agents/skills/, .cursor/skills/ ...) are not the project's code."""
+    parts = path.split("/")
+    return any(parts[i].startswith(".") and parts[i + 1] == "skills" for i in range(len(parts) - 1))
+
+
 def list_files(root):
     """Repo-relative POSIX paths. Uses git (respects .gitignore) when possible."""
     out = run_git(root, "ls-files", "--cached", "--others", "--exclude-standard", "-z")
@@ -126,7 +132,7 @@ def list_files(root):
             if not p:
                 continue
             parts = p.split("/")
-            if any(part in IGNORE_DIRS for part in parts[:-1]):
+            if any(part in IGNORE_DIRS for part in parts[:-1]) or is_agent_skill_path(p):
                 continue
             if os.path.isfile(os.path.join(root, p)):
                 files.append(p)
@@ -136,7 +142,8 @@ def list_files(root):
         dirnames[:] = [d for d in dirnames if d not in IGNORE_DIRS and not d.startswith(".")]
         for name in filenames:
             rel = posix(os.path.relpath(os.path.join(dirpath, name), root))
-            files.append(rel)
+            if not is_agent_skill_path(rel):
+                files.append(rel)
     return sorted(files)
 
 

@@ -70,6 +70,14 @@ class ScanTest(Fixture):
         self.assertEqual(files["app/both.py"]["imports"], ["app/models.py", "app/store.py"])
 
 
+    def test_installed_agent_skills_are_not_scanned(self):
+        for folder in (".claude/skills/onramp/scripts", ".agents/skills/other"):
+            os.makedirs(os.path.join(self.repo, folder))
+            with open(os.path.join(self.repo, folder, "tool.py"), "w") as fh:
+                fh.write("print(1)\n")
+        paths = {f["path"] for f in scan.scan(self.repo)["files"]}
+        self.assertFalse(any("/skills/" in p for p in paths), paths)
+
     def test_stdlib_names_do_not_match_project_files(self):
         pkg = os.path.join(self.repo, "src", "shop")
         os.makedirs(pkg)
