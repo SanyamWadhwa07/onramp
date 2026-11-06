@@ -4,6 +4,16 @@ All notable changes to Onramp are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.3] - 2026-11-06
+
+### Added
+
+- A `plugin` branch, published on every release, that holds only the plugin: the manifest, the
+  skill, and the README, license, changelog and security policy. Anthropic's plugin directory
+  installs from it, so an install is about 230 KB instead of the whole repository (website, demos
+  and evals, about 8 MB). `main` is unchanged.
+- Documentation, support, privacy and license links in `plugin.json` for the directory listing.
+
 ## [1.0.2] - 2026-11-06
 
 ### Changed
@@ -53,3 +63,4 @@ First public release.
 [1.0.0]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.0
 [1.0.1]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.1
 [1.0.2]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.2
+[1.0.3]: https://github.com/SanyamWadhwa07/onramp/releases/tag/v1.0.3

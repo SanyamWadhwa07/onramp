@@ -4,7 +4,7 @@ description: Turns any codebase into a personal learning route. Produces a singl
 license: MIT
 compatibility: Any agent that can read files and run Python 3.8+ (standard library only). Tested most in Claude Code.
 metadata:
-  version: "1.0.2"
+  version: "1.0.3"
   homepage: "https://onramp-skill.vercel.app"
 allowed-tools: Read Grep Glob Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/scan.py *) Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/sessions.py *) Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/verify.py *) Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/render.py *) Bash(python ${CLAUDE_SKILL_DIR}/scripts/scan.py *) Bash(python ${CLAUDE_SKILL_DIR}/scripts/sessions.py *) Bash(python ${CLAUDE_SKILL_DIR}/scripts/verify.py *) Bash(python ${CLAUDE_SKILL_DIR}/scripts/render.py *) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/scan.py *) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/sessions.py *) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/verify.py *) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/render.py *)
 ---

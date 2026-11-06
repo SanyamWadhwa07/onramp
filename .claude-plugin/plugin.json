@@ -1,6 +1,6 @@
 {
   "name": "onramp-skill",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Turns any codebase into a personal learning route where every claim is checked against the code.",
   "author": {
     "name": "Sanyam Wadhwa",
@@ -8,6 +8,10 @@
   },
   "homepage": "https://onramp-skill.vercel.app/",
   "repository": "https://github.com/SanyamWadhwa07/onramp",
+  "documentationUrl": "https://onramp-skill.vercel.app/#how",
+  "supportUrl": "https://github.com/SanyamWadhwa07/onramp/issues",
+  "privacyPolicyUrl": "https://github.com/SanyamWadhwa07/onramp#privacy",
+  "termsOfServiceUrl": "https://github.com/SanyamWadhwa07/onramp/blob/main/LICENSE",
   "license": "MIT",
   "keywords": ["onboarding", "codebase", "documentation", "learning", "architecture", "code-explanation"]
 }
