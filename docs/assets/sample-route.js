@@ -170,14 +170,14 @@ window.ONRAMP_SAMPLE = {
   }
  },
  "verification": {
-  "checked_at": "2026-11-06T15:03:35",
+  "checked_at": "2026-11-06T15:10:23",
   "commit": "fcb26da",
   "citations": 895,
   "verified": 895,
   "auto_fixed": 0,
   "files_cited": 91,
   "errors": 0,
-  "warnings": 0,
+  "warnings": 2,
   "lessons": 39
  }
 };

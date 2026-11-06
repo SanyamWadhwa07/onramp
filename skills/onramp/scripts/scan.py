@@ -468,6 +468,16 @@ def find_entrypoints(files, texts, manifests):
             if rx.search(text):
                 add(f, why)
                 break
+    importers = set()
+    for t in texts.values():
+        importers.update(re.findall(r"^\s*(?:from|import)\s+([\w.]+)", t, re.M))
+    top_call = re.compile(r"^(?!def |class |import |from |@|#|if |for |while |try|with |else|elif )[A-Za-z_][\w.]*\s*\(", re.M)
+    for f in files:
+        # a top-level Python script that nothing imports and that does work when run (train.py, sample.py)
+        if f.endswith(".py") and f.count("/") <= 1 and not TEST_PATH.search(f) and texts.get(f) \
+                and not f.endswith("__init__.py") and os.path.splitext(os.path.basename(f))[0] not in importers \
+                and top_call.search(texts[f]):
+            add(f, "script with top-level code")
     for f in files:
         base = os.path.basename(f)
         if base in ("manage.py", "wsgi.py", "asgi.py", "main.rs", "lib.rs", "index.html") and f.count("/") <= 2:

@@ -54,6 +54,12 @@ Real changes a newcomer could make in this codebase: add a field, add a route, c
 threshold and observe it, write a missing test. Each one names the files to touch and how to
 know it worked.
 
+## Markdown the viewer renders
+
+Paragraphs, `###` and `####` headings, bullet and numbered lists (one level), fenced code blocks,
+`>` notes, pipe tables, **bold**, *italics*, `inline code`, `https://` links and citations. Nothing
+else: no images, no HTML, no nested lists.
+
 ## Lengths
 
 | Item | Length |

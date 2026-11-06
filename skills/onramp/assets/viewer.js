@@ -139,7 +139,7 @@
   }
   function md(src) {
     var lines = String(src == null ? "" : src).replace(/\r/g, "").split("\n"), out = [], i = 0;
-    var BLOCK = /^(```|#{1,4}\s|\s*[-*]\s+|\s*\d+[.)]\s+|>)/;
+    var BLOCK = /^(```|#{1,4}\s|\s*[-*]\s+|\s*\d+[.)]\s+|>|\s*\|)/;
     while (i < lines.length) {
       var line = lines[i], m, buf, items;
       if (/^```/.test(line)) {
@@ -150,6 +150,16 @@
         continue;
       }
       if (/^\s*$/.test(line)) { i++; continue; }
+      if (/^\s*\|/.test(line)) {
+        var rows = [];
+        while (i < lines.length && /^\s*\|/.test(lines[i])) rows.push(lines[i++]);
+        var cells = function (r) { return r.trim().replace(/^\||\|$/g, "").split(/(?<!\\)\|/).map(function (c) { return c.trim(); }); };
+        var head = cells(rows[0]), body = rows.slice(1).filter(function (r) { return !/^\s*\|?\s*:?-{2,}/.test(r); });
+        out.push('<div class="table-wrap"><table class="table"><thead><tr>' + head.map(function (c) { return "<th>" + inline(c) + "</th>"; }).join("") +
+          "</tr></thead><tbody>" + body.map(function (r) { return "<tr>" + cells(r).map(function (c) { return "<td>" + inline(c) + "</td>"; }).join("") + "</tr>"; }).join("") +
+          "</tbody></table></div>");
+        continue;
+      }
       if ((m = line.match(/^(#{1,4})\s+(.*)$/))) {
         var lvl = Math.min(4, m[1].length + 2);
         out.push("<h" + lvl + ">" + inline(m[2]) + "</h" + lvl + ">"); i++; continue;
@@ -198,8 +208,10 @@
       });
     function byPr(a, b) { return b.pr - a.pr || a.l._i - b.l._i; }
     var used = 0, picked = [];
+    // Core lessons tell the whole story, so every route keeps all of them, even when a newcomer's
+    // reading pace stretches the shortest route a little past its budget.
     cands.filter(function (c) { return c.l.tier === "core"; }).sort(byPr).forEach(function (c) {
-      if (used + c.mins <= t.budget || !picked.length) { picked.push(c); used += c.mins; }
+      picked.push(c); used += c.mins;
     });
     cands.filter(function (c) { return c.l.tier !== "core"; }).sort(byPr).forEach(function (c) {
       if (used + c.mins <= t.budget) { picked.push(c); used += c.mins; }
@@ -512,7 +524,9 @@
       }).join("") + "</div>";
     }
     main.innerHTML = '<div class="wrap"><section class="hero"><span class="eyebrow">Onramp · your route through</span><h1>' + esc(P.name || S.name || "this project") + "</h1>" +
-      '<p class="one">' + inline(P.one_liner) + "</p>" + numbersHTML() + "</section>" +
+      '<p class="one">' + inline(P.one_liner) + "</p>" +
+      (P.author || P.license ? '<p class="subtle">' + (P.author ? "By " + esc(P.author) : "") + (P.author && P.license ? " \u00b7 " : "") + (P.license ? esc(P.license) + " license" : "") + "</p>" : "") +
+      numbersHTML() + "</section>" +
       '<div class="rows">' +
       '<div class="row"><div class="label">How much time do you have?</div><div class="content">' + group("time", TIMES) + "</div></div>" +
       '<div class="row"><div class="label">What do you want to do?</div><div class="content">' + group("goal", GOALS) + "</div></div>" +

@@ -135,6 +135,9 @@ def check_citation(match, where, files, rep, stats):
             return None
     elif find_anchor(lines, anchor, start, end):
         stats["verified"] += 1
+        want = norm_ws(anchor)
+        if len(want) < 24 and sum(want in norm_ws(l) for l in lines) >= 4:
+            rep.warn(where, "anchor %r appears on many lines of %s; quote text unique to %d-%d" % (anchor, rel, start, end))
         return None
     found = nearest_anchor(lines, anchor, start)
     if found is None:
@@ -330,11 +333,37 @@ def merge_fragments(g, work, rep):
     return merged
 
 
+def repair_fragments(work, files, rep):
+    """Apply drift fixes inside work/ fragments, so the next merge does not bring old lines back."""
+    for path in sorted(glob.glob(os.path.join(work, "*.json"))):
+        if os.path.basename(path).split(".")[0] not in MERGE_KEYS:
+            continue
+        items = load_json(path)
+        changed = []
+
+        def visit(text, where):
+            def sub(m):
+                scratch = Report()
+                fixed = check_citation(m, where, files, scratch, {"citations": 0, "verified": 0, "files": set()})
+                if fixed:
+                    changed.append(fixed)
+                    return fixed
+                return m.group(0)
+            return CITE_RE.sub(sub, text)
+        walk_strings(items, os.path.basename(path), visit)
+        if changed:
+            save_json(path, items, indent=1)
+            rep.fixed.append("%s: re-anchored %d citation(s) in the fragment" % (os.path.basename(path), len(changed)))
+
+
 def verify(root, guide_path, fix=False, merge=False):
     g = load_json(guide_path)
     rep = Report()
     files = Files(root)
-    merged = merge_fragments(g, os.path.join(os.path.dirname(guide_path), "work"), rep) if merge else 0
+    work = os.path.join(os.path.dirname(guide_path), "work")
+    if merge and fix:
+        repair_fragments(work, files, rep)
+    merged = merge_fragments(g, work, rep) if merge else 0
     lessons = check_structure(g, files, rep)
     stats = {"citations": 0, "verified": 0, "files": set()}
 

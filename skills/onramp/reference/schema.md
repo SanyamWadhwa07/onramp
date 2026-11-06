@@ -41,7 +41,9 @@ Rules:
     "what": "Markdown. What it is, who it is for, the problem it solves. 2-4 sentences.",
     "analogy": "One everyday comparison for the whole system.",
     "audience": "Who uses it.",
-    "status": "prototype | active | production | archived"
+    "status": "prototype | active | production | archived",
+    "author": "optional: who wrote it, credited in the guide",
+    "license": "optional: e.g. MIT"
   },
   "numbers": [{"value": "31.5k", "label": "lines of code", "note": "optional"}],
   "lessons": [ ... ],
@@ -195,8 +197,12 @@ Chapters, in order (the "exits" on the road):
 3. **Candidates**: drop lessons whose `for` excludes the reader's background.
 4. **Priority**: core 30, standard 20, deep 10; +8 if `goals` includes the reader's goal;
    +0 to +6 from the chapter's weight for that goal (below).
-5. **Pick**: all core lessons first (by priority, until the budget), then the rest by priority
-   while they fit.
+5. **Pick**: every core lesson, always (they tell the whole story, so the shortest route may run
+   slightly over for newcomers), then the rest by priority while they fit. Longer routes also get
+   hands-on stops made from the guide: reading a key file in full (lines / 30 minutes, 10 to 60;
+   all goals), each exercise (easy 30, medium 60, hard 120 minutes; ship, own, rebuild) and each
+   milestone's `try` (60 minutes; rebuild). They rank below lessons and only join routes whose
+   goal they serve.
 6. **Order** by the goal's chapter order, then by position in the guide:
    - gist: gist map stack concepts flows data why built files care run practice
    - ship: gist run map flows files care practice stack concepts data why built
