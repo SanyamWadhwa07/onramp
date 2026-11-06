@@ -9,6 +9,8 @@ Large guides can be written in pieces: put a JSON **array** in `.onramp/work/<ke
 Items are matched by `path` (files), `term` (concepts), `name` (stack), `title` (milestones,
 exercises, decisions, risks) or `id` (lessons, flows); a fragment item replaces the guide item it
 matches. Check one fragment on its own with `verify.py <repo> --fragment <file>`.
+Merged lessons are put in chapter order; within a chapter they keep fragment file-name order,
+so name fragments `lessons.a-gist.json`, `lessons.b-run.json` and so on to control it.
 
 ## Citations
 
@@ -27,6 +29,9 @@ Rules:
   It may contain `|` and may end in `]` (as in `Tuple[str, int]`), but must not contain `]]`.
   Whitespace differences are ignored.
 - Cite only files present in the working tree. Files deleted but not committed cannot be cited.
+- `verify.py` warns (without failing) when a cited range is over 120 lines, and when a short
+  anchor appears on many lines of its file. Pick text unique to the cited lines, such as the
+  `def` or `class` line rather than `return result`.
 - Cite tight ranges: the function or block that proves the claim, usually 3–40 lines.
 - Citations render as chips; clicking one shows the real code from the file.
 

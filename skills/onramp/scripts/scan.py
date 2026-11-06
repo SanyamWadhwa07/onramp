@@ -32,6 +32,19 @@ JS_RES = [
 ]
 PY_IMPORT = re.compile(r"^[ \t]*import[ \t]+([\w.]+(?:[ \t]*,[ \t]*[\w.]+)*)", re.M)
 PY_FROM = re.compile(r"^[ \t]*from[ \t]+(\.*[\w.]*)[ \t]+import[ \t]+(?:\(([^)]*)\)|([\w*][\w \t,*]*))", re.M)
+TYPE_CHECKING_BLOCK = re.compile(r"^([ \t]*)if (?:[\w.]+\.)?TYPE_CHECKING\s*:[^\n]*\n(?:(?:\1[ \t]+[^\n]*|[ \t]*)\n)*", re.M)
+STDLIB = set(getattr(sys, "stdlib_module_names", ())) | {
+    "abc", "argparse", "array", "ast", "asyncio", "base64", "bisect", "builtins", "calendar", "cgi", "codecs",
+    "collections", "concurrent", "configparser", "contextlib", "contextvars", "copy", "csv", "ctypes", "dataclasses",
+    "datetime", "decimal", "difflib", "email", "enum", "errno", "fnmatch", "fractions", "functools", "gc", "getpass",
+    "gettext", "glob", "gzip", "hashlib", "heapq", "hmac", "html", "http", "importlib", "inspect", "io", "ipaddress",
+    "itertools", "json", "keyword", "locale", "logging", "lzma", "math", "mimetypes", "multiprocessing", "numbers",
+    "operator", "os", "pathlib", "pickle", "platform", "pkgutil", "pprint", "queue", "random", "re", "secrets",
+    "select", "shlex", "shutil", "signal", "site", "socket", "sqlite3", "ssl", "stat", "string", "struct",
+    "subprocess", "sys", "sysconfig", "tarfile", "tempfile", "textwrap", "threading", "time", "timeit", "token",
+    "tokenize", "traceback", "types", "typing", "unittest", "urllib", "uuid", "warnings", "weakref", "webbrowser",
+    "wsgiref", "xml", "zipfile", "zlib", "zoneinfo", "__future__",
+}
 GO_SINGLE = re.compile(r'^\s*import\s+(?:\w+\s+)?"([^"]+)"', re.M)
 GO_BLOCK = re.compile(r"^\s*import\s*\((.*?)\)", re.M | re.S)
 RS_MOD = re.compile(r"^\s*(?:pub(?:\([^)]*\))?\s+)?mod\s+(\w+)\s*;", re.M)
@@ -220,15 +233,45 @@ class Resolver:
                     if c.lstrip("/") in self.files:
                         out.append(c.lstrip("/"))
             return out, None
+        roots = self._py_roots(src)
         for n in names:
-            hit = self._by_suffix(module + "." + n, src, (".py",))
+            hit = self._py_at_roots(module + "." + n, roots)
             if hit:
                 out.append(hit)
         if not out:
-            hit = self._by_suffix(module, src, (".py",))
+            hit = self._py_at_roots(module, roots)
             if hit:
                 out.append(hit)
-        return out, (None if out else module.split(".")[0])
+        top = module.split(".")[0]
+        if not out and top not in STDLIB:
+            for n in names:  # unusual sys.path set-ups: fall back to a unique path suffix
+                hit = self._by_suffix(module + "." + n, src, (".py",))
+                if hit:
+                    out.append(hit)
+            if not out:
+                hit = self._by_suffix(module, src, (".py",))
+                if hit:
+                    out.append(hit)
+        return out, (None if out else top)
+
+    def _py_roots(self, src):
+        """Folders Python would import from when running src: the parent of its top package
+        (or its own folder for a script), then src/ and the repo root."""
+        d = posix(os.path.dirname(src))
+        top = d
+        while top and (top + "/__init__.py") in self.files:
+            top = posix(os.path.dirname(top))
+        roots = [top, "src", ""]
+        return [r for i, r in enumerate(roots) if r not in roots[:i]]
+
+    def _py_at_roots(self, dotted, roots):
+        rel = dotted.replace(".", "/")
+        for r in roots:
+            base = (r + "/" + rel) if r else rel
+            for c in (base + ".py", base + "/__init__.py"):
+                if c in self.files:
+                    return c
+        return None
 
     def go(self, spec):
         if self.go_module:
@@ -313,6 +356,7 @@ def extract_imports(path, text, res):
                 hit, pkg = res.js(path, spec)
                 add(hit, pkg)
     elif ext == ".py":
+        text = TYPE_CHECKING_BLOCK.sub("", text)
         for m in PY_IMPORT.finditer(text):
             for mod in m.group(1).split(","):
                 hits, pkg = res.python(path, mod.strip(), [])
@@ -464,6 +508,9 @@ def find_entrypoints(files, texts, manifests):
             continue
         if TEST_PATH.search(f):
             continue
+        if f.endswith(".py"):
+            text = re.sub(r"(\"\"\"|\'\'\')[\s\S]*?\1", "", text)
+            text = re.sub(r"^\s*#[^\n]*", "", text, flags=re.M)
         for rx, why in patterns:
             if rx.search(text):
                 add(f, why)
@@ -480,7 +527,8 @@ def find_entrypoints(files, texts, manifests):
             add(f, "script with top-level code")
     for f in files:
         base = os.path.basename(f)
-        if base in ("manage.py", "wsgi.py", "asgi.py", "main.rs", "lib.rs", "index.html") and f.count("/") <= 2:
+        if base in ("manage.py", "wsgi.py", "asgi.py", "main.rs", "lib.rs", "index.html") and f.count("/") <= 2 \
+                and not TEST_PATH.search(f):
             add(f, "conventional entry file")
         if re.search(r"(^|/)app/(layout|page)\.(t|j)sx?$", f) or re.search(r"(^|/)pages/_app\.(t|j)sx?$", f):
             add(f, "Next.js app root")
@@ -520,10 +568,14 @@ def git_facts(root, files_set):
         commits.append({"hash": parts[0][:7], "date": parts[1], "author": parts[2],
                         "subject": parts[3][:160], "files": len(touched),
                         "touched": [t for t in touched if t in files_set][:12]})
-    facts["commits"] = len(commits)
+    total = run_git(root, "rev-list", "--count", "--no-merges", "HEAD")
+    facts["commits"] = int(total.strip()) if total and total.strip().isdigit() else len(commits)
+    facts["log_sample"] = len(commits)
     facts["authors"] = len({c["author"] for c in commits})
     if commits:
-        facts["first_commit"] = commits[-1]["date"]
+        roots = run_git(root, "log", "--max-parents=0", "--date=short", "--format=%ad", "HEAD")
+        firsts = sorted(d for d in (roots or "").split() if d)
+        facts["first_commit"] = firsts[0] if firsts else commits[-1]["date"]
         facts["last_commit"] = commits[0]["date"]
     weeks = Counter()
     for c in commits:
@@ -603,14 +655,21 @@ def scan(root):
                     if len(todos) >= 200:
                         break
 
+    kinds = {r["path"]: r["kind"] for r in records}
     git, churn = git_facts(root, set(paths))
     manifests = parse_manifests(paths, texts)
     entrypoints = find_entrypoints(paths, texts, manifests)
     ep_set = {e["path"] for e in entrypoints}
 
+    users = defaultdict(list)
+    for rec in records:
+        for i in rec.get("imports", []):
+            users[i].append(rec["path"])
     for rec in records:
         p = rec["path"]
         rec["imported_by"] = imported_by.get(p, 0)
+        if users.get(p):
+            rec["used_by"] = sorted(users[p])[:60]
         rec["churn"] = churn.get(p, 0)
         if rec["kind"] not in ("source", "test", "config", "doc"):
             rec["score"] = 0
@@ -675,7 +734,8 @@ def scan(root):
         "manifests": manifests,
         "entrypoints": entrypoints,
         "external_packages": [{"name": k, "files": v} for k, v in ext_usage.most_common(60)],
-        "env_vars": [{"name": k, "files": sorted(v)[:8]} for k, v in sorted(env.items())][:120],
+        "env_vars": [{"name": k, "files": sorted(v)[:8]} for k, v in sorted(env.items())
+                     if any(kinds.get(f) != "test" for f in v)][:120],
         "todos": todos,
         "modules": modules,
         "module_edges": module_edges,
@@ -693,9 +753,10 @@ def print_summary(data, out_path):
     w("files %d (source %d, tests %d), %d lines of code" % (s["files"], s["source_files"], s["test_files"], s["lines"]))
     w("languages: " + ", ".join("%s %.0f%%" % (l["lang"], l["share"]) for l in data["languages"][:8]))
     if g.get("is_repo"):
-        w("git: %s non-merge commits by %s author(s), %s -> %s, head %s%s" % (
+        w("git: %s non-merge commits by %s author(s), %s -> %s, head %s%s%s" % (
             g.get("commits"), g.get("authors"), g.get("first_commit"), g.get("last_commit"), g.get("short"),
-            " (uncommitted changes)" if g.get("dirty") else ""))
+            " (uncommitted changes)" if g.get("dirty") else "",
+            "; authors, churn and timeline use the latest %d" % g["log_sample"] if g.get("log_sample", 0) < (g.get("commits") or 0) else ""))
         if g.get("deleted"):
             w("deleted but not committed: %d tracked file(s), e.g. %s. They cannot be cited; say so in the guide." % (
                 len(g["deleted"]), ", ".join(g["deleted"][:4])))

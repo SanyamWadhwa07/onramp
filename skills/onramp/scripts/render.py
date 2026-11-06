@@ -22,7 +22,7 @@ from _common import CITE_RE, VERSION, load_json, onramp_dir, read_lines, save_js
 ASSETS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")
 CONTEXT = 3
 MAX_SNIPPET = 140
-MAX_SOURCE_LINES = 900
+MAX_SOURCE_LINES = 4000
 SOURCE_BUDGET = 8_000_000
 CHAPTER_TITLES = [
     ("gist", "The gist"), ("run", "Run it"), ("stack", "The stack"), ("map", "The map"),
