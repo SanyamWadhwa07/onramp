@@ -489,7 +489,7 @@ def git_facts(root, files_set):
     facts["remote"] = remote or None
     m = re.search(r"github\.com[:/]([\w.\-]+)/([\w.\-]+?)(?:\.git)?$", remote)
     facts["github"] = ("https://github.com/%s/%s" % (m.group(1), m.group(2))) if m else None
-    dirty = run_git(root, "status", "--porcelain")
+    dirty = run_git(root, "status", "--porcelain", "--untracked-files=no")
     facts["dirty"] = bool(dirty and dirty.strip())
     log = run_git(root, "log", "--no-merges", "-n", "3000", "--date=short",
                   "--pretty=format:\x1e%H\t%ad\t%an\t%s", "--name-only")

@@ -103,8 +103,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tool-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 .tool-btn svg .fill { fill: currentColor; stroke: none; }
 .trust { display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 11px; border-radius: 7px; border: 1px solid var(--border); background: var(--surface); font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); cursor: pointer; white-space: nowrap; }
-.trust .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
-.trust.none .dot { background: var(--subtle); box-shadow: none; }
 .trust b { color: var(--ink); font-weight: 600; }
 
 /* ---------- page frame */

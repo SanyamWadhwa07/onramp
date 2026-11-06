@@ -203,11 +203,11 @@
   function trustBadge() {
     var v = G.verification, b = $("#trust");
     if (v && v.citations) {
-      b.innerHTML = '<span class="dot"></span><b>' + fmtNum(v.verified) + "/" + fmtNum(v.citations) + '</b><span class="long">&nbsp;claims verified' + (v.commit ? " · " + esc(v.commit) : "") + "</span>";
+      b.innerHTML = '<b>' + fmtNum(v.verified) + "/" + fmtNum(v.citations) + '</b><span class="long">&nbsp;claims verified' + (v.commit ? " · " + esc(v.commit) : "") + "</span>";
       b.title = "Every citation was checked against the code";
     } else {
       b.className = "trust none";
-      b.innerHTML = '<span class="dot"></span><span class="long">not verified</span>';
+      b.innerHTML = '<span class="long">not verified</span>';
     }
   }
   function footer() {
