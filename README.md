@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://sanyamwadhwa07.github.io/onramp/">Website</a> ·
-  <a href="https://sanyamwadhwa07.github.io/onramp/demo/papermind/">Live demo</a> ·
+  <a href="https://onramp-skill.vercel.app/">Website</a> ·
+  <a href="https://onramp-skill.vercel.app/demo/papermind">Live demo</a> ·
   <a href="#install">Install</a> ·
   <a href="#how-it-works">How it works</a>
 </p>

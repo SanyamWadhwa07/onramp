@@ -8,11 +8,21 @@
 <meta property="og:title" content="Onramp: understand any codebase">
 <meta property="og:description" content="A route through any codebase, sized to the time you have. Every claim is checked against the code.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://sanyamwadhwa07.github.io/onramp/">
-<meta property="og:image" content="https://sanyamwadhwa07.github.io/onramp/assets/og.png">
+<meta property="og:url" content="https://onramp-skill.vercel.app/">
+<meta property="og:image" content="https://onramp-skill.vercel.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Onramp: understand any codebase. A route through the code, sized to your time.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sanyamwadhwa07.github.io/onramp/assets/og.png">
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<meta name="twitter:title" content="Onramp: understand any codebase">
+<meta name="twitter:description" content="A Claude Code skill that builds a route through any codebase, sized to your time. Every claim is checked against the code.">
+<meta name="twitter:image" content="https://onramp-skill.vercel.app/assets/og.png">
+<link rel="canonical" href="https://onramp-skill.vercel.app/">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0e1012" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eceeec" media="(prefers-color-scheme: light)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Onest:wght@400;500;600&display=swap">
@@ -206,6 +216,20 @@ kbd { font-family: var(--font-mono); font-size: 0.78em; border: 1px solid var(--
 .cmds .copy:hover { color: var(--ink); background: var(--surface-2); }
 .cmds td.c-copy { width: 1%; padding-left: 16px; text-align: right; }
 
+/* install */
+.install-box { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; }
+.tabs { display: flex; gap: 2px; padding: 6px; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+.tabs button { flex: none; height: 38px; padding: 0 14px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); font-family: var(--font-head); font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+.tabs button:hover { color: var(--ink); background: var(--surface-2); }
+.tabs button[aria-selected="true"] { background: var(--sign); color: var(--sign-ink); box-shadow: inset 0 0 0 2px var(--sign), inset 0 0 0 3.2px rgba(255, 255, 255, 0.85); }
+.pane { padding: 22px; display: grid; gap: 12px; }
+.pane > p { color: var(--muted); max-width: 46em; }
+.pane .os { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--subtle); margin-top: 4px; }
+.pane .then { color: var(--text); }
+.line { display: flex; align-items: center; gap: 12px; background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 6px 6px 6px 16px; font-family: var(--font-mono); font-size: 0.9rem; border: 1px solid var(--border); min-width: 0; }
+.line code { flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+.line .dollar { color: var(--code-muted); user-select: none; }
+
 /* demos */
 .demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .demo { display: grid; gap: 12px; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 22px; transition: border-color 0.15s, transform 0.15s; }
@@ -257,7 +281,7 @@ footer a { color: var(--muted); }
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top"><img src="assets/logo.svg" alt="">Onramp</a>
+    <a class="logo" href="#top"><img src="/assets/logo.svg" alt="">Onramp</a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#why">Why</a>
       <a href="#features">Features</a>
@@ -278,11 +302,11 @@ footer a { color: var(--muted); }
       <span class="eyebrow">A skill for Claude Code</span>
       <h1>Understand any codebase.</h1>
       <p class="lede">Onramp reads a project and builds you a route through it, sized to the time you have. Every claim links to the lines it comes from, and a script checks it against the code before you see it.</p>
-      <div class="cta" id="install">
+      <div class="cta">
         <div class="install"><code><span class="dollar">$ </span><span id="cmd">npx skills add SanyamWadhwa07/onramp</span></code><button class="copy" type="button" data-copy="npx skills add SanyamWadhwa07/onramp">Copy</button></div>
         <div class="cta-row">
-          <a class="sign" href="demo/papermind/">Open a live guide <span class="mono">&rarr;</span></a>
-          <a class="btn" href="https://github.com/SanyamWadhwa07/onramp#install">Other ways to install</a>
+          <a class="sign" href="/demo/papermind">Open a live guide <span class="mono">&rarr;</span></a>
+          <a class="btn" href="#install">Other ways to install</a>
         </div>
         <small>Then run <span class="mono">/onramp</span> in any project. Python 3.8+, nothing else to install.</small>
       </div>
@@ -299,7 +323,7 @@ footer a { color: var(--muted); }
       </div>
       <div class="route-sum" id="route-sum"></div>
       <div class="mini-road"><svg id="mini-svg" aria-hidden="true"></svg><ol class="mini-stops" id="mini-stops"></ol></div>
-      <div class="foot"><span>The real planner also asks your goal and background.</span><a href="demo/papermind/">Try it &rarr;</a></div>
+      <div class="foot"><span>The real planner also asks your goal and background.</span><a href="/demo/papermind">Try it &rarr;</a></div>
     </div>
   </div>
 
@@ -481,7 +505,7 @@ footer a { color: var(--muted); }
             <li><strong>Search</strong> covers stops, files, ideas and flows. Press <kbd>Ctrl K</kbd>.</li>
           </ul>
           <p>Prefer a conversation? <span class="mono">/onramp tutor</span> walks the same route in chat, one stop at a time, and remembers where you stopped.</p>
-          <div><a class="sign" href="demo/papermind/">Open the PaperMind guide <span class="mono">&rarr;</span></a></div>
+          <div><a class="sign" href="/demo/papermind">Open the PaperMind guide <span class="mono">&rarr;</span></a></div>
         </article>
       </div>
     </div>
@@ -494,20 +518,63 @@ footer a { color: var(--muted); }
       <p>Both were generated with <span class="mono">/onramp</span> and published as-is.</p>
     </div>
     <div class="demos">
-      <a class="demo" href="demo/papermind/">
+      <a class="demo" href="/demo/papermind">
         <span class="eyebrow">Full-stack app, built with Claude</span>
         <h3>PaperMind</h3>
         <p>Upload a research paper and get a structured summary, a knowledge graph and answers. FastAPI, React and a multi-agent pipeline.</p>
         <div class="stats" id="stats-papermind"><span>Python + JavaScript</span><span>31k lines</span></div>
         <span class="go">Open the guide &rarr;</span>
       </a>
-      <a class="demo" href="demo/nanogpt/">
+      <a class="demo" href="/demo/nanogpt">
         <span class="eyebrow">Small and famous</span>
         <h3>nanoGPT</h3>
         <p>Andrej Karpathy's minimal GPT training repository. A good test of how Onramp teaches a dense codebase, starting from the basics.</p>
         <div class="stats" id="stats-nanogpt"><span>Python</span><span>PyTorch</span></div>
         <span class="go">Open the guide &rarr;</span>
       </a>
+    </div>
+  </section>
+
+  <section class="wrap block" id="install">
+    <div class="block-head">
+      <span class="eyebrow">Install</span>
+      <h2>Install it in under a minute.</h2>
+      <p>Pick one way. All of them install the same skill. You need Python 3.8 or newer, and nothing else.</p>
+    </div>
+    <div class="install-box">
+      <div class="tabs" role="tablist" aria-label="Install method">
+        <button type="button" role="tab" id="tab-cli" aria-controls="pane-cli" aria-selected="true">Skills CLI</button>
+        <button type="button" role="tab" id="tab-plugin" aria-controls="pane-plugin" aria-selected="false" tabindex="-1">Claude Code plugin</button>
+        <button type="button" role="tab" id="tab-git" aria-controls="pane-git" aria-selected="false" tabindex="-1">Git</button>
+        <button type="button" role="tab" id="tab-zip" aria-controls="pane-zip" aria-selected="false" tabindex="-1">Download .zip</button>
+      </div>
+      <div class="pane" role="tabpanel" id="pane-cli" aria-labelledby="tab-cli">
+        <p>Recommended. The skills CLI installs into Claude Code, and also into other agents that read <span class="mono">SKILL.md</span>, such as Codex and Cursor.</p>
+        <div class="line"><code><span class="dollar">$ </span>npx skills add SanyamWadhwa07/onramp</code><button class="copy" type="button" data-copy="npx skills add SanyamWadhwa07/onramp">Copy</button></div>
+        <p class="then">Then, in any project: <span class="mono">/onramp</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="pane-plugin" aria-labelledby="tab-plugin" hidden>
+        <p>Inside Claude Code. You get updates whenever the marketplace updates.</p>
+        <div class="line"><code><span class="dollar">&gt; </span>/plugin marketplace add SanyamWadhwa07/onramp</code><button class="copy" type="button" data-copy="/plugin marketplace add SanyamWadhwa07/onramp">Copy</button></div>
+        <div class="line"><code><span class="dollar">&gt; </span>/plugin install onramp@onramp</code><button class="copy" type="button" data-copy="/plugin install onramp@onramp">Copy</button></div>
+        <p class="then">Then, in any project: <span class="mono">/onramp:onramp</span> (plugin skills carry the plugin's name)</p>
+      </div>
+      <div class="pane" role="tabpanel" id="pane-git" aria-labelledby="tab-git" hidden>
+        <p>Clone the repository and copy the skill folder into your personal skills.</p>
+        <div class="line"><code><span class="dollar">$ </span>git clone https://github.com/SanyamWadhwa07/onramp</code><button class="copy" type="button" data-copy="git clone https://github.com/SanyamWadhwa07/onramp">Copy</button></div>
+        <p class="os">macOS and Linux</p>
+        <div class="line"><code><span class="dollar">$ </span>cp -r onramp/skills/onramp ~/.claude/skills/onramp</code><button class="copy" type="button" data-copy="cp -r onramp/skills/onramp ~/.claude/skills/onramp">Copy</button></div>
+        <p class="os">Windows (PowerShell)</p>
+        <div class="line"><code><span class="dollar">&gt; </span>Copy-Item -Recurse onramp\skills\onramp $HOME\.claude\skills\onramp</code><button class="copy" type="button" data-copy="Copy-Item -Recurse onramp\skills\onramp $HOME\.claude\skills\onramp">Copy</button></div>
+        <p class="then">Then, in any project: <span class="mono">/onramp</span></p>
+      </div>
+      <div class="pane" role="tabpanel" id="pane-zip" aria-labelledby="tab-zip" hidden>
+        <p>The skill folder as a single archive, from the latest GitHub release. Unzip it into your skills folder so that <span class="mono">~/.claude/skills/onramp/SKILL.md</span> exists.</p>
+        <div><a class="sign" href="/download">Download onramp-skill.zip</a></div>
+        <p class="os">Or from the terminal</p>
+        <div class="line"><code><span class="dollar">$ </span>curl -L https://onramp-skill.vercel.app/download -o onramp-skill.zip &amp;&amp; unzip onramp-skill.zip -d ~/.claude/skills</code><button class="copy" type="button" data-copy="curl -L https://onramp-skill.vercel.app/download -o onramp-skill.zip && unzip onramp-skill.zip -d ~/.claude/skills">Copy</button></div>
+        <p class="then">Every release is listed on <a href="https://github.com/SanyamWadhwa07/onramp/releases">GitHub Releases</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -554,7 +621,7 @@ footer a { color: var(--muted); }
   <span><a href="https://github.com/SanyamWadhwa07/onramp">GitHub</a> &middot; <a href="https://github.com/SanyamWadhwa07/onramp/issues">Report an issue</a></span>
 </div></footer>
 
-<script src="assets/sample-route.js"></script>
+<script src="/assets/sample-route.js"></script>
 <script>
 (function () {
   "use strict";
@@ -574,6 +641,24 @@ footer a { color: var(--muted); }
     var next = cur === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("onramp:theme", next); } catch (err) { /* storage unavailable */ }
+  });
+
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+  function selectTab(t) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute("aria-selected", String(on));
+      x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selectTab(t); });
+    t.addEventListener("keydown", function (e) {
+      var k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!k) return;
+      var n = tabs[(i + k + tabs.length) % tabs.length]; selectTab(n); n.focus(); e.preventDefault();
+    });
   });
 
   var walkLinks = Array.prototype.slice.call(document.querySelectorAll(".walk-nav a"));

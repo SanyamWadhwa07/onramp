@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wrong exit · Onramp</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500&family=Hanken+Grotesk:wght@700;800&family=Onest:wght@400;500&display=swap">
+<script>
+  try { var t = localStorage.getItem("onramp:theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<style>
+  :root { --bg: #eceeec; --ink: #0f1214; --muted: #4b544f; --sign: #0b6b47; --sign-ink: #fff; --border: #d0d6d2; --surface: #f7f8f7; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0e1012; --ink: #efede7; --muted: #a3a69f; --sign: #0d7550; --sign-ink: #f4f8f5; --border: #23282d; --surface: #14171a; color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg: #0e1012; --ink: #efede7; --muted: #a3a69f; --sign: #0d7550; --sign-ink: #f4f8f5; --border: #23282d; --surface: #14171a; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Onest", system-ui, sans-serif; display: grid; place-items: center; padding: 24px max(16px, env(safe-area-inset-left, 0px)); }
+  main { display: grid; gap: 22px; justify-items: start; max-width: 560px; }
+  .sign { background: var(--sign); color: var(--sign-ink); border-radius: 10px; padding: 16px 22px 18px; box-shadow: inset 0 0 0 2px var(--sign), inset 0 0 0 4px rgba(255, 255, 255, 0.88); display: grid; gap: 4px; }
+  .sign small { font-family: "Geist Mono", monospace; font-size: 0.74rem; letter-spacing: 0.12em; opacity: 0.85; }
+  .sign b { font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: 2.2rem; line-height: 1; }
+  h1 { margin: 0; font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -0.03em; line-height: 1.02; }
+  p { margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.55; }
+  nav { display: flex; flex-wrap: wrap; gap: 10px; }
+  a { display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--ink); text-decoration: none; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; }
+  a.primary { background: var(--sign); color: var(--sign-ink); border-color: var(--sign); }
+  a:focus-visible { outline: 2px solid #e7a619; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="sign"><small>EXIT 404</small><b>Wrong exit</b></div>
+  <h1>That page isn't on the map.</h1>
+  <p>The link may be old, or the page moved. Head back to the start and pick a route from there.</p>
+  <nav><a class="primary" href="/">Back to Onramp</a><a href="/#demos">Live demos</a><a href="https://github.com/SanyamWadhwa07/onramp">GitHub</a></nav>
+</main>
+</body>
+</html>
