@@ -44,7 +44,7 @@ def cmd_sample(args):
             fh.write(json.dumps({"key": i["key"], "claim": i["claim"]}, ensure_ascii=False) + "\n")
     counts = {}
     for i in items:
-        counts[i["doc"]] = (counts.get(i["doc"], 0) + 1, i["extracted"])
+        counts[i["doc"]] = (counts.get(i["doc"], (0, 0))[0] + 1, i["extracted"])
     print("blind batch of %d claims: %s" % (len(items), ", ".join("%s %d of %d" % (d, n, t) for d, (n, t) in counts.items())))
 
 

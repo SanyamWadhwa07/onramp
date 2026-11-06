@@ -1,0 +1,81 @@
+{
+ "conditions": {
+  "closed": {
+   "n": 48,
+   "mean_total": 67.19,
+   "ci95": [
+    63.67,
+    70.48
+   ],
+   "dims": {
+    "correctness": 12.81,
+    "completeness": 10.75,
+    "relevance": 15.29,
+    "clarity": 15.33,
+    "reasoning": 13.0
+   }
+  },
+  "explainer": {
+   "n": 48,
+   "mean_total": 64.46,
+   "ci95": [
+    61.02,
+    67.9
+   ],
+   "dims": {
+    "correctness": 12.31,
+    "completeness": 10.4,
+    "relevance": 14.46,
+    "clarity": 14.79,
+    "reasoning": 12.5
+   }
+  },
+  "onramp": {
+   "n": 48,
+   "mean_total": 67.12,
+   "ci95": [
+    63.98,
+    70.04
+   ],
+   "dims": {
+    "correctness": 12.96,
+    "completeness": 10.9,
+    "relevance": 15.08,
+    "clarity": 15.08,
+    "reasoning": 13.1
+   }
+  },
+  "readme": {
+   "n": 48,
+   "mean_total": 63.56,
+   "ci95": [
+    59.44,
+    67.48
+   ],
+   "dims": {
+    "correctness": 11.65,
+    "completeness": 10.04,
+    "relevance": 14.71,
+    "clarity": 15.08,
+    "reasoning": 12.08
+   }
+  }
+ },
+ "head_to_head": {
+  "onramp_vs_closed": {
+   "wins": 23,
+   "ties": 4,
+   "losses": 21
+  },
+  "onramp_vs_explainer": {
+   "wins": 28,
+   "ties": 2,
+   "losses": 18
+  },
+  "onramp_vs_readme": {
+   "wins": 23,
+   "ties": 7,
+   "losses": 18
+  }
+ }
+}
