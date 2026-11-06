@@ -1,0 +1,47 @@
+name: plugin branch
+
+# Publishes a `plugin` branch holding only what the plugin installs: the manifest, the skill, and the
+# README, license, changelog and security policy. Anthropic's plugin directory tracks this branch,
+# so an install doesn't download the website, the demos or the evals.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Build the plugin folder
+        run: |
+          out="$RUNNER_TEMP/plugin"
+          mkdir -p "$out/.claude-plugin" "$out/skills"
+          cp .claude-plugin/plugin.json .claude-plugin/icon.png "$out/.claude-plugin/"
+          cp -r skills/onramp "$out/skills/"
+          find "$out" -name __pycache__ -prune -exec rm -rf {} +
+          cp LICENSE CHANGELOG.md SECURITY.md "$out/"
+          python .github/scripts/plugin_readme.py README.md "$GITHUB_REF_NAME" > "$out/README.md"
+      - name: Commit it to the plugin branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin plugin; then
+            git fetch --depth 1 origin plugin:plugin
+            git worktree add "$RUNNER_TEMP/branch" plugin
+          else
+            git worktree add --orphan -b plugin "$RUNNER_TEMP/branch"
+          fi
+          cd "$RUNNER_TEMP/branch"
+          git rm -rq --ignore-unmatch .
+          cp -r "$RUNNER_TEMP/plugin/." .
+          git add -A
+          if git diff --cached --quiet; then echo "plugin branch is already up to date"; exit 0; fi
+          git commit -q -m "Onramp plugin from $GITHUB_REF_NAME"
+          git push origin plugin
