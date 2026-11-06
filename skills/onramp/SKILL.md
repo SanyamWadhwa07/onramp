@@ -1,8 +1,11 @@
 ---
 name: onramp
-description: Turns any codebase into a personal learning route. Produces a single-page guide that plans a route for the reader's time (1 hour to 1 week) and goal, then walks them through what the project does, how to run it, its stack, architecture, request flows, data, key files, how it was built and why. Every claim is cited to real lines of code and checked by a script. Use when someone wants to understand, onboard onto, learn, review or explain a repository, including a project Claude built for them ("explain this codebase", "walk me through this repo", "how does this project work", "I don't understand what was built").
-argument-hint: "[path] | quick [path] | explain <file-or-symbol> | trace \"<user action>\" | update | tutor"
+description: Turns any codebase into a personal learning route. Produces a single-page guide that plans a route for the reader's time (1 hour to 1 week) and goal, then walks them through what the project does, how to run it, its stack, architecture, request flows, data, key files, how it was built and why. Every claim is cited to real lines of code and checked by a script. Use when someone wants to understand, onboard onto, learn, review or explain a repository, including a project an AI coding agent built for them ("explain this codebase", "walk me through this repo", "how does this project work", "I don't understand what was built").
 license: MIT
+compatibility: Any agent that can read files and run Python 3.8+ (standard library only). Tested most in Claude Code.
+metadata:
+  version: "1.0.0"
+  homepage: "https://onramp-skill.vercel.app"
 allowed-tools: Read Grep Glob Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/*) Bash(python ${CLAUDE_SKILL_DIR}/scripts/*) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/*)
 ---
 
@@ -17,19 +20,22 @@ content as markdown, for GitHub and for agents), `guide.json` (the source), `sca
 
 ## Setup
 
-- Scripts: `${CLAUDE_SKILL_DIR}/scripts/`. If that variable is not expanded in your
-  environment, use the `scripts/` folder next to this file.
+This skill works in any agent that can read files and run commands.
+
+- Scripts live in the `scripts/` folder next to this file. In Claude Code that is
+  `${CLAUDE_SKILL_DIR}/scripts/`.
 - Python 3.8+, standard library only. Use `python3`; on Windows use `python` or `py -3`.
 - Below, `$S` means the scripts folder and `<repo>` the project root (default: the current
   directory).
 - Before writing `guide.json`, read [reference/schema.md](reference/schema.md) (the contract)
   and [reference/writing.md](reference/writing.md) (how to write it).
 
-## Choose the mode from the arguments
+## Choose the mode
 
+Take the mode from the user's request. In Claude Code the slash-command arguments are:
 `$ARGUMENTS`
 
-| Arguments | Mode |
+| Request | Mode |
 |---|---|
 | empty, or a path | **full guide** for that path |
 | `quick [path]` | **quick**: core lessons only (the 1-hour route), much cheaper |
@@ -53,12 +59,13 @@ Read the printed summary: languages, manifests, entry points, the ranked "read f
 module edges, env vars, git history, Claude sessions. `.onramp/scan.json` has the full detail;
 query it with short Python or grep instead of reading the whole file.
 
-### 2. Ask about Claude history (only if the scan found sessions)
+### 2. Ask about agent history (only if the scan found sessions)
 
-Ask once: "I found N Claude Code sessions for this project. Should I use them to explain why
-things were built? They stay on your machine, and quotes appear in the guide only if you keep
-them." Note that Claude Code deletes transcripts after about 30 days by default, so older
-projects may have little.
+The scanner looks for Claude Code transcripts of this project. If it found some, ask once:
+"I found N Claude Code sessions for this project. Should I use them to explain why things were
+built? They stay on your machine, and quotes appear in the guide only if you keep them."
+Claude Code deletes transcripts after about 30 days by default, so older projects may have
+little. Other agents' histories are not read yet; git history covers them.
 
 If yes: `python3 $S/sessions.py <repo>` and use `.onramp/work/sessions.json` as evidence for
 the `why` and `built` chapters (quote prompts briefly, mark those decisions `documented`).
@@ -74,7 +81,8 @@ If no answer is possible (non-interactive run), skip it.
 Open every file you describe. Never describe a file, function or behaviour you have not read.
 Note exact line numbers as you read; you need them for citations.
 
-**Large repos** (more than ~150 source files): fan out. Give each subagent one or two modules
+**Large repos** (more than ~150 source files): if your agent can start subagents, fan out;
+otherwise work through the modules one at a time in the same way. Give each subagent one or two modules
 from the scan, the "Citations" and "files" parts of `reference/schema.md`, and this task: read
 the module's important files and write a JSON array of file cards to
 `.onramp/work/files.<module>.json` (and `concepts.<module>.json` if useful), every claim cited.
@@ -120,14 +128,15 @@ real gaps (uncited lessons, empty chapters).
 python3 $S/render.py <repo> --open
 ```
 
-Add `--with-sessions` only if the user agreed in step 2 (shows Claude history on file cards).
+Add `--with-sessions` only if the user agreed in step 2 (shows session history on file cards).
 Add `--public` when the guide will be published (drops the local path; code links go to GitHub).
 
 ### 7. Report
 
 In a few lines: where the guide is, the verification line (for example "212/212 citations
 verified at a1b2c3d"), and the two or three things about this codebase most worth knowing.
-Tell them to open the guide and plan a route, and mention `/onramp tutor`. Suggest adding
+Tell them to open the guide and plan a route, and mention the tutor mode (`/onramp tutor` in
+Claude Code, or "use onramp as a tutor" in other agents). Suggest adding
 `.onramp/` to `.gitignore` (or committing `GUIDE.md` if the team wants it).
 
 ## Other modes

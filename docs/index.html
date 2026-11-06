@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Onramp</title>
-<meta name="description" content="A Claude Code skill that reads any codebase and builds you a route through it, sized to your time. Every claim links to the code and is checked before you see it.">
+<meta name="description" content="An agent skill for Claude Code, Codex, GitHub Copilot, Cursor and 60+ more. It reads any codebase and builds you a route through it, sized to your time. Every claim links to the code and is checked before you see it.">
 <meta property="og:title" content="Onramp: understand any codebase">
 <meta property="og:description" content="A route through any codebase, sized to the time you have. Every claim is checked against the code.">
 <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
 <meta property="og:image:alt" content="Onramp: understand any codebase. A route through the code, sized to your time.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Onramp: understand any codebase">
-<meta name="twitter:description" content="A Claude Code skill that builds a route through any codebase, sized to your time. Every claim is checked against the code.">
+<meta name="twitter:description" content="An agent skill that builds a route through any codebase, sized to your time. Every claim is checked against the code. Works in Claude Code, Codex, Copilot, Cursor and 60+ more.">
 <meta name="twitter:image" content="https://onramp-skill.vercel.app/assets/og.png">
 <link rel="canonical" href="https://onramp-skill.vercel.app/">
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
@@ -23,6 +23,8 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta name="theme-color" content="#0e1012" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#eceeec" media="(prefers-color-scheme: light)">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Onest:wght@400;500;600&display=swap">
@@ -217,6 +219,11 @@ kbd { font-family: var(--font-mono); font-size: 0.78em; border: 1px solid var(--
 .cmds .copy:hover { color: var(--ink); background: var(--surface-2); }
 .cmds td.c-copy { width: 1%; padding-left: 16px; text-align: right; }
 
+/* works with */
+.works { display: grid; grid-template-columns: var(--label-col) minmax(0, 1fr); gap: 36px; padding-block: 18px; border-bottom: 1px solid var(--border); align-items: baseline; }
+.works p { color: var(--muted); font-family: var(--font-head); font-weight: 500; }
+@media (max-width: 960px) { .works { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
+
 /* install */
 .install-box { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; }
 .tabs { display: flex; gap: 2px; padding: 6px; border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
@@ -300,7 +307,7 @@ footer a { color: var(--muted); }
 <main id="top">
   <div class="wrap hero">
     <div>
-      <span class="eyebrow">A skill for Claude Code</span>
+      <span class="eyebrow">An agent skill for any coding agent</span>
       <h1>Understand any codebase.</h1>
       <p class="lede">Onramp reads a project and builds you a route through it, sized to the time you have. Every claim links to the lines it comes from, and a script checks it against the code before you see it.</p>
       <div class="cta">
@@ -309,12 +316,12 @@ footer a { color: var(--muted); }
           <a class="sign" href="/demo/papermind">Open a live guide <span class="mono">&rarr;</span></a>
           <a class="btn" href="#install">Other ways to install</a>
         </div>
-        <small>Then run <span class="mono">/onramp</span> in any project. Python 3.8+, nothing else to install.</small>
+        <small>Then run <span class="mono">/onramp</span> in Claude Code, or ask any other agent to &ldquo;use onramp on this repo&rdquo;. Python 3.8+, nothing else to install.</small>
       </div>
     </div>
 
-    <div class="planner" aria-label="Example: plan a route through the PaperMind codebase">
-      <span class="eyebrow">Route through <span id="demo-name">PaperMind</span></span>
+    <div class="planner" aria-label="Example: plan a route through a real codebase">
+      <span class="eyebrow">Example route &middot; <span id="demo-name">a real codebase</span></span>
       <p class="q">How much time do you have?</p>
       <div class="pills" id="times" role="group" aria-label="Time">
         <button type="button" class="pill-btn" data-t="h1" aria-pressed="false">1 hour</button>
@@ -329,8 +336,13 @@ footer a { color: var(--muted); }
   </div>
 
   <div class="strip"><div class="wrap">
-    <span>Every claim cited and checked</span><span>One HTML file, opens from disk</span><span>Python standard library only</span><span>Runs locally in your Claude session</span><span>MIT licensed</span>
+    <span>Every claim cited and checked</span><span>One HTML file, opens from disk</span><span>Python standard library only</span><span>Runs inside your own agent session</span><span>MIT licensed</span>
   </div></div>
+
+  <div class="wrap works">
+    <span class="eyebrow">Works with</span>
+    <p>Claude Code &middot; Codex &middot; GitHub Copilot &middot; Cursor &middot; Gemini CLI &middot; Antigravity &middot; Windsurf &middot; OpenCode &middot; Cline &middot; Goose &middot; Roo Code &middot; and 60+ more agents that read <span class="mono">SKILL.md</span></p>
+  </div>
 
   <section class="wrap block" id="why">
     <div class="block-head">
@@ -357,7 +369,7 @@ footer a { color: var(--muted); }
         <p>Pick your time, your goal (<strong>get the gist</strong>, <strong>ship a change</strong>, <strong>own it</strong> or <strong>rebuild it</strong>) and your background. Onramp plans a day-by-day route and draws it as a road, with exits, rest stops, checkpoints and a <strong>you are here</strong> marker. Your progress is saved.</p>
         <p>One guide serves every route. The planning happens in the page, so changing your mind costs nothing.</p>
       </div>
-      <div class="vis"><span class="eyebrow">PaperMind &middot; 3-day route &middot; get the gist</span><div class="days-mini" id="days-mini"></div></div>
+      <div class="vis"><span class="eyebrow" id="days-label">Example &middot; 3-day route &middot; get the gist</span><div class="days-mini" id="days-mini"></div></div>
     </div></div>
 
     <div class="row"><div class="label"><b>02</b>Every claim checked</div><div class="content">
@@ -379,7 +391,7 @@ footer a { color: var(--muted); }
     <div class="row"><div class="label"><b>03</b>The why</div><div class="content">
       <div class="text">
         <h3>Why it's built this way, from your own history.</h3>
-        <p>Onramp reads the git history and, if you say yes, your local Claude Code transcripts for the project. For a project you built with Claude, a file card can show the prompt that led to the file and what Claude said when it made the change.</p>
+        <p>Onramp reads the git history. If you use Claude Code and say yes, it also reads your local session transcripts for the project. For a project an agent built with you, a file card can show the prompt that led to the file and what the agent said when it made the change.</p>
         <p>Every decision in the guide is labelled <strong>documented</strong> (there is a commit, doc or quote) or <strong>inferred</strong> (reasoned from the code).</p>
       </div>
       <div class="vis">
@@ -404,8 +416,8 @@ footer a { color: var(--muted); }
 
     <div class="row"><div class="label"><b>05</b>A tutor in the terminal</div><div class="content">
       <div class="text">
-        <h3>Or let Claude teach it to you.</h3>
-        <p><span class="mono">/onramp tutor</span> walks the same route in chat. One stop at a time, it explains with real excerpts and asks a checkpoint question. It waits for your answer, gives feedback, and picks up where you left off next session.</p>
+        <h3>Or let your agent teach it to you.</h3>
+        <p><span class="mono">/onramp tutor</span> (or &ldquo;use onramp as a tutor&rdquo; in any agent) walks the same route in chat. One stop at a time, it explains with real excerpts and asks a checkpoint question. It waits for your answer, gives feedback, and picks up where you left off next session.</p>
       </div>
       <div class="term" role="img" aria-label="Tutor session">
         <div><span class="c">&gt;</span> /onramp tutor</div>
@@ -432,7 +444,7 @@ footer a { color: var(--muted); }
     <div class="block-head">
       <span class="eyebrow">What it actually does</span>
       <h2>Eight steps from <span class="mono" style="font-weight:600">/onramp</span> to understanding.</h2>
-      <p>Scripts do every step that can be done without a model. Claude reads and writes. A script checks Claude's work before you ever see it. This is the real output from running it on PaperMind.</p>
+      <p>Scripts do every step that can be done without a model. Your agent reads and writes. A script checks the agent's work before you ever see it. The output below is real, from a run on a 31,000-line full-stack app (the first demo further down).</p>
     </div>
     <div class="walk">
       <nav class="walk-nav" aria-label="Steps">
@@ -448,8 +460,9 @@ footer a { color: var(--muted); }
       <div class="walk-steps">
         <article class="walk-step" id="step-run">
           <header><span class="no">01</span><h3>You run it</h3><span class="who">you</span></header>
-          <p>Open Claude Code in any repository and type the command. Point it at a subfolder to cover one package of a monorepo. Claude says what it is doing at each step, and everything it produces goes into <span class="mono">.onramp/</span>. Your code is never modified.</p>
-          <div class="term"><div><span class="c">&gt;</span> /onramp</div><button class="copy" type="button" data-copy="/onramp">Copy</button></div>
+          <p>Open your agent in any repository. In Claude Code, type the command. In Codex, Copilot, Cursor and the rest, ask for it in plain words. Point it at a subfolder to cover one package of a monorepo. The agent says what it is doing at each step, and everything it produces goes into <span class="mono">.onramp/</span>. Your code is never modified.</p>
+          <div class="term"><div><span class="c">Claude Code &gt;</span> /onramp</div><button class="copy" type="button" data-copy="/onramp">Copy</button></div>
+          <div class="term"><div><span class="c">Any agent &gt;</span> use onramp to explain this repo</div><button class="copy" type="button" data-copy="use onramp to explain this repo">Copy</button></div>
           <dl class="facts"><dt>Writes</dt><dd><span class="mono">.onramp/index.html</span>, <span class="mono">GUIDE.md</span>, <span class="mono">guide.json</span>, <span class="mono">scan.json</span></dd><dt>Needs</dt><dd>Python 3.8+ and nothing else</dd></dl>
         </article>
 
@@ -462,20 +475,20 @@ footer a { color: var(--muted); }
 
         <article class="walk-step" id="step-history">
           <header><span class="no">03</span><h3>Ask about history</h3><span class="who">you decide</span></header>
-          <p>If the scan finds Claude Code transcripts for the project, Claude asks once whether to use them. If you say yes, <span class="mono">sessions.py</span> pairs every file Claude wrote or edited with the prompt that led to it and the explanation Claude gave just before the edit. That becomes evidence for the "how it was built" and "why" chapters.</p>
+          <p>If you use Claude Code and the scan finds its transcripts for the project, the agent asks once whether to use them. If you say yes, <span class="mono">sessions.py</span> pairs every file Claude wrote or edited with the prompt that led to it and the explanation Claude gave just before the edit. That becomes evidence for the "how it was built" and "why" chapters. Other agents' histories are not read yet, so git history carries those chapters.</p>
           <p>Transcripts are read from your disk and never leave it. Anything that looks like an API key or token is redacted. Claude Code deletes transcripts after about 30 days by default, so older projects lean on git history instead.</p>
-          <div class="term"><div class="c">Claude</div><div>I found 1 Claude Code session for this project. Should I use it</div><div>to explain why things were built? It stays on your machine.</div></div>
+          <div class="term"><div class="c">Agent</div><div>I found 1 Claude Code session for this project. Should I use it</div><div>to explain why things were built? It stays on your machine.</div></div>
         </article>
 
         <article class="walk-step" id="step-read">
-          <header><span class="no">04</span><h3>Read the code</h3><span class="who claude">Claude</span></header>
-          <p>Claude reads in a fixed order:</p>
+          <header><span class="no">04</span><h3>Read the code</h3><span class="who claude">your agent</span></header>
+          <p>The agent reads in a fixed order:</p>
           <ol class="steps-list"><li>the README, <span class="mono">CLAUDE.md</span> and docs</li><li>manifests and config, which say how it installs and runs</li><li>entry points, then the top of the importance ranking</li><li>for each important user action, every call from the entry point to storage and back</li></ol>
-          <p>One rule overrides speed: Claude never describes a file it has not opened. On large repositories it fans out, one subagent per module, each writing file cards in parallel, while Claude traces the main flows itself.</p>
+          <p>One rule overrides speed: it never describes a file it has not opened. On large repositories, agents that can start subagents fan out, one per module, writing file cards in parallel, while the main agent traces the flows itself.</p>
         </article>
 
         <article class="walk-step" id="step-write">
-          <header><span class="no">05</span><h3>Write the guide</h3><span class="who claude">Claude</span></header>
+          <header><span class="no">05</span><h3>Write the guide</h3><span class="who claude">your agent</span></header>
           <p>The guide is a JSON file of <strong>lessons</strong>, the stops on your route. Each lesson teaches one idea and records which chapter it belongs to, how essential it is (core, standard or deep), how many minutes it takes and which goals it serves. That metadata is what lets one guide become a 1-hour route or a 1-week route.</p>
           <p>Around the lessons sit the structured parts: traced flows, file cards, the stack with primers for newcomers, the data model, build-order milestones, decisions marked documented or inferred, risks and exercises. Every technical sentence carries a citation.</p>
           <div class="term"><div class="c">{</div><div>  "id": "flow-order", "chapter": "flows", "tier": "core", "minutes": 7,</div><div>  "summary": "The page posts the checked SKUs, the server prices them,</div><div>              the store saves the order and the page shows the total.",</div><div>  "body": "... unknown SKUs raise <span class="ok">[[app/store.py:29-38|def place_order(]]</span> ..."</div><div class="c">}</div></div>
@@ -484,7 +497,7 @@ footer a { color: var(--muted); }
         <article class="walk-step" id="step-verify">
           <header><span class="no">06</span><h3>Verify every claim</h3><span class="who script">script &middot; no model</span></header>
           <p><span class="mono">verify.py</span> opens every cited file and checks three things: the file exists, the lines exist, and the quoted text is inside those lines. Each citation ends one of three ways:</p>
-          <ul class="steps-list"><li><strong>Verified.</strong> The text is where the guide says it is.</li><li><strong>Re-anchored.</strong> The text is in the file but the line numbers drifted, so the citation moves to where it really is.</li><li><strong>Rejected.</strong> The text is nowhere in the file. Claude re-reads the code and rewrites the claim, then runs the check again.</li></ul>
+          <ul class="steps-list"><li><strong>Verified.</strong> The text is where the guide says it is.</li><li><strong>Re-anchored.</strong> The text is in the file but the line numbers drifted, so the citation moves to where it really is.</li><li><strong>Rejected.</strong> The text is nowhere in the file. The agent re-reads the code and rewrites the claim, then runs the check again.</li></ul>
           <p>The guide is only built when the check passes. Its badge states how many claims were checked and at which commit.</p>
           <div class="term" id="verify-out"><div><span class="c">$</span> python verify.py . --fix</div><div><span class="ok">OK</span>  35/35 citations verified across 4 files, 0 auto-fixed</div></div>
         </article>
@@ -505,8 +518,8 @@ footer a { color: var(--muted); }
             <li><strong>Map</strong> shows the architecture, the computed dependency graph, languages and history.</li>
             <li><strong>Search</strong> covers stops, files, ideas and flows. Press <kbd>Ctrl K</kbd>.</li>
           </ul>
-          <p>Prefer a conversation? <span class="mono">/onramp tutor</span> walks the same route in chat, one stop at a time, and remembers where you stopped.</p>
-          <div><a class="sign" href="/demo/papermind">Open the PaperMind guide <span class="mono">&rarr;</span></a></div>
+          <p>Prefer a conversation? Ask for the tutor (<span class="mono">/onramp tutor</span> in Claude Code). It walks the same route in chat, one stop at a time, and remembers where you stopped.</p>
+          <div><a class="sign" href="/demo/papermind">Open a live guide <span class="mono">&rarr;</span></a></div>
         </article>
       </div>
     </div>
@@ -520,14 +533,14 @@ footer a { color: var(--muted); }
     </div>
     <div class="demos">
       <a class="demo" href="/demo/papermind">
-        <span class="eyebrow">Full-stack app, built with Claude</span>
+        <span class="eyebrow">Demo 1 &middot; a full-stack app built with an AI agent</span>
         <h3>PaperMind</h3>
         <p>Upload a research paper and get a structured summary, a knowledge graph and answers. FastAPI, React and a multi-agent pipeline.</p>
         <div class="stats" id="stats-papermind"><span>Python + JavaScript</span><span>31k lines</span></div>
         <span class="go">Open the guide &rarr;</span>
       </a>
       <a class="demo" href="/demo/nanogpt">
-        <span class="eyebrow">Small and famous</span>
+        <span class="eyebrow">Demo 2 &middot; small and famous</span>
         <h3>nanoGPT</h3>
         <p>Andrej Karpathy's minimal GPT training repository. A good test of how Onramp teaches a dense codebase, starting from the basics.</p>
         <div class="stats" id="stats-nanogpt"><span>Python</span><span>PyTorch</span></div>
@@ -550,9 +563,11 @@ footer a { color: var(--muted); }
         <button type="button" role="tab" id="tab-zip" aria-controls="pane-zip" aria-selected="false" tabindex="-1">Download .zip</button>
       </div>
       <div class="pane" role="tabpanel" id="pane-cli" aria-labelledby="tab-cli">
-        <p>Recommended. The skills CLI installs into Claude Code, and also into other agents that read <span class="mono">SKILL.md</span>, such as Codex and Cursor.</p>
+        <p>Recommended. The skills CLI finds the agents on your machine and installs Onramp into the ones you pick: Claude Code, Codex, GitHub Copilot, Cursor, Gemini CLI, Antigravity, Windsurf and 60+ more.</p>
         <div class="line"><code><span class="dollar">$ </span>npx skills add SanyamWadhwa07/onramp</code><button class="copy" type="button" data-copy="npx skills add SanyamWadhwa07/onramp">Copy</button></div>
-        <p class="then">Then, in any project: <span class="mono">/onramp</span></p>
+        <p class="os">Or name the agent</p>
+        <div class="line"><code><span class="dollar">$ </span>npx skills add SanyamWadhwa07/onramp -a codex -a github-copilot -a cursor</code><button class="copy" type="button" data-copy="npx skills add SanyamWadhwa07/onramp -a codex -a github-copilot -a cursor">Copy</button></div>
+        <p class="then">Then run <span class="mono">/onramp</span> in Claude Code, or ask any other agent to &ldquo;use onramp on this repo&rdquo;.</p>
       </div>
       <div class="pane" role="tabpanel" id="pane-plugin" aria-labelledby="tab-plugin" hidden>
         <p>Inside Claude Code. You get updates whenever the marketplace updates.</p>
@@ -567,13 +582,13 @@ footer a { color: var(--muted); }
         <div class="line"><code><span class="dollar">$ </span>cp -r onramp/skills/onramp ~/.claude/skills/onramp</code><button class="copy" type="button" data-copy="cp -r onramp/skills/onramp ~/.claude/skills/onramp">Copy</button></div>
         <p class="os">Windows (PowerShell)</p>
         <div class="line"><code><span class="dollar">&gt; </span>Copy-Item -Recurse onramp\skills\onramp $HOME\.claude\skills\onramp</code><button class="copy" type="button" data-copy="Copy-Item -Recurse onramp\skills\onramp $HOME\.claude\skills\onramp">Copy</button></div>
-        <p class="then">Then, in any project: <span class="mono">/onramp</span></p>
+        <p class="then">For Codex, Copilot, Cursor and other agents, copy the folder into that agent's skills folder instead, for example <span class="mono">~/.agents/skills/</span>. The skills CLI tab handles this for you.</p>
       </div>
       <div class="pane" role="tabpanel" id="pane-zip" aria-labelledby="tab-zip" hidden>
-        <p>The skill folder as a single archive, from the latest GitHub release. Unzip it into your skills folder so that <span class="mono">~/.claude/skills/onramp/SKILL.md</span> exists.</p>
+        <p>The skill folder as a single archive, from the latest GitHub release. Unzip it into your agent's skills folder, so that for Claude Code <span class="mono">~/.claude/skills/onramp/SKILL.md</span> exists.</p>
         <div><a class="sign" href="/download">Download onramp-skill.zip</a></div>
         <p class="os">Or from the terminal</p>
-        <div class="line"><code><span class="dollar">$ </span>curl -L https://onramp-skill.vercel.app/download -o onramp-skill.zip &amp;&amp; unzip onramp-skill.zip -d ~/.claude/skills</code><button class="copy" type="button" data-copy="curl -L https://onramp-skill.vercel.app/download -o onramp-skill.zip && unzip onramp-skill.zip -d ~/.claude/skills">Copy</button></div>
+        <div class="line"><code><span class="dollar">$ </span>curl -L https://github.com/SanyamWadhwa07/onramp/releases/latest/download/onramp-skill.zip -o onramp-skill.zip &amp;&amp; unzip onramp-skill.zip -d ~/.claude/skills</code><button class="copy" type="button" data-copy="curl -L https://github.com/SanyamWadhwa07/onramp/releases/latest/download/onramp-skill.zip -o onramp-skill.zip && unzip onramp-skill.zip -d ~/.claude/skills">Copy</button></div>
         <p class="then">Every release is listed on <a href="https://github.com/SanyamWadhwa07/onramp/releases">GitHub Releases</a>.</p>
       </div>
     </div>
@@ -583,6 +598,7 @@ footer a { color: var(--muted); }
     <div class="block-head">
       <span class="eyebrow">Commands</span>
       <h2>One skill, six ways in.</h2>
+      <p>Slash commands are for Claude Code. In other agents, say the same thing in words, such as &ldquo;use onramp to trace the checkout flow&rdquo;.</p>
     </div>
     <table class="cmds">
       <tr><td>/onramp</td><td>The full guide for this repository, opened in your browser.</td><td class="c-copy"><button class="copy" type="button" data-copy="/onramp">Copy</button></td></tr>
@@ -600,11 +616,11 @@ footer a { color: var(--muted); }
       <h2>Before you install.</h2>
     </div>
     <div class="faq">
-      <details><summary>Does my code leave my machine?</summary><p>Onramp runs inside your own Claude Code session, so Claude reads your code the way it does for any task. The scripts make no network calls and the guide is a local file. Claude Code transcripts are only read if you agree. Text that looks like a key or token is redacted.</p></details>
+      <details><summary>Does my code leave my machine?</summary><p>Onramp runs inside your own agent session, so your agent reads your code the way it does for any task. The scripts make no network calls and the guide is a local file. Claude Code transcripts are only read if you agree. Text that looks like a key or token is redacted.</p></details>
       <details><summary>Will it change my code?</summary><p>No. It only writes inside <span class="mono">.onramp/</span> in your repository: the guide page, a markdown copy and the source JSON.</p></details>
       <details><summary>What does "checked" actually mean?</summary><p>Every citation names a file, a line range and a short piece of text from those lines. <span class="mono">verify.py</span> confirms the file exists, the lines exist and the text is in them. That catches invented functions, wrong files and stale line numbers. It cannot judge whether an explanation is wise, so judgements are written as judgements, and decisions say whether they are documented or inferred.</p></details>
       <details><summary>How big a repository can it handle?</summary><p>The scanner takes seconds even on large repositories. Claude reads the most important files first and splits big codebases across subagents, one per module. On a very large monorepo, point it at the package you care about, for example <span class="mono">/onramp packages/api</span>.</p></details>
-      <details><summary>Does it work in Cursor, Codex or Gemini CLI?</summary><p>It is built and tested for Claude Code. The skills CLI installs it for any agent that reads <span class="mono">SKILL.md</span>, and the scripts are plain Python, so it should work wherever an agent can read files and run Python.</p></details>
+      <details><summary>Which agents does it work with?</summary><p>Any agent that supports the open Agent Skills format (<span class="mono">SKILL.md</span>) and can run Python: Claude Code, Codex, GitHub Copilot, Cursor, Gemini CLI, Antigravity, Windsurf, OpenCode, Cline and 60+ more through the skills CLI. It has been tested most in Claude Code. Reading session history works with Claude Code transcripts today; everything else works everywhere.</p></details>
       <details><summary>Can I share a guide?</summary><p>Yes. Render it with <span class="mono">--public</span> to drop your local paths and link code to GitHub, then host the single HTML file anywhere. The demos on this page were published that way.</p></details>
     </div>
   </section>
@@ -630,6 +646,7 @@ footer a { color: var(--muted); }
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-copy]"); if (!b) return;
     var text = b.dataset.copy;
+    if (window.va) window.va("event", { name: "Copy command", data: { command: text.slice(0, 60) } });
     function done() { b.textContent = "Copied"; setTimeout(function () { b.textContent = "Copy"; }, 1600); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { select(b); });
     else select(b);
@@ -695,10 +712,11 @@ footer a { color: var(--muted); }
     return '<div class="exit"><small>EXIT ' + (i < 9 ? "0" : "") + (i + 1) + "</small><b>" + e[0] + "</b><span>" + e[1] + "</span></div>";
   }).join("");
 
-  // Route preview: real numbers from the PaperMind demo guide, written by docs/build.py.
+  // Route preview: real numbers from the first demo guide, written by docs/build.py.
   var ROUTE = window.ONRAMP_SAMPLE;
   if (!ROUTE) { document.querySelector(".planner").hidden = true; return; }
-  document.getElementById("demo-name").textContent = ROUTE.name;
+  document.getElementById("demo-name").textContent = ROUTE.label || "a real codebase";
+  var dl = document.getElementById("days-label"); if (dl && ROUTE.label) dl.textContent = "Example \u00b7 3-day route through " + ROUTE.label;
   document.querySelectorAll("[data-sample-name]").forEach(function (el) { el.textContent = ROUTE.name; });
   function fmt(m) { return m < 60 ? m + " min" : Math.floor(m / 60) + " h" + (m % 60 ? " " + (m % 60) + " m" : ""); }
   function paint(t) {

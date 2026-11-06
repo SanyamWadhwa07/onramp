@@ -75,6 +75,27 @@ def route(lessons, time, goal="gist", bg="know"):
     return {"mins": used, "stops": len(picked), "days": days, "first": first}
 
 
+ANALYTICS = ('<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>\n'
+             '<script defer src="/_vercel/insights/script.js"></script>\n')
+
+
+def add_analytics(html_path):
+    """Published demos count page views; guides people build locally never carry analytics."""
+    with open(html_path, encoding="utf-8") as fh:
+        html = fh.read()
+    if "/_vercel/insights/script.js" not in html:
+        html = html.replace("</head>", ANALYTICS + "</head>", 1)
+        with open(html_path, "w", encoding="utf-8") as fh:
+            fh.write(html)
+
+
+def label(scan):
+    """A neutral description of the demo codebase, e.g. 'a 31,575-line Python + JavaScript codebase'."""
+    langs = [l["lang"] for l in scan.get("languages", [])[:2] if l.get("share", 0) >= 10]
+    lines = (scan.get("summary") or {}).get("lines", 0)
+    return "a %s-line %s codebase" % ("{:,}".format(lines), " + ".join(langs) or "")
+
+
 def main(argv):
     if len(argv) < 2 or len(argv) % 2:
         sys.exit(__doc__)
@@ -82,10 +103,13 @@ def main(argv):
         repo, name = os.path.abspath(argv[k]), argv[k + 1]
         out = os.path.join(DOCS, "demo", name)
         render.main([repo, "--public", "--out", out])
+        add_analytics(os.path.join(out, "index.html"))
         if k == 0:
             with open(os.path.join(repo, ".onramp", "guide.json"), encoding="utf-8") as fh:
                 guide = json.load(fh)
-            sample = {"name": guide["project"]["name"],
+            with open(os.path.join(repo, ".onramp", "scan.json"), encoding="utf-8") as fh:
+                scan = json.load(fh)
+            sample = {"name": guide["project"]["name"], "label": label(scan),
                       "routes": {t: route(guide["lessons"], t) for t in TIMES},
                       "verification": guide.get("verification")}
             with open(os.path.join(DOCS, "assets", "sample-route.js"), "w", encoding="utf-8") as fh:
