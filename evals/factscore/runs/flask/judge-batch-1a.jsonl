@@ -1,0 +1,30 @@
+{"key": "a4a4311656", "claim": "app.test_request_context(...) builds an environ with testing.EnvironBuilder and returns a RequestContext that can be pushed."}
+{"key": "90442e670f", "claim": "teardown_appcontext_funcs, shell_context_processors and url_build_error_handlers are app registries that are not scoped."}
+{"key": "1af71fda4c", "claim": "The registered name is name_prefix.name, where the prefix is set for nested blueprints."}
+{"key": "2d6d26a4b2", "claim": "flask.make_response(*args) in helpers.py is the user-facing wrapper."}
+{"key": "4f0c89c0b5", "claim": "SESSION_COOKIE_PARTITIONED defaults to False."}
+{"key": "c6e1072f4d", "claim": "Only app commands such as init-db require loading the app, after which an app context is pushed for them."}
+{"key": "c276969806", "claim": "ctx.push() calls _cv_request.set(ctx), after which the request and session proxies work."}
+{"key": "109eb3e6c9", "claim": "src/flask/sansio/ contains I/O-free base classes shared with Quart."}
+{"key": "f7c5cc9294", "claim": "Flask.__init__ does not check that the static folder exists."}
+{"key": "d06d3a5e3c", "claim": "message_flashed is sent from helpers.flash with the kwargs message and category."}
+{"key": "0d321278e2", "claim": "The flask program is a FlaskGroup instance named cli (src/flask/cli.py)."}
+{"key": "1d09834259", "claim": "An endpoint starting with . in url_for is relative to the current blueprint (src/flask/app.py)."}
+{"key": "cee1cbb580", "claim": "Handlers are stored as error_handler_spec[scope][code][exc_class]."}
+{"key": "9eb09422d5", "claim": "select_jinja_autoescape is true for .html, .htm, .xml, .xhtml and .svg, and for string templates."}
+{"key": "49c0ac5c85", "claim": "after_this_request callbacks run first in process_response, then after_request functions in reverse registration order, innermost blueprint first."}
+{"key": "7e904b1267", "claim": "With host_matching, SERVER_NAME is not passed to Werkzeug, so the real Host header is used for matching."}
+{"key": "738a8cb102", "claim": "process_response calls session_interface.save_session(...) unless the session is a null session."}
+{"key": "1e3cafb0c0", "claim": "Jinja renders templates for Flask."}
+{"key": "c02715adc8", "claim": "Commit fb541598 is a security fix for the signing-key order."}
+{"key": "15ea95a2b0", "claim": "get, post, put, delete and patch are shortcuts built on _method_route."}
+{"key": "0669596277", "claim": "The Flask docs (docs/lifecycle.rst) require all setup to finish before serving."}
+{"key": "b8952e44f5", "claim": "tests/test_appctx.py and tests/test_reqctx.py cover contexts."}
+{"key": "328411e6e6", "claim": "src/flask/helpers.py contains url_for, redirect, abort, flash, send_file and stream_with_context."}
+{"key": "aa6f4a600e", "claim": "The Flask design notes in docs/design.rst state that Flask will never have a database layer."}
+{"key": "1d014834c2", "claim": "Scaffold.__init__ creates the empty registries."}
+{"key": "74ef624f03", "claim": "The routes command prints endpoint, methods, domain and rule."}
+{"key": "0877a67613", "claim": "Blueprint in sansio/blueprints.py subclasses Scaffold."}
+{"key": "5011cfcec0", "claim": "Instance folder is a per-deployment folder, outside the package, for config files and data."}
+{"key": "3e508875ef", "claim": "The proxies current_app, g, request and session are created at import time in globals.py."}
+{"key": "e6c8964030", "claim": "In wsgi_app, a re-raised exception reaches handle_exception."}

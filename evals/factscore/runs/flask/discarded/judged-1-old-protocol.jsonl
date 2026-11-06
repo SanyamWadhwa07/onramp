@@ -1,0 +1,60 @@
+{"key": "a4a4311656", "verdict": "supported", "evidence": "src/flask/app.py:1470", "note": ""}
+{"key": "90442e670f", "verdict": "supported", "evidence": "src/flask/sansio/app.py:353-369", "note": ""}
+{"key": "1af71fda4c", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:304", "note": ""}
+{"key": "2d6d26a4b2", "verdict": "supported", "evidence": "src/flask/helpers.py:139", "note": ""}
+{"key": "4f0c89c0b5", "verdict": "supported", "evidence": "src/flask/app.py:195", "note": ""}
+{"key": "c6e1072f4d", "verdict": "supported", "evidence": "src/flask/cli.py:620-631", "note": ""}
+{"key": "c276969806", "verdict": "supported", "evidence": "src/flask/ctx.py:378", "note": ""}
+{"key": "109eb3e6c9", "verdict": "supported", "evidence": "src/flask/sansio/README.md:3", "note": ""}
+{"key": "f7c5cc9294", "verdict": "supported", "evidence": "src/flask/app.py:264", "note": ""}
+{"key": "d06d3a5e3c", "verdict": "supported", "evidence": "src/flask/helpers.py:337-342", "note": ""}
+{"key": "0d321278e2", "verdict": "supported", "evidence": "src/flask/cli.py:1110", "note": ""}
+{"key": "1d09834259", "verdict": "supported", "evidence": "src/flask/app.py:1066-1072", "note": ""}
+{"key": "cee1cbb580", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:123-126", "note": ""}
+{"key": "9eb09422d5", "verdict": "supported", "evidence": "src/flask/sansio/app.py:545-547", "note": ""}
+{"key": "49c0ac5c85", "verdict": "supported", "evidence": "src/flask/app.py:1313-1319", "note": ""}
+{"key": "7e904b1267", "verdict": "supported", "evidence": "src/flask/app.py:454-457", "note": ""}
+{"key": "738a8cb102", "verdict": "supported", "evidence": "src/flask/app.py:1321-1322", "note": ""}
+{"key": "1e3cafb0c0", "verdict": "supported", "evidence": "src/flask/app.py:410", "note": ""}
+{"key": "c02715adc8", "verdict": "supported", "evidence": "CHANGES.rst (fb541598 adds ghsa entry for signing key order)", "note": ""}
+{"key": "15ea95a2b0", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:284-333", "note": ""}
+{"key": "0669596277", "verdict": "supported", "evidence": "docs/lifecycle.rst:25", "note": ""}
+{"key": "b8952e44f5", "verdict": "supported", "evidence": "tests/test_appctx.py; tests/test_reqctx.py", "note": ""}
+{"key": "328411e6e6", "verdict": "supported", "evidence": "src/flask/helpers.py:51,139,188,242,266,311,400", "note": ""}
+{"key": "aa6f4a600e", "verdict": "supported", "evidence": "docs/design.rst:209", "note": ""}
+{"key": "1d014834c2", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:108-213", "note": ""}
+{"key": "74ef624f03", "verdict": "supported", "evidence": "src/flask/cli.py:1061-1100", "note": ""}
+{"key": "0877a67613", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:119", "note": ""}
+{"key": "5011cfcec0", "verdict": "supported", "evidence": "docs/config.rst:760-775", "note": ""}
+{"key": "3e508875ef", "verdict": "supported", "evidence": "src/flask/globals.py:25-49", "note": ""}
+{"key": "e6c8964030", "verdict": "supported", "evidence": "src/flask/app.py:1512-1514", "note": ""}
+{"key": "60b82b31c9", "verdict": "supported", "evidence": "src/flask/app.py:411-419", "note": ""}
+{"key": "a52cfdd12c", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:433", "note": ""}
+{"key": "b65f4cdbcd", "verdict": "supported", "evidence": "src/flask/sessions.py SessionInterface docstring", "note": ""}
+{"key": "496341a3c5", "verdict": "supported", "evidence": "src/flask/helpers.py:339", "note": ""}
+{"key": "036b54f047", "verdict": "supported", "evidence": "src/flask/sansio/app.py:640-643", "note": ""}
+{"key": "f8b9bdb8fc", "verdict": "supported", "evidence": "docs/lifecycle.rst", "note": ""}
+{"key": "4e7c152872", "verdict": "supported", "evidence": "src/flask/sansio/app.py:355-388", "note": ""}
+{"key": "3679aa0bd5", "verdict": "supported", "evidence": "pyproject.toml:104-105", "note": ""}
+{"key": "9cae43d6ae", "verdict": "supported", "evidence": "src/flask/app.py:1506-1514", "note": ""}
+{"key": "301223becb", "verdict": "supported", "evidence": "src/flask/ctx.py:269,430", "note": ""}
+{"key": "0ba53fb9a2", "verdict": "supported", "evidence": "src/flask/sansio/app.py (964 lines)", "note": ""}
+{"key": "a36467c876", "verdict": "supported", "evidence": "src/flask/globals.py:25-49", "note": ""}
+{"key": "747a75f19e", "verdict": "supported", "evidence": ".devcontainer/on-create-command.sh:5", "note": ""}
+{"key": "c64cb2c132", "verdict": "supported", "evidence": "src/flask/cli.py:983", "note": ""}
+{"key": "d2f25bcb2d", "verdict": "supported", "evidence": "docs/api.rst:61", "note": ""}
+{"key": "5b74681bbe", "verdict": "supported", "evidence": "git 6979265f, tagged 2.0.0rc1", "note": ""}
+{"key": "f9829a3c84", "verdict": "supported", "evidence": "tests/conftest.py:72-81", "note": ""}
+{"key": "0cb8b8f167", "verdict": "supported", "evidence": "pyproject.toml:36", "note": ""}
+{"key": "40b7251441", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:379-410", "note": ""}
+{"key": "b08cf3cad7", "verdict": "supported", "evidence": "src/flask/json/tag.py:90,135", "note": ""}
+{"key": "6c577a457a", "verdict": "supported", "evidence": "src/flask/sansio/app.py:613-614", "note": ""}
+{"key": "0c84c626ee", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:19,184", "note": ""}
+{"key": "303f0e3dc7", "verdict": "supported", "evidence": "src/flask/app.py:1230-1231", "note": ""}
+{"key": "66d0dee98c", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:123-126,654", "note": ""}
+{"key": "2e3b1f3a49", "verdict": "supported", "evidence": "src/flask/sansio/scaffold.py:483-484", "note": ""}
+{"key": "2ccf558acb", "verdict": "supported", "evidence": "src/flask/app.py:1026-1031", "note": ""}
+{"key": "5134eec7d6", "verdict": "supported", "evidence": "docs/signals.rst:14", "note": ""}
+{"key": "eeab30f331", "verdict": "supported", "evidence": "src/flask/wrappers.py:43,47,53", "note": ""}
+{"key": "24673620ab", "verdict": "supported", "evidence": "src/flask/sansio/blueprints.py:433", "note": ""}
+{"key": "53d59dcea4", "verdict": "supported", "evidence": "src/flask/app.py:458-462", "note": ""}

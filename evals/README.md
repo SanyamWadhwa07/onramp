@@ -58,9 +58,16 @@ model (Claude Opus 5.5) from the same checkout:
    ([`extract_prompt.md`](factscore/extract_prompt.md)); the extractor sees only the document.
 2. Sample the same number of claims from each, with a fixed seed, and shuffle them together so
    the judge cannot tell which document a claim came from (`run.py sample`).
-3. A judge model with read access to the repository labels each claim supported or unsupported,
-   citing the line it relied on ([`judge_prompt.md`](factscore/judge_prompt.md)).
-4. Unblind and score (`run.py score`).
+3. A judge model with read access to the repository labels each claim supported or unsupported
+   ([`judge_prompt.md`](factscore/judge_prompt.md)). Every verdict must cite a `path:line` and a
+   quote copied from that line; batches are 30 claims, so each one gets its own search.
+4. Unblind and score (`run.py score --repo <repo>`). The scorer opens every cited line and throws
+   away any verdict whose quote is not there, so a judge cannot pass claims without checking them.
+
+Two early judge passes did not meet this bar (one gave 59 of 60 claims a placeholder instead of a
+line; the other did not record quotes and briefly saw the Onramp guide while searching). They are
+kept, unused, in [`factscore/runs/flask/discarded/`](factscore/runs/flask/discarded/) with the
+reasons.
 
 ## 3. SWE-QA: does the guide transfer understanding?
 

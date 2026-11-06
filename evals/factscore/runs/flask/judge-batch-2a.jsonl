@@ -1,0 +1,30 @@
+{"key": "8cba5e4e34", "claim": "A handler for HTTPException catches every HTTP error without a more specific handler."}
+{"key": "38b6a6bc97", "claim": "The tutorial's blog.py holds the CRUD views."}
+{"key": "0140d89ede", "claim": "flask.Request has json_module, which is flask.json by default and replaced with app.json per request."}
+{"key": "12610b66b6", "claim": "All ten signals are created from one namespace in src/flask/signals.py."}
+{"key": "383a5bc017", "claim": "async_to_sync comes from asgiref, installed with the async extra."}
+{"key": "d3190a5e5e", "claim": "URL matching in RequestContext.push happens after the session is open, so custom URL converters can use it."}
+{"key": "57921b7b48", "claim": "The first non-None return value from a before_request function becomes the response and the view is skipped."}
+{"key": "f26eeaf44f", "claim": "The WSGI server calls the Flask object once per HTTP request (src/flask/app.py __call__)."}
+{"key": "2c702f8a2a", "claim": "get, post, put, delete and patch are shortcut decorators that set methods (src/flask/sansio/scaffold.py)."}
+{"key": "f517968a0c", "claim": "pyproject.toml declares dependency groups instead of requirement files, including tests, typing, docs and dev."}
+{"key": "dd18100077", "claim": "debughelpers.py gives clearer errors for POSTs redirected to a trailing-slash URL."}
+{"key": "3ed973c54a", "claim": "App.__init__ creates self.url_map = self.url_map_class(host_matching=...), which is a Werkzeug Map."}
+{"key": "bbf3c7e565", "claim": "Flask is a WSGI framework in which you build one Flask object, register functions on it, and a web server calls that object once per request."}
+{"key": "e1b5d4897e", "claim": "On its last pop, the app context runs teardown_appcontext functions, resets _cv_app and sends appcontext_popped."}
+{"key": "04a51ed764", "claim": "RequestContext holds app, the Request built from the environ, the URL adapter, the session and the flashed messages."}
+{"key": "e22cbd1bd5", "claim": "AppContext.__init__ starts an empty token list."}
+{"key": "64e87ab396", "claim": "app_ctx = LocalProxy(_cv_app) is the AppContext itself."}
+{"key": "03eeb8e303", "claim": "templating.py contains Environment, DispatchingJinjaLoader, render_template, render_template_string, stream_template, stream_template_string and _default_template_ctx_processor."}
+{"key": "8c4bbd2b41", "claim": "Flask uses werkzeug for Request/Response base classes, Map/Rule routing, HTTP exceptions, LocalProxy, test Client/EnvironBuilder, the run_simple dev server and reloader, send_file and redirect."}
+{"key": "a8a4f60fd1", "claim": "ctx.pop calls request.close()."}
+{"key": "6bad6ea4a8", "claim": "dispatch_request gives OPTIONS an automatic answer if the rule allows it."}
+{"key": "102bdc9cfa", "claim": "In Flask 2.2, app.json providers arrived in commit 69f9845e."}
+{"key": "25db574dc2", "claim": "Contexts are pushed and popped with ContextVar tokens, and only the outermost pop runs teardown."}
+{"key": "3847d44491", "claim": "app.register_blueprint(bp, **options) calls bp.register(app, options)."}
+{"key": "28ef6222d1", "claim": "url_for calls url_adapter.build(endpoint, values, method=_method, url_scheme=_scheme, force_external=_external)."}
+{"key": "8e0d32a994", "claim": "tests/test_signals.py covers signals."}
+{"key": "b3b3b9904c", "claim": "appcontext_pushed and appcontext_popped are sent in AppContext.push and pop."}
+{"key": "933647ab79", "claim": "flask routes lists url_map.iter_rules()."}
+{"key": "4c83760e5e", "claim": "handle_exception always passes an InternalServerError to the 500 handler."}
+{"key": "f5e3507f8f", "claim": "Changing a nested mutable value such as session[\"cart\"].append(x) is not detected."}

@@ -1,0 +1,30 @@
+{"key": "f6301ea990", "claim": "A None return value raises TypeError(\"The view function for ... did not return a valid response...\")."}
+{"key": "07feb35c35", "claim": "process_response runs the after_this_request functions."}
+{"key": "a7da0afb63", "claim": "Both AppContext and RequestContext keep a list of tokens."}
+{"key": "4aed73d7b2", "claim": "Config.from_object does not work with a dict."}
+{"key": "ec8067c810", "claim": "User-visible changes need a CHANGES.rst entry under the unreleased version."}
+{"key": "8835337e14", "claim": "If provide_automatic_options is not passed, add_url_rule reads it from view_func.provide_automatic_options."}
+{"key": "c7551ea2b3", "claim": "Each context now keeps its own list of tokens instead of a shared stack."}
+{"key": "00ba6ba20d", "claim": "process_response walks the innermost blueprint first and the app last, with each list reversed (src/flask/app.py)."}
+{"key": "758380530c", "claim": "register recursively registers nested blueprints, joining url_prefix and subdomain with the parent's and passing name_prefix=name."}
+{"key": "9b6d4403b0", "claim": "session_interface defaults to SecureCookieSessionInterface()."}
+{"key": "d06ceaeb79", "claim": "The routes command sorts by --sort endpoint|methods|domain|rule|match."}
+{"key": "9dc171f211", "claim": "src/flask/json/tag.py holds the tagged JSON used by the session cookie."}
+{"key": "daba86deb7", "claim": "Any exception in full_dispatch_request goes to error-handler lookup."}
+{"key": "129c37a438", "claim": "The tuple (1, 2) becomes {\" t\": [1, 2]}."}
+{"key": "1e8271f2cc", "claim": "View.as_view(name, *args, **kwargs) returns a plain view function."}
+{"key": "768ba792c9", "claim": "MapAdapter.match() finds the rule and URL variables, and build() does the reverse for url_for (src/flask/app.py)."}
+{"key": "5f13970a31", "claim": "create_jinja_environment adds globals url_for, get_flashed_messages, config, and the request, session and g proxies."}
+{"key": "66fccf712c", "claim": "The tutorial's auth.py handles sessions and login."}
+{"key": "0d1ada2c51", "claim": "The ResponseValue type alias in src/flask/typing.py accepts async iterables for Quart, until App is generic."}
+{"key": "b4a2ba3296", "claim": "with client: client.get('/') keeps the contexts alive until the block ends (src/flask/testing.py)."}
+{"key": "8e6095bcc5", "claim": "ScriptInfo.load_app tries, in order: an explicit create_app callback, the import path, or wsgi.py and app.py in the current directory."}
+{"key": "759a6c1532", "claim": "BlueprintSetupState.add_url_rule joins the prefix onto the rule, sets the subdomain, merges the defaults and registers the endpoint as \"{name_prefix}.{name}.{endpoint}\".lstrip(\".\") on the app."}
+{"key": "b1477fad96", "claim": "Inside the module, the CLI looks for an object called app or application, then for the only Flask instance, then for a create_app or make_app factory (src/flask/cli.py find_best_app)."}
+{"key": "12df23d671", "claim": "tests/test_async.py covers async."}
+{"key": "7e366f89a6", "claim": "The app's provider is created in App.__init__ as self.json = self.json_provider_class(self)."}
+{"key": "45e4e5a410", "claim": "send_from_directory uses safe_join, so it is safe for paths that come from users."}
+{"key": "fab71d660e", "claim": "Werkzeug orders rules by complexity, so registration order does not matter (docs/design.rst)."}
+{"key": "7ef006ba78", "claim": "Werkzeug provides the dev server and the debugger for Flask."}
+{"key": "72d7ae27f9", "claim": "Without a SECRET_KEY, open_session returns None and the context installs a NullSession."}
+{"key": "e1d8f610b2", "claim": "Werkzeug does the HTTP and WSGI work for Flask."}

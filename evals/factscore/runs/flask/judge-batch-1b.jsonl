@@ -1,0 +1,30 @@
+{"key": "60b82b31c9", "claim": "request, session and g are also Jinja environment globals, so imported macros can see them."}
+{"key": "a52cfdd12c", "claim": "Scaffold.add_url_rule is a documented stub that raises, while App.add_url_rule is the real one."}
+{"key": "b65f4cdbcd", "claim": "To store sessions elsewhere, implement open_session and save_session on a SessionInterface subclass and assign it to app.session_interface."}
+{"key": "496341a3c5", "claim": "Signal receivers are called through _async_wrapper."}
+{"key": "036b54f047", "claim": "If provide_automatic_options is also None, it becomes True when \"OPTIONS\" is not already in methods and config[\"PROVIDE_AUTOMATIC_OPTIONS\"] is true, and OPTIONS is added."}
+{"key": "f8b9bdb8fc", "claim": "docs/lifecycle.rst covers the same request sequence in prose."}
+{"key": "4e7c152872", "claim": "The app object holds config, the registries, url_map, blueprints, the JSON provider and extensions."}
+{"key": "3679aa0bd5", "claim": "`uv sync` creates .venv and installs Flask (editable) plus the dev, pre-commit, tests and typing groups."}
+{"key": "9cae43d6ae", "claim": "wsgi_app creates the RequestContext, pushes it, calls full_dispatch_request, and turns any exception that escapes into a 500 with handle_exception."}
+{"key": "301223becb", "claim": "Each pop compares the current context value with self and raises AssertionError(\"Popped wrong ... context\") on mismatch."}
+{"key": "0ba53fb9a2", "claim": "sansio/app.py is 964 lines."}
+{"key": "a36467c876", "claim": "Flask defines context-local globals request, session, g and current_app."}
+{"key": "747a75f19e", "claim": "The devcontainer script installs from a deleted requirements/ folder."}
+{"key": "c64cb2c132", "claim": "The run command calls werkzeug.run_simple."}
+{"key": "d2f25bcb2d", "claim": "The session cookie data is encoded, not encrypted."}
+{"key": "5b74681bbe", "claim": "Commit 6979265f added async def support via asgiref in Flask 2.0."}
+{"key": "f9829a3c84", "claim": "The test_apps fixture adds tests/test_apps to sys.path and cleans up imported modules afterwards."}
+{"key": "0cb8b8f167", "claim": "The project uses uv with dependency groups ([dependency-groups] in pyproject.toml) and a lock file (uv.lock)."}
+{"key": "40b7251441", "claim": "_merge_blueprint_funcs copies the blueprint's error handlers, view_functions, before/after/teardown functions, URL defaults, URL value preprocessors and template context processors into the app's dicts, re-keyed from None to name."}
+{"key": "b08cf3cad7", "claim": "A tagged value becomes a one-key dict whose key starts with a space."}
+{"key": "6c577a457a", "claim": "In add_url_rule, the endpoint defaults to view_func.__name__ via _endpoint_from_view_func."}
+{"key": "0c84c626ee", "claim": "templating.py is needed by Scaffold because the default context processor lives there (src/flask/sansio/scaffold.py imports it)."}
+{"key": "303f0e3dc7", "claim": "A dict or list becomes self.json.response(rv), a JSON response."}
+{"key": "66d0dee98c", "claim": "error_handler_spec has the shape {scope: {code_or_None: {exc_class: handler}}} and is filled by errorhandler and register_error_handler."}
+{"key": "2e3b1f3a49", "claim": "@app.before_request appends to before_request_funcs[None] and returns the function unchanged."}
+{"key": "2ccf558acb", "claim": "url_for outside a request needs SERVER_NAME and produces absolute URLs by default."}
+{"key": "5134eec7d6", "claim": "A signal receiver's return value is ignored and it cannot stop the request."}
+{"key": "eeab30f331", "claim": "flask.Request has url_rule, view_args and routing_exception, set during matching."}
+{"key": "24673620ab", "claim": "A blueprint records most operations as deferred callables and replays them against an app when it is registered."}
+{"key": "53d59dcea4", "claim": "Without subdomain_matching, create_url_adapter forces the subdomain to url_map.default_subdomain or \"\"."}

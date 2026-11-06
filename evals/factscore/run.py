@@ -16,6 +16,7 @@ import hashlib
 import json
 import os
 import random
+import re
 import sys
 
 VERDICTS = ("supported", "unsupported")
@@ -48,19 +49,46 @@ def cmd_sample(args):
     print("blind batch of %d claims: %s" % (len(items), ", ".join("%s %d of %d" % (d, n, t) for d, (n, t) in counts.items())))
 
 
+def evidence_ok(repo, evidence, quote):
+    """The judge's quote must appear at (or within two lines of) the line it cites."""
+    m = re.match(r"^(.+?):(\d+)$", (evidence or "").strip())
+    if not m or not quote or not quote.strip():
+        return False
+    path = os.path.join(repo, m.group(1).replace("\\", "/").lstrip("./"))
+    try:
+        with open(path, encoding="utf-8", errors="replace") as fh:
+            lines = fh.read().splitlines()
+    except OSError:
+        return False
+    n = int(m.group(2))
+    window = " ".join(lines[max(0, n - 3):n + 2])
+    norm = lambda t: re.sub(r"\s+", " ", t).strip()  # noqa: E731
+    return norm(quote) in norm(window)
+
+
 def cmd_score(args):
     with open(os.path.join(args.run_dir, "key.json"), encoding="utf-8") as fh:
         key = json.load(fh)
-    verdicts = {}
+    verdicts, rejected = {}, []
     for path in sorted(glob.glob(os.path.join(args.run_dir, "judged*.jsonl"))):
         for j in read_jsonl(path):
-            if j.get("key") in key:
-                if j.get("verdict") not in VERDICTS:
-                    sys.exit("bad verdict for %s: %r" % (j.get("key"), j.get("verdict")))
-                verdicts[j["key"]] = j["verdict"]
+            if j.get("key") not in key:
+                continue
+            if j.get("verdict") not in VERDICTS:
+                sys.exit("bad verdict for %s: %r" % (j.get("key"), j.get("verdict")))
+            if args.repo and not evidence_ok(args.repo, j.get("evidence"), j.get("quote")):
+                rejected.append(j["key"])
+                continue
+            verdicts[j["key"]] = j["verdict"]
+    if rejected:
+        print("%d verdict(s) rejected because their evidence does not check out: %s" % (len(rejected), " ".join(rejected)))
+        with open(os.path.join(args.run_dir, "rejudge.jsonl"), "w", encoding="utf-8") as fh:
+            batch = {json.loads(l)["key"]: l for l in open(os.path.join(args.run_dir, "judge-batch.jsonl"), encoding="utf-8") if l.strip()}
+            for k in rejected:
+                fh.write(batch[k].rstrip("\n") + "\n")
     missing = set(key) - set(verdicts)
     if missing:
-        sys.exit("%d claims have no verdict yet" % len(missing))
+        sys.exit("%d claims have no accepted verdict yet (see rejudge.jsonl)" % len(missing))
     per_doc = {}
     for k, doc in key.items():
         s, n = per_doc.get(doc, (0, 0))
@@ -86,6 +114,7 @@ def main(argv=None):
     s.add_argument("--seed", type=int, default=5)
     c = sub.add_parser("score")
     c.add_argument("run_dir")
+    c.add_argument("--repo", help="repository the claims are about; checks each verdict's evidence quote")
     args = ap.parse_args(argv)
     {"sample": cmd_sample, "score": cmd_score}[args.cmd](args)
 
