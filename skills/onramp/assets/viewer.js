@@ -841,7 +841,7 @@
     };
   }
   function renderDiagrams(root) {
-    var blocks = $$(".mermaid-block:not([data-done])", root);
+    var blocks = $$(".mermaid-block:not([data-drawn])", root);
     if (!blocks.length) return;
     mermaidP = mermaidP || loadScript(MERMAID_URL).then(function () { return window.mermaid; });
     mermaidP.then(function (m) {
@@ -852,15 +852,15 @@
           if (!document.body.contains(b)) return;
           var src = $("pre.src", b).textContent, id = "onramp-mm-" + (++mmId);
           return m.render(id, src).then(function (r) {
-            $(".mermaid-out", b).innerHTML = r.svg; $("pre.src", b).hidden = true; b.dataset.done = "1";
+            $(".mermaid-out", b).innerHTML = r.svg; $("pre.src", b).hidden = true; b.dataset.drawn = "1";
           }).catch(function () {
             var stray = document.getElementById("d" + id); if (stray) stray.remove();
-            $(".mermaid-out", b).innerHTML = '<p class="empty">This diagram could not be drawn. Its source:</p>'; b.dataset.done = "1";
+            $(".mermaid-out", b).innerHTML = '<p class="empty">This diagram could not be drawn. Its source:</p>'; b.dataset.drawn = "1";
           });
         });
       });
     }).catch(function () {
-      blocks.forEach(function (b) { $(".mermaid-out", b).innerHTML = '<p class="empty">Diagrams need an internet connection to draw. Source:</p>'; b.dataset.done = "1"; });
+      blocks.forEach(function (b) { $(".mermaid-out", b).innerHTML = '<p class="empty">Diagrams need an internet connection to draw. Source:</p>'; b.dataset.drawn = "1"; });
     });
   }
 
@@ -925,11 +925,11 @@
     if ((el = t.closest("[data-source]"))) { e.preventDefault(); openSource(el.dataset.source); return; }
     if ((el = t.closest("[data-go]"))) { location.hash = el.dataset.go; return; }
     if ((el = t.closest("[data-jump]"))) { e.preventDefault(); var target = document.getElementById(el.dataset.jump); if (target) target.scrollIntoView({ behavior: "smooth" }); return; }
-    if ((el = t.closest("[data-done]"))) {
+    if ((el = t.closest("button[data-done]"))) {
       if (!isDone(el.dataset.done)) state.done.push(el.dataset.done);
       save(); location.hash = el.dataset.next ? "#stop-" + el.dataset.next : "#route"; return;
     }
-    if ((el = t.closest("[data-undone]"))) { state.done = state.done.filter(function (x) { return x !== el.dataset.undone; }); save(); route(); return; }
+    if ((el = t.closest("button[data-undone]"))) { state.done = state.done.filter(function (x) { return x !== el.dataset.undone; }); save(); route(); return; }
     if ((el = t.closest(".checkpoint .opt"))) {
       var box = el.closest(".checkpoint"), id = box.dataset.cp;
       state.quiz[id] = +el.dataset.opt; save();
