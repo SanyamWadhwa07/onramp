@@ -248,13 +248,26 @@ def check_structure(g, files, rep):
     for ch, n in per_chapter.items():
         if n == 0:
             rep.warn("chapters", "chapter '%s' has no lessons" % ch)
-    if core_minutes > 70:
-        rep.warn("lessons", "core lessons add up to %d minutes; the 1-hour route will drop some" % core_minutes)
+    if core_minutes and not 40 <= core_minutes <= 65:
+        rep.warn("lessons", "core lessons add up to %d minutes; aim for 45-60 so the 1-hour route tells the whole story" % core_minutes)
+    for l in lessons:
+        if not isinstance(l, dict):
+            continue
+        words = len((l.get("body") or "").split())
+        if l.get("body") and not 80 <= words <= 400:
+            rep.warn("lesson '%s'" % l.get("id"), "body is %d words; aim for 120-350" % words)
+        cp = l.get("checkpoint")
+        if isinstance(cp, dict) and not cp.get("explain"):
+            rep.warn("lesson '%s'" % l.get("id"), "checkpoint has no explain")
 
+    card_paths = set()
     for i, f in enumerate(g.get("files") or []):
         p = isinstance(f, dict) and f.get("path")
         if not p or not files.exists(p):
             rep.err("files[%d]" % i, "file card path does not exist: %s" % p)
+        elif p in card_paths:
+            rep.warn("files[%d]" % i, "second card for %s" % p)
+        card_paths.add(p)
     for key in ("milestones", "exercises"):
         for i, m in enumerate(g.get(key) or []):
             for p in (m.get("files") or []) if isinstance(m, dict) else []:
@@ -275,7 +288,18 @@ def check_structure(g, files, rep):
     return lessons
 
 
-def merge_fragments(g, work):
+IDENT = {"files": "path", "concepts": "term", "stack": "name", "milestones": "title", "exercises": "title",
+         "decisions": "title", "risks": "title"}
+
+
+def ident_of(key, item):
+    field = IDENT.get(key, "id")
+    return item.get(field) or item.get("id") or item.get("title") or item.get("name") or item.get("term")
+
+
+def merge_fragments(g, work, rep):
+    """Merge work/<key>.<name>.json arrays into the guide. Fragments win: an item whose id matches
+    one already in the guide replaces it, so editing a fragment and re-running always takes effect."""
     merged = 0
     for path in sorted(glob.glob(os.path.join(work, "*.json"))):
         key = os.path.basename(path).split(".")[0]
@@ -283,15 +307,26 @@ def merge_fragments(g, work):
             continue
         items = load_json(path)
         if not isinstance(items, list):
+            rep.warn(os.path.basename(path), "fragment must be a JSON array; skipped")
             continue
         existing = g.setdefault(key, [])
-        ident = (lambda x: x.get("path")) if key == "files" else (lambda x: x.get("id") or x.get("title") or x.get("name"))
-        seen = {ident(x) for x in existing if isinstance(x, dict)}
+        index = {ident_of(key, x): i for i, x in enumerate(existing) if isinstance(x, dict) and ident_of(key, x)}
         for it in items:
-            if isinstance(it, dict) and ident(it) not in seen:
+            if not isinstance(it, dict):
+                continue
+            k = ident_of(key, it)
+            if not k:
+                rep.warn(os.path.basename(path), "%s item has no %s; merged without de-duplication" % (key, IDENT.get(key, "id")))
                 existing.append(it)
-                seen.add(ident(it))
-                merged += 1
+            elif k in index:
+                existing[index[k]] = it
+            else:
+                index[k] = len(existing)
+                existing.append(it)
+            merged += 1
+    if g.get("lessons"):
+        order = {c: i for i, c in enumerate(CHAPTERS)}
+        g["lessons"].sort(key=lambda l: order.get(l.get("chapter") if isinstance(l, dict) else None, 99))
     return merged
 
 
@@ -299,11 +334,13 @@ def verify(root, guide_path, fix=False, merge=False):
     g = load_json(guide_path)
     rep = Report()
     files = Files(root)
-    merged = merge_fragments(g, os.path.join(os.path.dirname(guide_path), "work")) if merge else 0
+    merged = merge_fragments(g, os.path.join(os.path.dirname(guide_path), "work"), rep) if merge else 0
     lessons = check_structure(g, files, rep)
     stats = {"citations": 0, "verified": 0, "files": set()}
 
     def visit(text, where):
+        if "]]]" in text and not CITE_RE.search(text.replace("]]]", "]]")):
+            rep.warn(where, "a citation ends in ']]]'; check the anchor's brackets")
         def sub(m):
             fixed = check_citation(m, where, files, rep, stats)
             if fixed and fix:
@@ -341,14 +378,47 @@ def verify(root, guide_path, fix=False, merge=False):
     return rep, result
 
 
+def check_fragment(root, path):
+    """Citations and paths in one fragment, for subagents writing work/ files in parallel."""
+    items = load_json(path)
+    if not isinstance(items, list):
+        print("ERROR  %s must be a JSON array" % path)
+        return 1
+    key = os.path.basename(path).split(".")[0]
+    rep, files = Report(), Files(root)
+    stats = {"citations": 0, "verified": 0, "files": set()}
+    if key == "files":
+        for i, f in enumerate(items):
+            if not isinstance(f, dict) or not files.exists(str(f.get("path", ""))):
+                rep.err("files[%d]" % i, "file card path does not exist: %s" % (f.get("path") if isinstance(f, dict) else f))
+
+    def visit(text, where):
+        for m in CITE_RE.finditer(text):
+            fixed = check_citation(m, where, files, rep, stats)
+            if fixed:
+                rep.err(where, "line numbers drifted: %s should be %s" % (m.group(0)[:90], fixed[:90]))
+        return text
+    walk_strings(items, key, visit)
+    for e in rep.errors:
+        print("ERROR  " + e)
+    for w in rep.warnings:
+        print("WARN   " + w)
+    print("\n%s  %s: %d/%d citations verified, %d error(s)" % (
+        "OK" if not rep.errors else "FAILED", os.path.basename(path), stats["verified"], stats["citations"], len(rep.errors)))
+    return 0 if not rep.errors else 1
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("repo", nargs="?", default=".")
     ap.add_argument("--guide")
     ap.add_argument("--fix", action="store_true", help="repair drifted line numbers in place")
     ap.add_argument("--merge", action="store_true", help="merge work/<key>.*.json fragments into the guide first")
+    ap.add_argument("--fragment", help="check one work/<key>.<name>.json fragment on its own (nothing is written)")
     args = ap.parse_args(argv)
     root = os.path.abspath(args.repo)
+    if args.fragment:
+        sys.exit(check_fragment(root, args.fragment))
     guide = args.guide or os.path.join(onramp_dir(root), "guide.json")
     if not os.path.exists(guide):
         sys.exit("onramp: no guide at %s" % guide)

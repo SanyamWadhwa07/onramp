@@ -129,6 +129,66 @@ class VerifyTest(Fixture):
         self.assertIn("web/index.html", [f["path"] for f in self.guide()["files"]])
 
 
+class MergeTest(Fixture):
+    def write_fragment(self, name, items):
+        work = os.path.join(self.repo, ".onramp", "work")
+        os.makedirs(work, exist_ok=True)
+        with open(os.path.join(work, name), "w", encoding="utf-8") as fh:
+            json.dump(items, fh)
+
+    def test_concepts_are_keyed_by_term(self):
+        self.write_fragment("concepts.extra.json", [
+            {"term": "Catalog", "plain": "The products for sale.", "at": "[[app/store.py:6-10|CATALOG = []]"},
+            {"term": "Handler", "plain": "Answers HTTP requests.", "at": "[[app/server.py:9|class Handler]]"},
+        ])
+        rep, _ = verify.verify(self.repo, self.guide_path, merge=True)
+        self.assertEqual(rep.errors, [])
+        terms = [c["term"] for c in self.guide()["concepts"]]
+        self.assertIn("Catalog", terms)
+        self.assertIn("Handler", terms)
+
+    def test_fragment_edits_replace_merged_items(self):
+        self.write_fragment("files.extra.json", [{"path": "web/index.html", "role": "first"}])
+        verify.verify(self.repo, self.guide_path, merge=True)
+        self.write_fragment("files.extra.json", [{"path": "web/index.html", "role": "second"}])
+        verify.verify(self.repo, self.guide_path, merge=True)
+        cards = [f for f in self.guide()["files"] if f["path"] == "web/index.html"]
+        self.assertEqual([c["role"] for c in cards], ["second"])
+
+    def test_merged_lessons_follow_chapter_order(self):
+        g = self.guide()
+        practice = [l for l in g["lessons"] if l["chapter"] == "practice"]
+        g["lessons"] = [l for l in g["lessons"] if l["chapter"] != "practice"]
+        self.write_guide(g)
+        self.write_fragment("lessons.a-practice.json", practice)
+        verify.verify(self.repo, self.guide_path, merge=True)
+        chapters = [l["chapter"] for l in self.guide()["lessons"]]
+        self.assertEqual(chapters[-1], "practice")
+        self.assertEqual(chapters, sorted(chapters, key=verify.CHAPTERS.index))
+
+    def test_anchor_ending_in_bracket(self):
+        with open(os.path.join(self.repo, "app", "types.py"), "w") as fh:
+            fh.write("from typing import Tuple\n\nPair = Tuple[str, int]\n")
+        g = self.guide()
+        g["lessons"][0]["body"] += " A pair is [[app/types.py:3|Tuple[str, int]]]."
+        self.write_guide(g)
+        rep, _ = self.run_verify()
+        self.assertEqual(rep.errors, [])
+        self.assertFalse(any("]]]" in w for w in rep.warnings), rep.warnings)
+
+    def test_check_one_fragment(self):
+        self.write_fragment("files.part.json", [
+            {"path": "app/store.py", "summary": "[[app/store.py:29-38|def place_order(]]"},
+            {"path": "app/missing.py", "summary": "[[app/store.py:29-38|def refund(]]"},
+        ])
+        path = os.path.join(self.repo, ".onramp", "work", "files.part.json")
+        with redirect_stdout(io.StringIO()) as out:
+            code = verify.check_fragment(self.repo, path)
+        self.assertEqual(code, 1)
+        self.assertIn("app/missing.py", out.getvalue())
+        self.assertIn("def refund(", out.getvalue())
+
+
 class RenderTest(Fixture):
     def test_render_embeds_real_code(self):
         scan_data = scan.scan(self.repo)

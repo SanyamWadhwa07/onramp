@@ -60,7 +60,7 @@ LOCKFILES = {
 MAX_READ_BYTES = 1_500_000
 
 # [[path]]  [[path:12]]  [[path:12-30|anchor text]]
-CITE_RE = re.compile(r"\[\[([^\[\]|:\n]+?)(?::(\d+)(?:-(\d+))?)?(?:\|(.+?))?\]\]")
+CITE_RE = re.compile(r"\[\[([^\[\]|:\n]+?)(?::(\d+)(?:-(\d+))?)?(?:\|(.+?))?\]\](?!\])")
 
 
 def posix(path):

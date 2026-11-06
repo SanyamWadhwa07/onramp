@@ -51,7 +51,7 @@
   };
   var MERMAID_URL = "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js";
   var HLJS_URL = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js";
-  var CITE_RE = /\[\[([^\[\]|:\n]+?)(?::(\d+)(?:-(\d+))?)?(?:\|(.+?))?\]\]/g;
+  var CITE_RE = /\[\[([^\[\]|:\n]+?)(?::(\d+)(?:-(\d+))?)?(?:\|(.+?))?\]\](?!\])/g;
   var LANG_COLORS = ["#2f7d5b", "#d39b1e", "#3f6fb5", "#b4553f", "#7a5bb5", "#4f9aa8", "#9a8a3a", "#b0517d", "#5e6b74"];
 
   // ------------------------------------------------------------------ helpers

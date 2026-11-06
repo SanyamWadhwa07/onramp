@@ -491,6 +491,8 @@ def git_facts(root, files_set):
     facts["github"] = ("https://github.com/%s/%s" % (m.group(1), m.group(2))) if m else None
     dirty = run_git(root, "status", "--porcelain", "--untracked-files=no")
     facts["dirty"] = bool(dirty and dirty.strip())
+    deleted = run_git(root, "ls-files", "--deleted")
+    facts["deleted"] = [posix(p) for p in (deleted or "").splitlines() if p.strip()][:200]
     log = run_git(root, "log", "--no-merges", "-n", "3000", "--date=short",
                   "--pretty=format:\x1e%H\t%ad\t%an\t%s", "--name-only")
     commits, churn = [], Counter()
@@ -681,9 +683,12 @@ def print_summary(data, out_path):
     w("files %d (source %d, tests %d), %d lines of code" % (s["files"], s["source_files"], s["test_files"], s["lines"]))
     w("languages: " + ", ".join("%s %.0f%%" % (l["lang"], l["share"]) for l in data["languages"][:8]))
     if g.get("is_repo"):
-        w("git: %s commits by %s author(s), %s -> %s, head %s%s" % (
+        w("git: %s non-merge commits by %s author(s), %s -> %s, head %s%s" % (
             g.get("commits"), g.get("authors"), g.get("first_commit"), g.get("last_commit"), g.get("short"),
             " (uncommitted changes)" if g.get("dirty") else ""))
+        if g.get("deleted"):
+            w("deleted but not committed: %d tracked file(s), e.g. %s. They cannot be cited; say so in the guide." % (
+                len(g["deleted"]), ", ".join(g["deleted"][:4])))
     else:
         w("git: not a repository")
     ss = data["sessions"]

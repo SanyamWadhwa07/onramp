@@ -6,6 +6,9 @@ interactive page and `GUIDE.md`; `verify.py` checks it. Write it as UTF-8 JSON.
 Large guides can be written in pieces: put a JSON **array** in `.onramp/work/<key>.<name>.json`
 (for example `work/lessons.flows.json`, `work/files.backend.json`) and run
 `verify.py --merge`. Mergeable keys: `lessons files flows concepts decisions risks stack milestones exercises`.
+Items are matched by `path` (files), `term` (concepts), `name` (stack), `title` (milestones,
+exercises, decisions, risks) or `id` (lessons, flows); a fragment item replaces the guide item it
+matches. Check one fragment on its own with `verify.py <repo> --fragment <file>`.
 
 ## Citations
 
@@ -20,8 +23,10 @@ Every string in the guide may contain citations. They are the only way to point 
 Rules:
 - Paths are repo-relative with forward slashes.
 - A line citation **must** have an anchor: an exact substring copied from those lines
-  (an identifier, a signature, a distinctive string). Keep it short (under 60 characters) and
-  avoid `]]` and `|` inside it. Whitespace differences are ignored.
+  (an identifier, a signature, a distinctive string). Keep it short (under 60 characters).
+  It may contain `|` and may end in `]` (as in `Tuple[str, int]`), but must not contain `]]`.
+  Whitespace differences are ignored.
+- Cite only files present in the working tree. Files deleted but not committed cannot be cited.
 - Cite tight ranges: the function or block that proves the claim, usually 3–40 lines.
 - Citations render as chips; clicking one shows the real code from the file.
 

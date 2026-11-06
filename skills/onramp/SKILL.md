@@ -6,7 +6,7 @@ compatibility: Any agent that can read files and run Python 3.8+ (standard libra
 metadata:
   version: "1.0.0"
   homepage: "https://onramp-skill.vercel.app"
-allowed-tools: Read Grep Glob Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/*) Bash(python ${CLAUDE_SKILL_DIR}/scripts/*) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/*)
+allowed-tools: Read Grep Glob Bash(python3 ${CLAUDE_SKILL_DIR}/scripts/*) Bash(python ${CLAUDE_SKILL_DIR}/scripts/*) Bash(py -3 ${CLAUDE_SKILL_DIR}/scripts/*) Bash(git log *) Bash(git show *) Bash(git status *) Bash(git ls-files *) Bash(git diff *) Bash(git blame *)
 ---
 
 # Onramp
@@ -56,7 +56,9 @@ python3 $S/scan.py <repo>
 ```
 
 Read the printed summary: languages, manifests, entry points, the ranked "read first" list,
-module edges, env vars, git history, Claude sessions. `.onramp/scan.json` has the full detail;
+module edges, env vars, git history, Claude sessions. If it lists files deleted but not
+committed, they cannot be cited: describe the working tree as it is and note the deletion in
+the `care` chapter. `.onramp/scan.json` has the full detail;
 query it with short Python or grep instead of reading the whole file.
 
 ### 2. Ask about agent history (only if the scan found sessions)
@@ -81,18 +83,20 @@ If no answer is possible (non-interactive run), skip it.
 Open every file you describe. Never describe a file, function or behaviour you have not read.
 Note exact line numbers as you read; you need them for citations.
 
-**Large repos** (more than ~150 source files): if your agent can start subagents, fan out;
-otherwise work through the modules one at a time in the same way. Give each subagent one or two modules
-from the scan, the "Citations" and "files" parts of `reference/schema.md`, and this task: read
-the module's important files and write a JSON array of file cards to
-`.onramp/work/files.<module>.json` (and `concepts.<module>.json` if useful), every claim cited.
+**Large repos** (more than about 120 source files): if your agent can start subagents, fan
+out; otherwise work through the modules one at a time in the same way. Brief each subagent with
+the template in [reference/fanout.md](reference/fanout.md). Each one writes
+`.onramp/work/files.<module>.json` and checks it with `verify.py <repo> --fragment <file>`.
 You still read the entry points and trace the flows yourself.
 
 ### 4. Write the guide
 
 Write `.onramp/guide.json` per the schema. To keep tool calls manageable, write the top-level
 sections first, then lessons chapter by chapter as `.onramp/work/lessons.<chapter>.json` arrays
-(merged by `verify.py --merge`).
+(merged by `verify.py --merge`; lessons are put in chapter order and a fragment always replaces
+the item it was merged as, so edit fragments, not the merged copy). Long markdown is easier to
+produce with a short Python script that builds the structure and calls `json.dump` than by
+escaping quotes and newlines by hand.
 
 What a complete guide contains:
 - **20–40 lessons covering all 12 chapters.** Core lessons add up to 45–60 minutes and alone

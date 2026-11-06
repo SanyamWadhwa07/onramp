@@ -24,7 +24,8 @@ SECRET = re.compile(
     r"|AIza[0-9A-Za-z_\-]{30,}|eyJ[A-Za-z0-9_\-]{20,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}"
     r"|(?<![A-Za-z0-9])[A-Fa-f0-9]{40,}(?![A-Za-z0-9]))"
 )
-REMINDER = re.compile(r"<system-reminder>.*?</system-reminder>", re.S)
+REMINDER = re.compile(r"<(system-reminder|ide_[a-z_]+|browser_[a-z_]+|command-[a-z]+|local-command-[a-z]+|"
+                      r"user-prompt-submit-hook|attachment)\b[^>]*>.*?</\1>", re.S)
 
 
 def clean(text, limit):
