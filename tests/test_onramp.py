@@ -70,6 +70,20 @@ class ScanTest(Fixture):
         self.assertEqual(files["app/both.py"]["imports"], ["app/models.py", "app/store.py"])
 
 
+    def test_stdlib_names_do_not_match_project_files(self):
+        pkg = os.path.join(self.repo, "src", "shop")
+        os.makedirs(pkg)
+        for name, body in [("__init__.py", ""), ("typing.py", "Pair = tuple\n"),
+                           ("core.py", "import typing\nfrom typing import TYPE_CHECKING\nfrom . import typing as st\n"
+                                       "if TYPE_CHECKING:\n    from .app import App\n"),
+                           ("app.py", "from shop.core import x\n")]:
+            with open(os.path.join(pkg, name), "w") as fh:
+                fh.write(body)
+        files = {f["path"]: f for f in scan.scan(self.repo)["files"]}
+        self.assertEqual(files["src/shop/core.py"]["imports"], ["src/shop/typing.py"])  # only the relative import
+        self.assertEqual(files["src/shop/app.py"]["imports"], ["src/shop/core.py"])     # absolute, from src/
+
+
 class VerifyTest(Fixture):
     def test_fixture_guide_is_clean(self):
         rep, res = self.run_verify()
