@@ -1,0 +1,13 @@
+{
+  "name": "onramp",
+  "version": "1.0.0",
+  "description": "Turns any codebase into a personal learning route where every claim is checked against the code.",
+  "author": {
+    "name": "Sanyam Wadhwa",
+    "url": "https://github.com/SanyamWadhwa07"
+  },
+  "homepage": "https://sanyamwadhwa07.github.io/onramp/",
+  "repository": "https://github.com/SanyamWadhwa07/onramp",
+  "license": "MIT",
+  "keywords": ["onboarding", "codebase", "documentation", "learning", "architecture", "code-explanation"]
+}

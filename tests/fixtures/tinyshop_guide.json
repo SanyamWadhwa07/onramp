@@ -1,0 +1,228 @@
+{
+  "schema": 1,
+  "project": {
+    "name": "tinyshop",
+    "one_liner": "A three-product shop: a JSON API in plain Python and a one-page web front end.",
+    "what": "tinyshop sells tea, a mug and a kettle. The browser page lists the products and posts orders to a small Python server, which prices them and saves them to a JSON file. It exists to show the smallest complete web app: a catalog, a write path and storage.",
+    "analogy": "A market stall with a price list on the counter and a notebook for orders. The stall keeper (the server) checks every item against the price list before writing the order down.",
+    "audience": "Developers learning how a front end, an API and storage fit together.",
+    "status": "prototype"
+  },
+  "numbers": [
+    {"value": "3", "label": "products in the catalog"},
+    {"value": "2", "label": "API routes"},
+    {"value": "0", "label": "third-party dependencies"}
+  ],
+  "lessons": [
+    {
+      "id": "gist-what",
+      "chapter": "gist",
+      "title": "What tinyshop is",
+      "tier": "core",
+      "minutes": 3,
+      "summary": "A browser page lists three products and sends orders to a Python server, which prices them and saves them to a file.",
+      "body": "There are two halves. The **web page** in `web/` shows the catalog and a Buy button. The **server** in `app/` answers two questions: what can I buy ([[app/server.py:17-21|def do_GET]]) and please place this order ([[app/server.py:23-32|def do_POST]]).\n\nOrders are written to a JSON file so they survive a restart ([[app/store.py:40-42|def _save]]).",
+      "checkpoint": {
+        "q": "Where does an order end up after you click Buy?",
+        "choices": ["In the browser's local storage", "In a JSON file written by the server", "In a SQL database"],
+        "answer": 1,
+        "explain": "The store appends the order and calls `_save`, which writes every order to the JSON file: [[app/store.py:36-37|self._save()]]."
+      }
+    },
+    {
+      "id": "run-locally",
+      "chapter": "run",
+      "title": "Run it on your machine",
+      "tier": "core",
+      "minutes": 4,
+      "summary": "Start the server with one Python command, then open the web page.",
+      "body": "Nothing to install: the server only uses the standard library ([[app/server.py:1-2|from http.server import]]). Run it as a module so its relative imports work, then open `web/index.html`.",
+      "show": [{"view": "quickstart"}]
+    },
+    {
+      "id": "stack-python-http",
+      "chapter": "stack",
+      "title": "Python's built-in web server",
+      "tier": "standard",
+      "minutes": 4,
+      "for": ["new"],
+      "summary": "`http.server` turns a class with `do_GET` and `do_POST` methods into a web server.",
+      "body": "Each request creates a `Handler` ([[app/server.py:9|class Handler(BaseHTTPRequestHandler)]]). Python calls `do_GET` or `do_POST` depending on the HTTP method, and the method writes the response itself.",
+      "show": [{"view": "stack"}]
+    },
+    {
+      "id": "map-overview",
+      "chapter": "map",
+      "title": "The map: two folders, three layers",
+      "tier": "core",
+      "minutes": 5,
+      "summary": "The page talks to the HTTP layer, the HTTP layer talks to the store, and the store owns the data.",
+      "body": "`web/app.js` only knows URLs ([[web/app.js:1|const API]]). `app/server.py` only knows the store ([[app/server.py:6|store = Store()]]). `app/store.py` is the only code that touches the catalog and the file.",
+      "show": [{"view": "architecture"}, {"view": "depmap"}]
+    },
+    {
+      "id": "concept-cents",
+      "chapter": "concepts",
+      "title": "Prices are whole cents",
+      "tier": "standard",
+      "minutes": 3,
+      "summary": "Money is stored as an integer number of cents so totals never pick up rounding errors.",
+      "body": "A product's price is `price_cents`, an integer ([[app/models.py:6-9|price_cents: int]]). The page divides by 100 only when it displays the total ([[web/app.js:17|order.total_cents / 100]]).",
+      "show": [{"view": "concepts"}]
+    },
+    {
+      "id": "flow-order",
+      "chapter": "flows",
+      "title": "What happens when you click Buy",
+      "tier": "core",
+      "minutes": 7,
+      "goals": ["gist", "ship", "own"],
+      "summary": "The page posts the checked SKUs, the server prices them, the store saves the order and the page shows the total.",
+      "body": "Follow one click from the button to the file and back. Use the step-through below; each step opens the real code.",
+      "show": [{"view": "flow", "id": "place-order"}],
+      "checkpoint": {
+        "q": "A customer posts an unknown SKU. What do they get back?",
+        "choices": ["A 500 error", "A 400 error naming the SKU", "An empty order"],
+        "answer": 1,
+        "explain": "`place_order` raises `KeyError`, and `do_POST` turns it into a 400: [[app/server.py:30-31|except KeyError as exc]]."
+      }
+    },
+    {
+      "id": "data-orders",
+      "chapter": "data",
+      "title": "Products, orders and the JSON file",
+      "tier": "standard",
+      "minutes": 4,
+      "summary": "Two dataclasses describe the data; orders persist as a JSON list.",
+      "body": "The catalog is a constant list in code ([[app/store.py:6-10|CATALOG = []]). Orders load from the file when the store starts ([[app/store.py:20-24|def _load]]).",
+      "show": [{"view": "data"}]
+    },
+    {
+      "id": "files-tour",
+      "chapter": "files",
+      "title": "The files worth opening",
+      "tier": "standard",
+      "minutes": 6,
+      "summary": "Five files hold the whole app; start with the store.",
+      "body": "Read them in this order: store, server, page script, models, test.",
+      "show": [{"view": "files"}]
+    },
+    {
+      "id": "built-order",
+      "chapter": "built",
+      "title": "Build it again, in order",
+      "tier": "deep",
+      "minutes": 10,
+      "goals": ["rebuild", "own"],
+      "summary": "Models first, then the store, then the server, then the page.",
+      "body": "Each layer only depends on the one below it, so you can build and test them bottom-up.",
+      "show": [{"view": "milestones"}, {"view": "timeline"}]
+    },
+    {
+      "id": "why-json-file",
+      "chapter": "why",
+      "title": "Why a JSON file and not a database",
+      "tier": "standard",
+      "minutes": 3,
+      "summary": "A file keeps the example dependency-free; it would not survive two servers writing at once.",
+      "body": "The whole order list is rewritten on every order ([[app/store.py:40-42|json.dump]]). That is simple and fine for one process.",
+      "show": [{"view": "decisions"}]
+    },
+    {
+      "id": "care-concurrency",
+      "chapter": "care",
+      "title": "Two orders at the same time",
+      "tier": "core",
+      "minutes": 4,
+      "goals": ["ship", "own"],
+      "summary": "Order ids come from the list length and the file is rewritten whole, so concurrent writes can collide.",
+      "body": "The id is `len(self.orders) + 1` ([[app/store.py:34|Order(id=len(self.orders) + 1]]). Two servers sharing one file would hand out the same id.",
+      "show": [{"view": "risks"}]
+    },
+    {
+      "id": "practice-first",
+      "chapter": "practice",
+      "title": "Your first changes",
+      "tier": "core",
+      "minutes": 3,
+      "goals": ["ship", "own", "rebuild"],
+      "summary": "Add a product, then add a route that lists orders.",
+      "body": "Start with the easy one; it touches a single line.",
+      "show": [{"view": "exercises"}]
+    }
+  ],
+  "quickstart": {
+    "prerequisites": ["Python 3.8+"],
+    "steps": [
+      {"title": "Start the API", "run": "python -m app.server", "explain": "Serves on port 8000: [[app/server.py:35-36|def main(port=8000)]]."},
+      {"title": "Open the page", "run": "open web/index.html", "explain": "The page calls the API at [[web/app.js:1|localhost:8000]]."}
+    ],
+    "env": [{"name": "SHOP_DATA", "purpose": "Where orders are saved", "required": false, "at": "[[app/store.py:17|SHOP_DATA]]"}],
+    "verify": "Tick a product, click Buy and you should see `Order #1` with its total."
+  },
+  "stack": [
+    {"name": "http.server", "category": "Backend", "role": "Serves the JSON API.", "why": "Ships with Python, nothing to install.", "where": "[[app/server.py:2|BaseHTTPRequestHandler]]", "primer": "A class whose methods are named after HTTP verbs; Python calls the right one per request."},
+    {"name": "dataclasses", "category": "Data", "role": "Defines Product and Order.", "why": "Typed records without boilerplate.", "where": "[[app/models.py:5-9|@dataclass]]"},
+    {"name": "fetch", "category": "Frontend", "role": "Calls the API from the page.", "why": "Built into every browser.", "where": "[[web/app.js:4|fetch(API + \"/products\")]]"}
+  ],
+  "architecture": {
+    "summary": "Three layers in a straight line: page, HTTP handler, store.",
+    "diagram": "flowchart LR\n  page[\"web/app.js\"] -->|HTTP JSON| handler[\"app/server.py Handler\"]\n  handler --> store[\"app/store.py Store\"]\n  store --> file[(\"orders.json\")]",
+    "layers": [
+      {"name": "Page", "purpose": "Shows products and posts orders", "paths": ["web"]},
+      {"name": "HTTP", "purpose": "Routes requests to the store", "paths": ["app/server.py"]},
+      {"name": "Store", "purpose": "Prices orders and saves them", "paths": ["app/store.py", "app/models.py"]}
+    ]
+  },
+  "concepts": [
+    {"term": "SKU", "plain": "A short id for one product you can buy.", "detail": "The page sends SKUs; the store looks up their prices.", "at": "[[app/store.py:30|prices = {p.sku: p.price_cents for p in CATALOG}]]"},
+    {"term": "Cents", "plain": "Prices are whole numbers of cents.", "at": "[[app/models.py:9|price_cents: int]]"}
+  ],
+  "flows": [
+    {
+      "id": "place-order",
+      "title": "Place an order",
+      "trigger": "The customer ticks products and clicks Buy",
+      "summary": "One POST from the page, one write to the file.",
+      "steps": [
+        {"title": "Collect the ticked SKUs", "at": "[[web/app.js:12-13|async function buy()]]", "explain": "Reads every checked box's value."},
+        {"title": "POST them to /orders", "at": "[[web/app.js:14|method: \"POST\"]]", "explain": "The body is a JSON array of SKUs."},
+        {"title": "Route the request", "at": "[[app/server.py:23-27|def do_POST(self):]]", "explain": "Rejects any path other than `/orders`, then parses the body."},
+        {"title": "Price and save", "at": "[[app/store.py:29-38|def place_order(self, skus):]]", "explain": "Unknown SKUs raise `KeyError`; otherwise the total is summed and the order saved."},
+        {"title": "Show the result", "at": "[[web/app.js:16-18|res.ok]]", "explain": "Shows the order number and total, or the error."}
+      ]
+    }
+  ],
+  "data": {
+    "summary": "Products live in code; orders live in a JSON file.",
+    "diagram": "erDiagram\n  PRODUCT {\n    string sku\n    string name\n    int price_cents\n  }\n  ORDER {\n    int id\n    int total_cents\n  }\n  ORDER }o--o{ PRODUCT : \"items (skus)\"",
+    "entities": [
+      {"name": "Product", "purpose": "Something you can buy", "at": "[[app/models.py:5-9|class Product:]]", "fields": ["sku: str", "name: str", "price_cents: int"]},
+      {"name": "Order", "purpose": "A purchase", "at": "[[app/models.py:12-16|class Order:]]", "fields": ["id: int", "items: list of SKUs", "total_cents: int"]}
+    ]
+  },
+  "files": [
+    {"path": "app/store.py", "area": "Store", "role": "Prices orders and persists them.", "summary": "Holds the catalog and the order list, and is the only code that touches the JSON file.", "symbols": [{"name": "Store.place_order", "at": "[[app/store.py:29-38|def place_order]]", "does": "Validates SKUs, totals them, saves the order."}], "read_when": "You change pricing or storage.", "complexity": 2},
+    {"path": "app/server.py", "area": "HTTP", "role": "The JSON API.", "summary": "Maps GET /products and POST /orders to the store.", "symbols": [{"name": "Handler.do_POST", "at": "[[app/server.py:23-32|def do_POST]]", "does": "Parses the body and places the order."}], "read_when": "You add a route.", "complexity": 2},
+    {"path": "web/app.js", "area": "Page", "role": "Renders products, posts orders.", "summary": "Two async functions: load the catalog and buy.", "symbols": [{"name": "buy", "at": "[[web/app.js:12-19|async function buy]]", "does": "Posts the selection and shows the result."}], "read_when": "You change what the customer sees.", "complexity": 1},
+    {"path": "app/models.py", "area": "Store", "role": "Data shapes.", "summary": "Product and Order dataclasses.", "read_when": "You add a field.", "complexity": 1},
+    {"path": "tests/test_store.py", "area": "Tests", "role": "Checks order totals.", "summary": "One test that places an order in a temp file.", "read_when": "You change pricing.", "complexity": 1}
+  ],
+  "milestones": [
+    {"title": "Model the data", "goal": "Describe products and orders.", "files": ["app/models.py"], "explain": "Two dataclasses.", "try": "Write a Product for a teapot."},
+    {"title": "A store that prices and saves", "goal": "Place an order without any web code.", "files": ["app/store.py", "tests/test_store.py"], "explain": "Test it with a temp file.", "try": "Call place_order from a Python shell."},
+    {"title": "Put it behind HTTP", "goal": "Serve the store as JSON.", "files": ["app/server.py"], "explain": "Two handlers.", "try": "curl the /products route."},
+    {"title": "The page", "goal": "Buy from the browser.", "files": ["web/index.html", "web/app.js"], "explain": "fetch and render.", "try": "Show prices next to names."}
+  ],
+  "history": {"summary": "Written in one sitting as a teaching example.", "eras": [{"title": "First version", "when": "2026", "what": "All five files."}]},
+  "decisions": [
+    {"title": "Orders in a JSON file", "choice": "Rewrite the whole list on every order.", "why": "No database to install.", "tradeoff": "Unsafe with more than one writer.", "evidence": "[[app/store.py:40-42|def _save]]", "source": "inferred"}
+  ],
+  "risks": [
+    {"title": "Duplicate order ids under concurrency", "severity": "medium", "at": "[[app/store.py:34|len(self.orders) + 1]]", "why": "Ids come from the list length.", "advice": "Use a counter stored with the data, or a database sequence."}
+  ],
+  "exercises": [
+    {"title": "Add a teapot", "level": "easy", "goal": "Sell a fourth product.", "files": ["app/store.py"], "hints": ["Add a Product to CATALOG."], "done_when": "It appears on the page."},
+    {"title": "List orders", "level": "medium", "goal": "Add GET /orders.", "files": ["app/server.py", "app/store.py"], "hints": ["Add a branch in do_GET."], "done_when": "curl /orders returns your orders."}
+  ]
+}

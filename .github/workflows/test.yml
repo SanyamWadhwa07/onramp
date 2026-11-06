@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            python: "3.8"
+          - os: ubuntu-latest
+            python: "3.13"
+          - os: windows-latest
+            python: "3.12"
+          - os: macos-latest
+            python: "3.12"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Onramp verifies its own fixture guide
+        shell: bash
+        run: |
+          cp -r tests/fixtures/tinyshop "$RUNNER_TEMP/tinyshop"
+          mkdir -p "$RUNNER_TEMP/tinyshop/.onramp"
+          cp tests/fixtures/tinyshop_guide.json "$RUNNER_TEMP/tinyshop/.onramp/guide.json"
+          python skills/onramp/scripts/scan.py "$RUNNER_TEMP/tinyshop" --quiet
+          python skills/onramp/scripts/verify.py "$RUNNER_TEMP/tinyshop"
+          python skills/onramp/scripts/render.py "$RUNNER_TEMP/tinyshop"

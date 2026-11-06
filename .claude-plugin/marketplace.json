@@ -1,0 +1,17 @@
+{
+  "name": "onramp",
+  "metadata": {
+    "description": "A personal, verified route through any codebase."
+  },
+  "owner": {
+    "name": "Sanyam Wadhwa",
+    "url": "https://github.com/SanyamWadhwa07"
+  },
+  "plugins": [
+    {
+      "name": "onramp",
+      "source": "./",
+      "description": "Turns any codebase into a personal learning route where every claim is checked against the code."
+    }
+  ]
+}

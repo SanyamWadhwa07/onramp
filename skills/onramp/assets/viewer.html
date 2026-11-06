@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="generator" content="Onramp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Onest:wght@400;500;600&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b6b47'/%3E%3Crect x='3' y='3' width='26' height='26' rx='5' fill='none' stroke='white' stroke-width='1.6'/%3E%3Cpath d='M10 24 C 12 16, 20 16, 22 8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/*ONRAMP:CSS*/
+</style>
+<script>
+  try { var t = localStorage.getItem("onramp:theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="brand" href="#route" aria-label="Onramp: back to the route">
+      <span class="brand-sign" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 25 C 11 16, 21 16, 23 7"/></svg></span>
+      <span class="brand-text"><span class="brand-project" id="brand-project"></span><span class="brand-sub">Onramp guide</span></span>
+    </a>
+    <nav class="tabs" id="tabs" aria-label="Views">
+      <a href="#route" data-tab="route">Route</a>
+      <a href="#map" data-tab="map">Map</a>
+      <a href="#files" data-tab="files">Files</a>
+      <a href="#guide" data-tab="guide">Full guide</a>
+    </nav>
+    <div class="top-tools">
+      <button class="trust" id="trust" type="button"></button>
+      <button class="tool-btn search-btn" id="search-btn" type="button" aria-label="Search (Ctrl K)"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg><kbd>Ctrl K</kbd></button>
+      <button class="tool-btn" id="theme-btn" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M10 3.5a6.5 6.5 0 0 1 0 13z" class="fill"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main" tabindex="-1"></main>
+<aside class="peek" id="peek" aria-hidden="true" aria-label="Code">
+  <div class="peek-head">
+    <div class="peek-title"><span class="peek-path" id="peek-path"></span><span class="peek-lines" id="peek-lines"></span></div>
+    <div class="peek-actions" id="peek-actions"></div>
+    <button class="tool-btn" id="peek-close" type="button" aria-label="Close code"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+  </div>
+  <div class="peek-body" id="peek-body"></div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+<div class="search" id="search" hidden role="dialog" aria-modal="true" aria-label="Search the guide">
+  <div class="search-box">
+    <input id="search-input" type="search" placeholder="Search stops, files, ideas…" autocomplete="off" spellcheck="false">
+    <ol class="search-results" id="search-results"></ol>
+    <div class="search-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+  </div>
+</div>
+<script type="application/json" id="onramp-data">/*ONRAMP:DATA*/</script>
+<script>
+/*ONRAMP:JS*/
+</script>
+</body>
+</html>
